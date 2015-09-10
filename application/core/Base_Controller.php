@@ -10,13 +10,12 @@
  */
 class Base_Controller extends CI_Controller {
 
+ 
     /**
      * Constructor of Base Controller
      */
     function __construct() {
         parent::__construct();
-        enumLoad();
-        entitiesLoadAll();
     }
 
 }

@@ -24,6 +24,10 @@ class Doctrine {
         Doctrine\ORM\Tools\Setup::registerAutoloadDirectory(APPPATH . "third_party/DoctrineORM-2.2.3/libraries/");
         $doctrineClassLoader = new ClassLoader('Doctrine', APPPATH . 'third_party/DoctrineORM-2.2.3/libraries');
         $doctrineClassLoader->register();
+        $entitiesClassLoader = new ClassLoader('Entities', APPPATH . 'models');
+        $entitiesClassLoader->register();
+        $enumClassLoader = new ClassLoader('enums', APPPATH . 'models');
+        $enumClassLoader->register();
         $proxiesClassLoader = new ClassLoader('Proxies', APPPATH . 'models/proxies');
         $proxiesClassLoader->register();
 

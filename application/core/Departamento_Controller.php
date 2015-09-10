@@ -3,13 +3,14 @@
 (defined('BASEPATH')) OR exit('No direct script access allowed');
 
 /**
- * Base_Controller
- * @category Base_Controller
+ * Base_Departamento
+ * @category Base_Departamento
  * @package  CodeIgniter
  * @author Rafael Rocha <rafaeltbt@gmail.com>
  */
-class Base_Controller extends CI_Controller {
+class Departamento_Controller extends CI_Controller {
 
+ 
     /**
      * Constructor of Base Controller
      */

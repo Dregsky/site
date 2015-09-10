@@ -22,7 +22,7 @@ class Home extends Base_Controller {
      * @property Pessoa $pessoa 
      */
     public function index() {
-        $estado = $this->homeModel->retrieve(Entities\EstadoCivil::name, 5);
+        $estado = $this->homeModel->retrieve(Entities\EstadoCivil::name, 2);
         $dados['perfil'] = $estado;
         $this->load->view('welcome_message', $dados);
     }

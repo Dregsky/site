@@ -16,14 +16,15 @@ class Home extends Base_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('home_model', 'homeModel');
+        $this->load->view('welcome_message', array('perfil' => 2));
     }
 
     /**
      * @property Pessoa $pessoa 
      */
     public function index() {
-        $estado = $this->homeModel->retrieve(Entities\EstadoCivil::name, 5);
-        $dados['perfil'] = $estado;
+        $estado = $this->homeModel->retrieve(Entities\EstadoCivil::name, 2);
+        $dados['perfil'] = \enums\TipoPerfil::ADMINISTRADOR_1;
         $this->load->view('welcome_message', $dados);
     }
 

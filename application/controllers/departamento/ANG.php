@@ -8,7 +8,7 @@ Use Entities\Pessoa as Pessoa;
  * 
  * @author Rafael Rocha <rafaeltbt@gmail.com>
  */
-class Home extends Base_Controller {
+class ANG extends Departamento_Controller {
 
     /**
      * Método Construtor
@@ -22,9 +22,10 @@ class Home extends Base_Controller {
      * @property Pessoa $pessoa 
      */
     public function index() {
-        $estado = $this->homeModel->retrieve(Entities\EstadoCivil::name, 5);
+        $estado = $this->homeModel->retrieve(Entities\EstadoCivil::name, 2);
         $dados['perfil'] = $estado;
         $this->load->view('welcome_message', $dados);
     }
+    
 
 }
