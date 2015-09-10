@@ -72,11 +72,25 @@ Use enums\TipoPerfil;
             <h1>Welcome to CodeIgniter!</h1>
 
             <div id="body">
-                <?php if($perfil->getId() == TipoPerfil::ANG){
-                    echo "eh ANG";
-                }else{
-                    echo TipoPerfil::CIBE;
-                } 
+                <?php var_dump($perfil);
+                echo site_url("/_user_guide_src_ci/images/icons/edit.png").'<br>';
+                echo base_url("/_user_guide_src_ci/images/icons/edit.png");
+                echo anchor(base_url("/_user_guide_src_ci/images/icons/edit.png"),'click');
+                
+                $atts = array(
+              'width'      => '800',
+              'height'     => '600',
+              'scrollbars' => 'yes',
+              'status'     => 'yes',
+              'resizable'  => 'yes',
+              'screenx'    => '0',
+              'screeny'    => '0'
+            );
+
+echo anchor_popup('news/local/123', 'Click Me!', $atts);
+
+echo mailto('rafaeltbt@gmail.com', 'Click Here to Contact Me').'<br>';
+echo anchor(base_url('home'), 'home', array("style" => "color:red;" ));
                 ?>
                 <p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
 

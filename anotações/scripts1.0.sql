@@ -13,9 +13,6 @@ INSERT INTO `adcru732_adcruz`.`tbl_perfil` (`cod_perfil`, `descricao`) VALUES ('
 ALTER TABLE `tbl_pessoa` ADD CONSTRAINT `fk_perfil` FOREIGN KEY ( `cod_perfil` ) 
 REFERENCES `tbl_perfil` ( `cod_perfil` ) ;
 
-ALTER TABLE `tbl_pessoa` ADD CONSTRAINT `fk_pessoa_exclusao` FOREIGN KEY ( `codPessoaExclusao` ) 
-REFERENCES `tbl_pessoa` ( `cod_pessoa` ) ;
-
 ALTER TABLE `tbl_status` ENGINE = InnoDB;
 
 ALTER TABLE `tbl_pessoa` ADD CONSTRAINT `fk_status` FOREIGN KEY ( `cod_status` ) 
@@ -59,3 +56,8 @@ UPDATE `adcru732_adcruz`.`tbl_pessoa` SET `cod_departamento` = 6 WHERE `cod_depa
 
 ALTER TABLE `tbl_pessoa` ADD CONSTRAINT `fk_dapartamento` FOREIGN KEY ( `cod_departamento` ) 
 REFERENCES `tbl_departamento` ( `cod_departamento` ) ;
+
+UPDATE `tbl_pessoa` set `codPessoaExclusao` = null
+ALTER TABLE `tbl_pessoa` DROP `codPessoaExclusao`;
+
+

@@ -1,1 +1,0 @@
-ALTER TABLE `tbl_pessoa` CHANGE `senha` `senha` VARCHAR(80) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;

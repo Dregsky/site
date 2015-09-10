@@ -1,8 +1,7 @@
 <?php
 
 defined('BASEPATH') OR exit('No direct script access allowed');
-use Entities\Perfil;
-use enums\TipoPerfil;
+Use Entities\Pessoa as Pessoa;
 /**
  * @property Doctrine $doctrine Biblioteca ORM
  * @property home_model $homeModel Model
@@ -16,16 +15,15 @@ class Home extends Base_Controller {
      */
     public function __construct() {
         parent::__construct();
-        entityLoad(array("Departamento", "Perfil", "Escolaridade"));
         $this->load->model('home_model', 'homeModel');
     }
 
     /**
-     *
+     * @property Pessoa $pessoa 
      */
     public function index() {
-        $perfil = $this->homeModel->retrieve(Perfil::name, TipoPerfil::EBD);
-        $dados['perfil'] = $perfil;
+        $estado = $this->homeModel->retrieve(Entities\EstadoCivil::name, 5);
+        $dados['perfil'] = $estado;
         $this->load->view('welcome_message', $dados);
     }
 

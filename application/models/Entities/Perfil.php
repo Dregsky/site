@@ -12,7 +12,7 @@ namespace Entities;
  */
 class Perfil {
 
-    const name = "Perfil";
+    const name = "Entities\Perfil";
 
     /**
      *

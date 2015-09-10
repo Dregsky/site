@@ -12,7 +12,7 @@ namespace Entities;
  */
 class EstadoCivil {
 
-    const name = "EstadoCivil";
+    const name = "Entities\EstadoCivil";
 
     /**
      *
@@ -31,12 +31,6 @@ class EstadoCivil {
     private $descricao;
 
     /**
-     *
-     * @Column(type="integer", nullable=false)
-     */
-    private $situacao;
-
-    /**
      * Getters and Setters
      */
     public function getId() {
@@ -47,23 +41,10 @@ class EstadoCivil {
         return $this->descricao;
     }
 
-    public function getSituacao() {
-        return $this->situacao;
-    }
-
-    public function setId(integer $id) {
-        $this->id = $id;
-        return $this;
-    }
-
-    public function setDescricao(string $descricao) {
+    public function setDescricao($descricao) {
         $this->descricao = $descricao;
         return $this;
     }
 
-    public function setSituacao(integer $situacao) {
-        $this->situacao = $situacao;
-        return $this;
-    }
 
 }

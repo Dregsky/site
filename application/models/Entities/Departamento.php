@@ -12,7 +12,7 @@ namespace Entities;
  */
 class Departamento {
 
-    const name = "Departamento";
+    const name = "Entities\Departamento";
 
     /**
      *
@@ -42,14 +42,15 @@ class Departamento {
         return $this->nomeDepartamento;
     }
 
-    public function setId(integer $id) {
+    public function setId($id) {
         $this->id = $id;
         return $this;
     }
 
-    public function setNomeDepartamento(string $nomeDepartamento) {
+    public function setNomeDepartamento($nomeDepartamento) {
         $this->nomeDepartamento = $nomeDepartamento;
         return $this;
     }
+
 
 }

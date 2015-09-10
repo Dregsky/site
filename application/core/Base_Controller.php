@@ -10,15 +10,13 @@
  */
 class Base_Controller extends CI_Controller {
 
-    public $em;
-
     /**
      * Constructor of Base Controller
      */
     function __construct() {
         parent::__construct();
-        $this->em = $this->doctrine->em;
         enumLoad();
+        entitiesLoadAll();
     }
 
 }

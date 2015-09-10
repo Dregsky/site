@@ -12,7 +12,7 @@ namespace Entities;
  */
 class Status {
 
-    const name = "Status";
+    const name = "Entities\Status";
 
     /**
      *

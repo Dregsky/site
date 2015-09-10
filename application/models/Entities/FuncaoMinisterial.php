@@ -12,7 +12,7 @@ namespace Entities;
  */
 class FuncaoMinisterial {
 
-    const name = "FuncaoMinisterial";
+    const name = "Entities\FuncaoMinisterial";
 
     /**
      *
@@ -25,20 +25,20 @@ class FuncaoMinisterial {
     /**
      *
      * @var string
-     * 
      * @Column(type="string", length=80, nullable=false)
      */
     private $descricao;
 
     /**
-     *
-     * @Column(type="integer", nullable=false)
+     * @var boolean
+     * @Column(type="boolean", nullable=false)
      */
     private $situacao;
 
     /**
      * Getters and Setters
      */
+    
     public function getId() {
         return $this->id;
     }
@@ -51,19 +51,20 @@ class FuncaoMinisterial {
         return $this->situacao;
     }
 
-    public function setId(integer $id) {
+    public function setId($id) {
         $this->id = $id;
         return $this;
     }
 
-    public function setDescricao(string $descricao) {
+    public function setDescricao($descricao) {
         $this->descricao = $descricao;
         return $this;
     }
 
-    public function setSituacao(integer $situacao) {
+    public function setSituacao($situacao) {
         $this->situacao = $situacao;
         return $this;
     }
+
 
 }

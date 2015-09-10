@@ -12,7 +12,7 @@ namespace Entities;
  */
 class Escolaridade {
 
-    const name = "Escolaridade";
+    const name = "Entities\Escolaridade";
 
     /**
      *
