@@ -3,12 +3,12 @@
 (defined('BASEPATH')) OR exit('No direct script access allowed');
 
 /**
- * Base_Departamento
- * @category Base_Departamento
+ * Departamento_Controller
+ * @category Departamento_Controller
  * @package  CodeIgniter
  * @author Rafael Rocha <rafaeltbt@gmail.com>
  */
-class Departamento_Controller extends CI_Controller {
+class Departamento_Controller extends Site_Controller {
 
  
     /**
@@ -16,8 +16,6 @@ class Departamento_Controller extends CI_Controller {
      */
     function __construct() {
         parent::__construct();
-        enumLoad();
-        entitiesLoadAll();
     }
 
 }

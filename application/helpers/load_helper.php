@@ -61,3 +61,11 @@ function entityLoad($entities) {
         }
     }
 }
+
+function limitaTexto($var, $limite){
+		if (strlen($var) > $limite){
+			$var = substr($var, 0, $limite);
+			$var = trim($var) . "...";
+		}
+		return $var;
+	}

@@ -3,18 +3,17 @@
 namespace enums;
 
 /**
- * Description of TipoStatus
+ * Description of TipoNoticia
  *
  * @author Rafael
  */
-class TipoStatus extends Enum {
+class TipoNoticia extends Enum {
 
-    const AGUARDANDO_LIBERACAO = 1;
-    const LIBERADO = 2;
-    const ATIVO = 3;
-    const INATIVO = 4;
-    const ENTRADA = 5;
-    const SAIDA = 6;
+    const PRINCIPAL = 1;
+    const SECUNDARIA = 2;
+    const EVENTOS = 3;
+    const CURSOS = 4;
+    const MISSOES = 5;
     
 
 //put your code here

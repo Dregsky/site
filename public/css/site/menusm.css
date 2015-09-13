@@ -1,0 +1,71 @@
+@charset "utf-8";
+/* CSS Document */
+
+ul.menusm { font-size:14px; line-height:14px;}
+
+.topnav { 
+	margin:0; padding:55px 0 0; float:right; width:auto;
+}
+
+.youtubeTwitter{ 
+	margin-left: 80%;
+	margin-top: 12%;
+	position: absolute;
+	z-index: 100;
+}
+
+.topnav ul { margin:0; padding:4px 0; float:left; width:auto; height:29px; background-color:#202020;}
+
+.topnav ul li { margin:0 4px; padding:0; float:left;}
+
+.topnav ul li a { display:block; margin:0; padding:6px 20px 7px; color:#bdbdbd; text-decoration:none; background:none; border:1px solid transparent;}
+
+.topnav ul li.current_page_item { }
+
+.topnav ul li.current_page_item a,
+
+.topnav ul li a.a_hover_main { color:#0e0e0e; text-decoration:none; background:#0ca3c2 url(../images/menu_a.gif) repeat-x left top; border:1px solid #34c8e7;}						/* on hover */
+
+.topnav ul li ul { margin:0; padding:4px; width:170px; height:auto; top:29px; left:-4px;}			/* position of submenu */
+
+.topnav ul li ul li { margin:0; padding:0; float:none;}
+
+.topnav ul li ul li a { color:#3cb9d3; background:none; border:1px solid transparent;}
+
+.topnav ul li ul li a.have_submenu { }																/* if item have submenu */
+
+.topnav ul li ul li a:hover,
+
+.topnav ul li ul li a.have_submenu_hover { color:#fff; text-decoration:none; background:#0ca3c2 url(../images/menu_a.gif) repeat-x left top; border:1px solid #34c8e7;}
+
+.topnav ul li ul li ul { top:-4px; left:170px;}	/* position of submenu level 2 */
+
+.topnav img { 
+	margin:0; padding:44px 0 0; float:right; width:auto;
+}
+/* DESIGN NAV1 (categories) */
+/* level 0 */
+#nav1 ul { margin:0; padding:1px; float:left; width:100%; height:30px;}
+#nav1 ul li { margin:0 4px; padding:0; float:left;}
+#nav1 ul li a { display:block; margin:0; padding:6px 18px 7px; color:#97AF71; text-decoration:none; background:none; border:1px solid transparent; border-radius: 0px;}
+#nav1 ul li.current-cat { }							/* active item first level */
+#nav1 ul li.current-cat a,
+#nav1 ul li a.a_hover_main { color:#fff; background-color:#97AF71; text-decoration:none;  border:1px solid white;}				/* on hover */
+/* level 1 */
+#nav1 ul li ul { margin:0; padding:2px 0; width:190px; height:auto; top:29px; left:0px; background-color:#000000;}				/* position of submenu */
+#nav1 ul li ul li { margin:0; padding:0; float:none;}
+#nav1 ul li ul li a { color:#3cb9d3; background:none; border-top:1px solid transparent; border-bottom:1px solid transparent; border-left:none; border-right:none;}
+#nav1 ul li ul li a.have_submenu { }																/* if item have submenu */
+#nav1 ul li ul li a:hover,
+#nav1 ul li ul li a.have_submenu_hover { color:#fff; text-decoration:none; background:#0ca3c2 url(../images/submenu_a.gif) repeat-x left top; border-top:1px solid #fff; border-bottom:1px solid #fff;}
+#nav1 ul li ul li ul { top:-2px; left:170px;}		/* position of submenu level 2 */
+
+#nav1 * { z-index:100;}
+.topnav * { z-index:200;}
+
+/* DO NOT EDIT!!! */
+ul.menusm { list-style:none;}
+ul.menusm li { cursor:pointer; position:relative;}
+ul.menusm li a { position:relative;}
+ul.menusm li ul { display:none; position:absolute; list-style:none;}
+ul.menusm li ul li ul { position:absolute; list-style:none;}

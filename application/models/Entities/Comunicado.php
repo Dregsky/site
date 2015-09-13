@@ -1,26 +1,65 @@
 <?php
 
 namespace Entities;
-
 /**
  * Pessoa
  *
  * @author Rafael Rocha <rafaeltbt@gmail.com>
  * 
  * @Entity
- * @Table(name="tbl_pessoa")
+ * @Table(name="tbl_comunicado")
  */
-class Pessoa {
+class Comunicado {
 
-    const name = "Entities\Pessoa";
+    const name = "Entities\Comunicado";
 
     /**
      *
      * @Id
      * @GeneratedValue(strategy="IDENTITY")
-     * @Column(name="cod_pessoa", type="integer", nullable=false)
+     * @Column(name="cod_comunicado", type="integer", nullable=false)
      */
     private $id;
+    /**
+     *
+     * @var string
+     * 
+     * @Column(type="string", length=400, nullable=true)
+     */
+    private $descricao;
+
+    /**
+     *
+     * @var text
+     * 
+     * @Column(type="text", length=60, nullable=true)
+     */
+    private $assunto;
+
+    /**
+     *
+     * @var \DateTime
+     * 
+     * @Column(type="datetime", nullable=true)
+     */
+    private $dataCadastro;
+
+    /**
+     *
+     * @var \DateTime
+     * 
+     * @Column(type="datetime", nullable=false)
+     */
+    private $dataSaiNovo;
+
+    /**
+     *
+     * @var Pessoa
+     * 
+     * @ManyToOne(targetEntity="Pessoa", fetch="EAGER")
+     * @JoinColumn(name="codPessoaCadastro", referencedColumnName="cod_pessoa")
+     */
+    private $pessoaCadastro;
 
     /**
      *
@@ -33,55 +72,7 @@ class Pessoa {
 
     /**
      *
-     * @var string
-     * 
-     * @Column(type="string", length=150, nullable=true)
-     */
-    private $nome;
-    
-    /**
-     *
-     * @var string
-     * 
-     * @Column(type="string", length=45, nullable=true)
-     */
-    private $login;
-
-    /**
-     *
-     * @var string
-     * 
-     * @Column(type="string", length=80, nullable=true)
-     */
-    private $senha;
-
-    /**
-     *
-     * @var string
-     * 
-     * @Column(type="string", length=100, nullable=true)
-     */
-    private $email;
-
-    /**
-     *
-     * @var string
-     * 
-     * @Column(type="string", length=16, nullable=false)
-     */
-    private $telefone;
-
-    /**
-     *
-     * @var datetime
-     * 
-     * @Column(type="datetime", nullable=true)
-     */
-    private $dataCadastro;
-    
-    /**
-     *
-     * @var datetime
+     * @var \DateTime
      * 
      * @Column(type="datetime", nullable=true)
      */
@@ -89,512 +80,98 @@ class Pessoa {
 
     /**
      *
-     * @var date
+     * @var Pessoa
      * 
-     * @Column(type="date", nullable=true)
+     * @ManyToOne(targetEntity="Pessoa", fetch="EAGER")
+     * @JoinColumn(name="codPessoaExclusao", referencedColumnName="cod_pessoa")
      */
-    private $dataNascimento;
-    
-     /**
-     *
-     * @var Status
-     * 
-     * @ManyToOne(targetEntity="Status", fetch="EAGER")
-     * @JoinColumn(name="cod_status", referencedColumnName="cod_status")
-     */
-    private $status;
-    
-    /**
-     * @var integer
-     * @Column(type="integer", nullable=true)
-     */
-    private $cartaoMembro;
-    
-     /**
-     *
-     * @var string
-     * 
-     * @Column(type="string", length=50, nullable=true)
-     */
-    private $fotoPessoa;
-
-    /**
-     *
-     * @var string
-     * 
-     * @Column(type="string", length=11, nullable=false)
-     */
-    private $cpf;
-
-    /**
-     *
-     * @var string
-     * 
-     * @Column(name="cidade_natal", type="string", length=100, nullable=false)
-     */
-    private $cidadeNatal;
-
-    /**
-     *
-     * @var string
-     * 
-     * @Column(type="string", length=120, nullable=false)
-     */
-    private $rua;
-
-    /**
-     *
-     * @var string
-     * 
-     * @Column(type="string", length=100, nullable=false)
-     */
-    private $bairro;
-
-    /**
-     *
-     * @var string
-     * 
-     * @Column(type="string", length=100, nullable=false)
-     */
-    private $cidade;
-
-    /**
-     *
-     * @var string
-     * 
-     * @Column(type="string", length=10, nullable=false)
-     */
-    private $rg;
-
-    /**
-     *
-     * @var string
-     * 
-     * @Column(name="orgao_emissor", type="string", length=8, nullable=false)
-     */
-    private $orgaoEmissor;
-
-    /**
-     * @var date
-     * 
-     * @Column(name="data_emissao", type="date", nullable=false)
-     */
-    private $dataEmissao;
-    
-    /**
-     *
-     * @var FuncaoMinisterial
-     * 
-     * @ManyToOne(targetEntity="FuncaoMinisterial", fetch="EAGER")
-     * @JoinColumn(name="cod_funcao_ministerial", referencedColumnName="cod_funcao_ministerial")
-     */
-    private $funcaoMinisterial;
-    
-    /**
-     *
-     * @var Profissao
-     * 
-     * @ManyToOne(targetEntity="Profissao", fetch="EAGER")
-     * @JoinColumn(name="cod_profissao", referencedColumnName="cod_profissao")
-     */
-    private $profissao;
-    
-    /**
-     *
-     * @var Escolaridade
-     * 
-     * @ManyToOne(targetEntity="Escolaridade", fetch="EAGER")
-     * @JoinColumn(name="cod_escolaridade", referencedColumnName="cod_escolaridade")
-     */
-    private $escolaridade;
-    
-    /**
-     *
-     * @var EstadoCivil
-     * 
-     * @ManyToOne(targetEntity="EstadoCivil", fetch="EAGER")
-     * @JoinColumn(name="cod_estado_civil", referencedColumnName="cod_estado_civil")
-     */
-    private $estadoCivil;
-    
-    /**
-     *
-     * @var Departamento
-     * 
-     * @ManyToOne(targetEntity="Departamento", fetch="EAGER")
-     * @JoinColumn(name="cod_departamento", referencedColumnName="cod_departamento")
-     */
-    private $departamento;
-
-    /**
-     *
-     * @var date
-     * 
-     * @Column(name="data_chegada", type="date", nullable=false)
-     */
-    private $dataChegada;
-
-    /**
-     *
-     * @var date
-     * 
-     * @Column(name="data_batismo_aguas", type="date", nullable=false)
-     */
-    private $dataBatismoAguas;
-
-    /**
-     *
-     * @var date
-     * 
-     * @Column(name="data_batismo_espirito", type="date", nullable=false)
-     */
-    private $dataBatismoEspirito;
-
-    /**
-     *
-     * @var string
-     * 
-     * @Column(name="nome_pai", type="string", length=100, nullable=false)
-     */
-    private $nomePai;
-
-    /**
-     *
-     * @var string
-     * 
-     * @Column(name="nome_mae", type="string", length=100, nullable=false)
-     */
-    private $nomeMae;
-
-    /**
-     *
-     * @var string
-     * 
-     * @Column(name="nome_conjuge", type="string", length=100, nullable=false)
-     */
-    private $nomeConjuge;
-
-    /**
-     *
-     * @var date
-     * 
-     * @Column(name="data_casamento", type="date", nullable=false)
-     */
-    private $dataCasamento;
-
-    /**
-     *
-     * @Column(name="qtd_filhos", type="integer", nullable=true)
-     */
-    private $qtdFilho;
+    private $pessoaExclusao;
 
     /**
      * 
      * Getters and Setters
      */
-   
+    
     public function getId() {
         return $this->id;
     }
 
-    public function getPerfil() {
-        return $this->perfil;
+    public function getDescricao() {
+        return $this->descricao;
     }
 
-    public function getNome() {
-        return $this->nome;
-    }
-
-    public function getLogin() {
-        return $this->login;
-    }
-
-    public function getSenha() {
-        return $this->senha;
-    }
-
-    public function getEmail() {
-        return $this->email;
-    }
-
-    public function getTelefone() {
-        return $this->telefone;
+    public function getAssunto() {
+        return $this->assunto;
     }
 
     public function getDataCadastro() {
         return $this->dataCadastro;
     }
 
+    public function getDataSaiNovo() {
+        return $this->dataSaiNovo;
+    }
+
+    public function getPessoaCadastro() {
+        return $this->pessoaCadastro;
+    }
+
+    public function getPerfil() {
+        return $this->perfil;
+    }
+
     public function getDataExclusao() {
         return $this->dataExclusao;
     }
 
-    public function getDataNascimento() {
-        return $this->dataNascimento;
+    public function getPessoaExclusao() {
+        return $this->pessoaExclusao;
     }
 
-    public function getStatus() {
-        return $this->status;
+    public function setId($id) {
+        $this->id = $id;
+        return $this;
     }
 
-    public function getCartaoMembro() {
-        return $this->cartaoMembro;
+    public function setDescricao($descricao) {
+        $this->descricao = $descricao;
+        return $this;
     }
 
-    public function getFotoPessoa() {
-        return $this->fotoPessoa;
+    public function setAssunto(text $assunto) {
+        $this->assunto = $assunto;
+        return $this;
     }
 
-    public function getCpf() {
-        return $this->cpf;
+    public function setDataCadastro($dataCadastro) {
+        $this->dataCadastro = $dataCadastro;
+        return $this;
     }
 
-    public function getCidadeNatal() {
-        return $this->cidadeNatal;
+    public function setDataSaiNovo($dataSaiNovo) {
+        $this->dataSaiNovo = $dataSaiNovo;
+        return $this;
     }
 
-    public function getRua() {
-        return $this->rua;
+    public function setPessoaCadastro(Pessoa $pessoaCadastro) {
+        $this->pessoaCadastro = $pessoaCadastro;
+        return $this;
     }
-
-    public function getBairro() {
-        return $this->bairro;
-    }
-
-    public function getCidade() {
-        return $this->cidade;
-    }
-
-    public function getRg() {
-        return $this->rg;
-    }
-
-    public function getOrgaoEmissor() {
-        return $this->orgaoEmissor;
-    }
-
-    public function getDataEmissao() {
-        return $this->dataEmissao;
-    }
-
-    public function getFuncaoMinisterial() {
-        return $this->funcaoMinisterial;
-    }
-
-    public function getProfissao() {
-        return $this->profissao;
-    }
-
-    public function getEscolaridade() {
-        return $this->escolaridade;
-    }
-
-    public function getEstadoCivil() {
-        return $this->estadoCivil;
-    }
-
-    public function getDepartamento() {
-        return $this->departamento;
-    }
-
-    public function getDataChegada() {
-        return $this->dataChegada;
-    }
-
-    public function getDataBatismoAguas() {
-        return $this->dataBatismoAguas;
-    }
-
-    public function getDataBatismoEspirito() {
-        return $this->dataBatismoEspirito;
-    }
-
-    public function getNomePai() {
-        return $this->nomePai;
-    }
-
-    public function getNomeMae() {
-        return $this->nomeMae;
-    }
-
-    public function getNomeConjuge() {
-        return $this->nomeConjuge;
-    }
-
-    public function getDataCasamento() {
-        return $this->dataCasamento;
-    }
-
-    public function getQtdFilho() {
-        return $this->qtdFilho;
-    }
-
 
     public function setPerfil(Perfil $perfil) {
         $this->perfil = $perfil;
         return $this;
     }
 
-    public function setNome($nome) {
-        $this->nome = $nome;
-        return $this;
-    }
-
-    public function setLogin($login) {
-        $this->login = $login;
-        return $this;
-    }
-
-    public function setSenha($senha) {
-        $this->senha = $senha;
-        return $this;
-    }
-
-    public function setEmail($email) {
-        $this->email = $email;
-        return $this;
-    }
-
-    public function setTelefone($telefone) {
-        $this->telefone = $telefone;
-        return $this;
-    }
-
-    public function setDataCadastro(datetime $dataCadastro) {
-        $this->dataCadastro = $dataCadastro;
-        return $this;
-    }
-
-    public function setDataExclusao(datetime $dataExclusao) {
+    public function setDataExclusao($dataExclusao) {
         $this->dataExclusao = $dataExclusao;
         return $this;
     }
 
-    public function setDataNascimento(date $dataNascimento) {
-        $this->dataNascimento = $dataNascimento;
+    public function setPessoaExclusao(Pessoa $pessoaExclusao) {
+        $this->pessoaExclusao = $pessoaExclusao;
         return $this;
     }
-
-    public function setStatus(Status $status) {
-        $this->status = $status;
-        return $this;
-    }
-
-    public function setCartaoMembro($cartaoMembro) {
-        $this->cartaoMembro = $cartaoMembro;
-        return $this;
-    }
-
-    public function setFotoPessoa($fotoPessoa) {
-        $this->fotoPessoa = $fotoPessoa;
-        return $this;
-    }
-
-    public function setCpf($cpf) {
-        $this->cpf = $cpf;
-        return $this;
-    }
-
-    public function setCidadeNatal($cidadeNatal) {
-        $this->cidadeNatal = $cidadeNatal;
-        return $this;
-    }
-
-    public function setRua($rua) {
-        $this->rua = $rua;
-        return $this;
-    }
-
-    public function setBairro($bairro) {
-        $this->bairro = $bairro;
-        return $this;
-    }
-
-    public function setCidade($cidade) {
-        $this->cidade = $cidade;
-        return $this;
-    }
-
-    public function setRg($rg) {
-        $this->rg = $rg;
-        return $this;
-    }
-
-    public function setOrgaoEmissor($orgaoEmissor) {
-        $this->orgaoEmissor = $orgaoEmissor;
-        return $this;
-    }
-
-    public function setDataEmissao(date $dataEmissao) {
-        $this->dataEmissao = $dataEmissao;
-        return $this;
-    }
-
-    public function setFuncaoMinisterial(FuncaoMinisterial $funcaoMinisterial) {
-        $this->funcaoMinisterial = $funcaoMinisterial;
-        return $this;
-    }
-
-    public function setProfissao(Profissao $profissao) {
-        $this->profissao = $profissao;
-        return $this;
-    }
-
-    public function setEscolaridade(Escolaridade $escolaridade) {
-        $this->escolaridade = $escolaridade;
-        return $this;
-    }
-
-    public function setEstadoCivil(EstadoCivil $estadoCivil) {
-        $this->estadoCivil = $estadoCivil;
-        return $this;
-    }
-
-    public function setDepartamento(Departamento $departamento) {
-        $this->departamento = $departamento;
-        return $this;
-    }
-
-    public function setDataChegada(date $dataChegada) {
-        $this->dataChegada = $dataChegada;
-        return $this;
-    }
-
-    public function setDataBatismoAguas(date $dataBatismoAguas) {
-        $this->dataBatismoAguas = $dataBatismoAguas;
-        return $this;
-    }
-
-    public function setDataBatismoEspirito(date $dataBatismoEspirito) {
-        $this->dataBatismoEspirito = $dataBatismoEspirito;
-        return $this;
-    }
-
-    public function setNomePai($nomePai) {
-        $this->nomePai = $nomePai;
-        return $this;
-    }
-
-    public function setNomeMae($nomeMae) {
-        $this->nomeMae = $nomeMae;
-        return $this;
-    }
-
-    public function setNomeConjuge($nomeConjuge) {
-        $this->nomeConjuge = $nomeConjuge;
-        return $this;
-    }
-
-    public function setDataCasamento(date $dataCasamento) {
-        $this->dataCasamento = $dataCasamento;
-        return $this;
-    }
-
-    public function setQtdFilho($qtdFilho) {
-        $this->qtdFilho = $qtdFilho;
-        return $this;
-    }
-
 
 
 }

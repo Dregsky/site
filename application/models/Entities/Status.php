@@ -13,8 +13,12 @@ namespace Entities;
 class Status {
 
     const name = "Entities\Status";
+    
+    public function __construct($id) {
+        $this->id = $id;
+    }
 
-    /**
+        /**
      *
      * @Id
      * @GeneratedValue(strategy="IDENTITY")

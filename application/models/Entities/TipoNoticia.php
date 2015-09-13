@@ -8,17 +8,17 @@ namespace Entities;
  * @author Rafael Rocha <rafaeltbt@gmail.com>
  * 
  * @Entity
- * @Table(name="tbl_status")
+ * @Table(name="tbl_tiponoticia")
  */
-class Status {
+class TipoNoticia {
 
-    const name = "Entities\Status";
+    const name = "Entities\TipoNoticia";
 
     /**
      *
      * @Id
      * @GeneratedValue(strategy="IDENTITY")
-     * @Column(name="cod_status", type="integer", nullable=false)
+     * @Column(name="cod_tipo", type="integer", nullable=false)
      */
     private $id;
 
@@ -26,7 +26,7 @@ class Status {
      *
      * @var string
      * 
-     * @Column(type="string", length=40, nullable=true)
+     * @Column(type="string", length=20, nullable=true)
      */
     private $descricao;
 

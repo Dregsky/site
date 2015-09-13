@@ -1,0 +1,15 @@
+/*=== PageNavi. ===*/
+/* main text */
+.wp-pagenavi { margin:0; padding:20px 0; clear:both; font-size:13px; text-align:left;}
+.wp-pagenavi p { margin:0; padding:0;}
+
+/* passive buttons */
+.wp-pagenavi a,
+.wp-pagenavi .current { margin-right:4px; padding:6px 12px; color:#fff; text-decoration:none; background-color:#202020;}
+
+/* active button */
+.wp-pagenavi a:hover,
+.wp-pagenavi .current { color:#fff; text-decoration:none; background-color:#2dc4e3;}
+
+/* text "page 1 of 2" */
+.wp-pagenavi .pages { float:right;}

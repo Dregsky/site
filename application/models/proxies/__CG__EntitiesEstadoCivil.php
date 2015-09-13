@@ -57,12 +57,6 @@ class EstadoCivil extends \Entities\EstadoCivil implements \Doctrine\ORM\Proxy\P
         return parent::getDescricao();
     }
 
-    public function setId($id)
-    {
-        $this->__load();
-        return parent::setId($id);
-    }
-
     public function setDescricao($descricao)
     {
         $this->__load();

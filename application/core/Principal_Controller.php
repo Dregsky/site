@@ -3,21 +3,15 @@
 (defined('BASEPATH')) OR exit('No direct script access allowed');
 
 /**
- * Base_Departamento
- * @category Base_Departamento
+ * Principal_Controller
+ * @category Principal_Controller
  * @package  CodeIgniter
  * @author Rafael Rocha <rafaeltbt@gmail.com>
  */
-class Departamento_Controller extends CI_Controller {
+abstract class Principal_Controller extends Site_Controller {
 
- 
-    /**
-     * Constructor of Base Controller
-     */
-    function __construct() {
-        parent::__construct();
-        enumLoad();
-        entitiesLoadAll();
+    public function getMenu() {
+        return $this->load->view('_inc/menuPrincipal', '', true);
     }
 
 }

@@ -2,19 +2,17 @@
 
 (defined('BASEPATH')) OR exit('No direct script access allowed');
 
-use \Doctrine\ORM\Query\AST\ASTException;
-
 /**
- * Base_Model
+ * Model
  * @property \Doctrine\ORM\EntityManager $em Gerenciador de Entidade
- * @category Base_Model
+ * @category Model
  * @package  CodeIgniter
  * @author Rafael Rocha <rafaeltbt@gmail.com>
  */
-class Base_Model extends CI_Model {
+abstract class Model extends CI_Model {
 
     /**
-     * Constructor of Base Controller
+     * Constructor of  Model
      */
     function __construct() {
         parent::__construct();
@@ -23,12 +21,12 @@ class Base_Model extends CI_Model {
 
     /**
      * 
-     * @param String $entity (Nome da entidade), Integer $id (id da entidade)
+     * @param String $id (Nome da entidade), Integer $id (id da entidade)
      * @return Object $result
      */
-    public function retrieve($entity, $id) {
+    public function retrieve($id) {
         try {
-            $result = $this->em->find($entity, $id);
+            $result = $this->em->find($this->getEntity(), $id);
             return $result;
         } catch (Exception $e) {
             echo 'Exceção capturada: ', $e->getTraceAsString();
@@ -40,9 +38,9 @@ class Base_Model extends CI_Model {
      * @param String $entity (Nome da entidade) 
      * @return Array<Object> $results
      */
-    public function retrieveAll($entity) {
+    public function retrieveAll() {
         try {
-            $repository = $this->em->getRepository($entity);
+            $repository = $this->em->getRepository($this->getEntity());
             $result = $repository->findAll();
             return $result;
         } catch (Exception $e) {
@@ -88,5 +86,7 @@ class Base_Model extends CI_Model {
             echo $exc->getTraceAsString();
         }
     }
+    
+   abstract function getEntity();
 
 }

@@ -1,16 +1,40 @@
 <?php
+include_once(APPPATH . "models/" . 'Model' . EXT);
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+Use Entities\Comunicado;
 /**
- * Description of home_model
- *
+ * Description of comunicado_model
+ * Model from:
+ * @var Comunicado
+ * 
  * @author Rafael Rocha <rafaeltbt@gmail.com>
  */
-class home_model extends Base_Model {
-    
+class ComunicadoModel extends Model {
+
+    /**
+     * Método recebe a quantidade maxima de registros a serem
+     * retornado, caso não seja informado irá retornar todos
+     * registros;
+     * @param integer $qtd maxima de registros
+     * @return array(Comunicado)
+     */
+    public function retrieveUltimos($qtd = 0) {
+        try {
+        $repository = $this->em->getRepository($this->getEntity());
+        $qtd = $qtd == 0 ? NULL : $qtd;
+        return $repository->findBy(array(), array('id' => 'desc'), $qtd);
+            
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
+
+    /**
+     * 
+     * @return Comunicado
+     */
+    public function getEntity() {
+        return Comunicado::name;
+    }
+
 }

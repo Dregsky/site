@@ -57,6 +57,18 @@ class Departamento extends \Entities\Departamento implements \Doctrine\ORM\Proxy
         return parent::getNomeDepartamento();
     }
 
+    public function getNomeCompleto()
+    {
+        $this->__load();
+        return parent::getNomeCompleto();
+    }
+
+    public function getApelido()
+    {
+        $this->__load();
+        return parent::getApelido();
+    }
+
     public function setId($id)
     {
         $this->__load();
@@ -69,10 +81,22 @@ class Departamento extends \Entities\Departamento implements \Doctrine\ORM\Proxy
         return parent::setNomeDepartamento($nomeDepartamento);
     }
 
+    public function setNomeCompleto($nomeCompletoDepartamento)
+    {
+        $this->__load();
+        return parent::setNomeCompleto($nomeCompletoDepartamento);
+    }
+
+    public function setApelido($apelido)
+    {
+        $this->__load();
+        return parent::setApelido($apelido);
+    }
+
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'id', 'nomeDepartamento');
+        return array('__isInitialized__', 'id', 'nomeDepartamento', 'nomeCompleto', 'apelido');
     }
 
     public function __clone()

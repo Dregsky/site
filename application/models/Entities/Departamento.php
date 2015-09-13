@@ -32,6 +32,22 @@ class Departamento {
     private $nomeDepartamento;
 
     /**
+     *
+     * @var string
+     * 
+     * @Column(type="string", length=80, nullable=true)
+     */
+    private $nomeCompleto;
+
+    /**
+     *
+     * @var string
+     * 
+     * @Column(type="string", length=20, nullable=true)
+     */
+    private $apelido;
+
+    /**
      * Getters and Setters
      */
     public function getId() {
@@ -40,6 +56,14 @@ class Departamento {
 
     public function getNomeDepartamento() {
         return $this->nomeDepartamento;
+    }
+
+    public function getNomeCompleto() {
+        return $this->nomeCompletoDepartamento;
+    }
+
+    public function getApelido() {
+        return $this->apelido;
     }
 
     public function setId($id) {
@@ -52,5 +76,14 @@ class Departamento {
         return $this;
     }
 
+    public function setNomeCompleto($nomeCompletoDepartamento) {
+        $this->nomeCompletoDepartamento = $nomeCompletoDepartamento;
+        return $this;
+    }
+
+    public function setApelido($apelido) {
+        $this->apelido = $apelido;
+        return $this;
+    }
 
 }

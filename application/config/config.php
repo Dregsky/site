@@ -1,6 +1,8 @@
 <?php
 
 defined('BASEPATH') OR exit('No direct script access allowed');
+define('EXT', '.php');
+define('LIBCOMPPATH', APPPATH . 'libraries/components/');
 
 /*
   |--------------------------------------------------------------------------
@@ -511,7 +513,7 @@ $config['proxy_ips'] = '';
   |--------------------------------------------------------------------------
   |
  */
-$config['javascript_location'] = '/public/js/jquery-2.1.4.min';
+$config['javascript_location'] = '/public/js/';
 
 
 /*
@@ -525,10 +527,13 @@ $config['javascript_location'] = '/public/js/jquery-2.1.4.min';
  */
 
 function __autoload($class) {
-    define('EXT', '.php');
     if (strpos($class, 'CI_') !== 0) {
         include_once( APPPATH . 'core/' . $class . EXT );
     } else if (file_exists(APPPATH . "controllers/" . strtolower($class) . EXT)) {
         include_once(APPPATH . "controllers/" . strtolower($class) . EXT);
+    } else if (file_exists(LIBCOMPPATH . strtolower($class) . EXT)) {
+        include_once(LIBCOMPPATH . strtolower($class) . EXT);
+    } else if (file_exists(LIBCOMPPATH . "panels/" . strtolower($class) . EXT)) {
+        include_once(LIBCOMPPATH . "panels/" . strtolower($class) . EXT);
     }
 }

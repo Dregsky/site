@@ -22,8 +22,8 @@ class ANG extends Departamento_Controller {
      * @property Pessoa $pessoa 
      */
     public function index() {
-        $estado = $this->homeModel->retrieve(Entities\EstadoCivil::name, 2);
-        $dados['perfil'] = $estado;
+        //$estado = $this->homeModel->retrieve(Entities\EstadoCivil::name, 2);
+        $dados['perfil'] = 'teste';
         $this->load->view('welcome_message', $dados);
     }
     

@@ -1,0 +1,68 @@
+/*
+        Coin Slider jQuery plugin CSS styles
+        http://workshop.rs/projects/coin-slider
+*/
+
+.coin-slider { overflow:hidden; zoom:1; position:relative;}
+.coin-slider a{ text-decoration:none; outline:none; border:none;}
+
+/* buttons for switching */
+.cs-buttons { font-size:0px; margin:0; padding:10px; float:left;}
+.cs-buttons a { 
+    margin-left: 2px;
+    width: 14px;
+    height: 14px;
+    float: left;
+    /* background: url(../../images/slide_p.png) no-repeat left top; */
+    /* color: #060606; */
+    text-indent: -10000px;
+    background-color: black;
+    border-radius: 50%;
+    /* box-shadow: inset -10px -10px 10px rgba(2, 2, 2, 0.08), inset 1px 1px 4px #FFF; */
+}
+.cs-buttons a.cs-active { 
+    /* background:url(../../images/slide_a.png) no-repeat left top; */
+    background-color: #fff;
+}
+
+/* text in slider */
+.cs-title { float:left; width:880px; padding:28px 40px; background:url(../../images/overlay.png) repeat left top; color:#fff; font-size:36px; line-height:1em;}
+.cs-title small { display:block; float:right; width:auto; text-align:right; padding:0; font-size:12px; line-height:1.8em;}
+
+/* buttons Next and Prew */
+.cs-prev, 
+.cs-next {
+    color:#fff; 
+    border-radius: 50%;
+    background-color: black;
+    opacity:0.5 !important;
+    width: 50px;
+    height: 50px;
+    top:105px!important;
+}
+.cs-next {
+    float: right;
+}
+.seta-next{
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-left: 20px solid white;
+    margin: 10px 0 0 18px;
+}
+
+.seta-prev{
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-right: 20px solid white;
+    margin: 10px 0 0 11px;
+}
