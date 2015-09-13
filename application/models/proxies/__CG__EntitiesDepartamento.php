@@ -81,10 +81,10 @@ class Departamento extends \Entities\Departamento implements \Doctrine\ORM\Proxy
         return parent::setNomeDepartamento($nomeDepartamento);
     }
 
-    public function setNomeCompleto($nomeCompletoDepartamento)
+    public function setNomeCompleto($nomeCompleto)
     {
         $this->__load();
-        return parent::setNomeCompleto($nomeCompletoDepartamento);
+        return parent::setNomeCompleto($nomeCompleto);
     }
 
     public function setApelido($apelido)

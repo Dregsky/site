@@ -9,7 +9,7 @@ html {
     -moz-background-size: 100% 540px;
     -webkit-background-size: 100% 540px;
     /* background-attachment: fixed; */
-
+    min-width: 1200px;
 }
 
 

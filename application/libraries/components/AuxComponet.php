@@ -13,9 +13,9 @@
  */
 class AuxComponet {
 
-    private $html;
-    private $parentClass;
-    private $parentId;
+    private $html = '';
+    private $parentClass = '';
+    private $parentId = '';
     
     public function __construct($html = ' ', $parentClass = ' ', $parentId = ' ') {
         $this->html = $html;

@@ -16,7 +16,7 @@ class ComunicadoModel extends Model {
      * retornado, caso não seja informado irá retornar todos
      * registros;
      * @param integer $qtd maxima de registros
-     * @return array(Comunicado)
+     * @return Comunicado (array)
      */
     public function retrieveUltimos($qtd = 0) {
         try {

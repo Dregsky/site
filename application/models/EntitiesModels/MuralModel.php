@@ -21,14 +21,14 @@ class MuralModel extends Model {
      * Tambem Recebe um objeto do tipo TipoStatus, caso esse objeto
      * seja null será filtrado por Status::LIBERADO
      * @param integer $qtd maxima de registros
-     * @return array(Comunicado)
+     * @return Entities\Mural (array)
      */
     public function retrieveUltimosByStatus($tipoStatus = null, $qtd = 0) {
         try {
         $repository = $this->em->getRepository($this->getEntity());
-        $qtd = ($qtd == 0 ? NULL : $qtd);
+        $qtd1 = ($qtd == 0 ? NULL : $qtd);
         $status = $tipoStatus == null ? new Status(TipoStatus::LIBERADO) : new Status($tipoStatus);
-        return $repository->findBy(array('status' => $status), array('id' => 'desc'), $qtd);
+        return $repository->findBy(array('status' => $status), array('id' => 'desc'), $qtd1);
             
         } catch (Exception $exc) {
             echo $exc->getTraceAsString();

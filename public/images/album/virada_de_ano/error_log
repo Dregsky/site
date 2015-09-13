@@ -1,0 +1,3 @@
+[06-Oct-2013 05:22:03] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/adcru732/public_html/images/album/virada_de_ano/exibir_fotos.php on line 5
+[02-Nov-2013 04:29:51] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/adcru732/public_html/images/album/virada_de_ano/exibir_fotos.php on line 5
+[05-Sep-2015 21:28:36] PHP Warning:  mysql_connect() [<a href='function.mysql-connect'>function.mysql-connect</a>]: Access denied for user 'adcru732_cruz'@'localhost' (using password: YES) in /home/adcru732/public_html/old_site/conexao.php on line 19

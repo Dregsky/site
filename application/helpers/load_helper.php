@@ -57,15 +57,8 @@ function enumLoad() {
 function entityLoad($entities) {
     foreach ($entities as $e) {
         if (file_exists(APPPATH . 'models\Entities\\' . $e . '.php')) {
-            include_once(APPPATH . 'models\Entities\\' . $e . '.php');
+            require_once APPPATH . 'models\Entities\\' . $e . '.php';
         }
     }
 }
 
-function limitaTexto($var, $limite){
-		if (strlen($var) > $limite){
-			$var = substr($var, 0, $limite);
-			$var = trim($var) . "...";
-		}
-		return $var;
-	}

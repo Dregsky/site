@@ -14,6 +14,10 @@ class Departamento {
 
     const name = "Entities\Departamento";
 
+    public function __construct($id) {
+        $this->id = $id;
+    }
+
     /**
      *
      * 
@@ -59,7 +63,7 @@ class Departamento {
     }
 
     public function getNomeCompleto() {
-        return $this->nomeCompletoDepartamento;
+        return $this->nomeCompleto;
     }
 
     public function getApelido() {
@@ -76,8 +80,8 @@ class Departamento {
         return $this;
     }
 
-    public function setNomeCompleto($nomeCompletoDepartamento) {
-        $this->nomeCompletoDepartamento = $nomeCompletoDepartamento;
+    public function setNomeCompleto($nomeCompleto) {
+        $this->nomeCompleto = $nomeCompleto;
         return $this;
     }
 

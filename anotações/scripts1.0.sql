@@ -137,4 +137,12 @@ WHERE `tbl_departamento`.`cod_departamento` = 1;
 
 ALTER TABLE `tbl_departamento` CHANGE `nomeCompletoDepartamento` `nomeCompleto` VARCHAR(80) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL;
 
+UPDATE `adcru732_adcruz`.`tbl_noticia` SET `cod_departamento` = 2 
+WHERE `tbl_noticia`.`cod_perfil` = 7;
+
+UPDATE `adcru732_adcruz`.`tbl_noticia` SET `cod_departamento` = 7 
+WHERE `tbl_noticia`.`cod_perfil` = 14;
+
+UPDATE `adcru732_adcruz`.`tbl_noticia` SET `cod_departamento` = 1 
+WHERE `tbl_noticia`.`cod_perfil` = 9;
 

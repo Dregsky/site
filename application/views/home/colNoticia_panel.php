@@ -1,11 +1,7 @@
 <h2><a href="ang"><?= $apelido ?></a></h2>
 <p class="underh2">&bull;&nbsp; <?= $nomeCompleto ?>.</p>
-<a href="ang"><img src="images/ang.png" width="283" height="102" alt="<?= $nomeCompleto ?>" title="<?= $nomeCompleto ?>" /></a>
+<a href="ang"><img src="<?=base_url('public/images/home/'.$apelido.'.png') ?>" width="283" height="102" alt="<?= $nomeCompleto ?>" title="<?= $nomeCompleto ?>" /></a>
 <?php
-$cod_perfil = 7;
-$codPerfil = addslashes($cod_perfil);
-$sqlAng = "SELECT * FROM tbl_noticia WHERE cod_perfil = {$cod_perfil} ORDER BY cod_noticia DESC LIMIT 2";
-$consultaAng = mysql_query($sqlAng);
 $contAng = 0;
 if (sizeof($noticias)) {
     foreach ($noticias as $noticia):

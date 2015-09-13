@@ -1,0 +1,1 @@
+[06-Oct-2013 18:10:10] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/adcru732/public_html/images/album/cantata_2009/exibir_fotos.php on line 5

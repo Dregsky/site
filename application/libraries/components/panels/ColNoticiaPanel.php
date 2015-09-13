@@ -1,4 +1,5 @@
 <?php
+require_once LIBCOMPPATH . 'WebComponent.php';
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -18,17 +19,15 @@
  */
 class ColNoticiaPanel extends WebComponent {
 
-    public function ColNoticiaPanel() {
+    public function __construct($departamento = '', $noticias = array()) {
         parent::__construct();
-    }
-
-    public function __construct($departamento, $noticias = array()) {
-        parent::__construct();
-        $dados['noticias'] = $noticias;
-        $dados['apelido'] = $departamento()->getApelido();
-        $dados['nomeCompleto'] = $departamento->getNomeCompleto();
-        $html = $this->load->view('home/colNoticia_panel', $dados, true);
-        $this->setComponent($html);
+        if (!empty($departamento)) {
+            $dados['noticias'] = $noticias;
+            $dados['apelido'] = $departamento->getApelido();
+            $dados['nomeCompleto'] = $departamento->getNomeCompleto();
+            $html = $this->load->view('home/colNoticia_panel', $dados, true);
+            $this->setComponent($html);
+        }
     }
 
     public function testaInstancia($instancias = array()) {

@@ -1,6 +1,6 @@
 <?php
 
-include_once LIBCOMPPATH . 'WebComponent.php';
+require_once LIBCOMPPATH . 'WebComponent.php';
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,7 +9,7 @@ include_once LIBCOMPPATH . 'WebComponent.php';
 
 /**
  * Panel IndexCols
- * recebe 3 componentes
+ * recebe o html de 3 componentes
  *
  * @author Rafael Rocha <rafaeltbt@gmail.com>
  */
@@ -29,7 +29,7 @@ class IndexColsPanel extends WebComponent {
     public function testaInstancia($instancias = []) {
         foreach ($instancias as $i) {
             if (!($i instanceof AuxComponet)) {
-                $error = var_dump($i) . ' NÃO é uma instância de Aux Componet';
+                $error = var_dump($i) . ' NÃO é uma instância de AuxComponet';
                 die($error);
             }
         }

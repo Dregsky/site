@@ -1,0 +1,185 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <title>Cruzada Evangelística realizada no dia 15/05/2010</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="imagetoolbar" content="false">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+	<link href="../trunk/galleria.css" rel="stylesheet" type="text/css" media="screen">
+	<script type="text/javascript" src="../jquery.min.js"></script>
+	<script type="text/javascript" src="../trunk/jquery.galleria.js"></script>
+	<script type="text/javascript">
+	
+	$(document).ready(function(){
+		
+		$('.gallery_demo_unstyled').addClass('gallery_demo'); // adds new class name to maintain degradability
+		
+		$('ul.gallery_demo').galleria({
+			history   : true, // activates the history object for bookmarking, back-button etc.
+			clickNext : true, // helper for making the image clickable
+			insert    : '#main_image', // the containing selector for our main image
+			onImage   : function(image,caption,thumb) { // let's add some image effects for demonstration purposes
+				
+				// fade in the image & caption
+				image.css('display','none').fadeIn(1000);
+				caption.css('display','none').fadeIn(1000);
+				
+				// fetch the thumbnail container
+				var _li = thumb.parents('li');
+				
+				// fade out inactive thumbnail
+				_li.siblings().children('img.selected').fadeTo(500,0.3);
+				
+				// fade in active thumbnail
+				thumb.fadeTo('fast',1).addClass('selected');
+				
+				// add a title for the clickable image
+				image.attr('title','Next image >>');
+			},
+			onThumb : function(thumb) { // thumbnail effects goes here
+				
+				// fetch the thumbnail container
+				var _li = thumb.parents('li');
+				
+				// if thumbnail is active, fade all the way.
+				var _fadeTo = _li.is('.active') ? '1' : '0.3';
+				
+				// fade in the thumbnail when finnished loading
+				thumb.css({display:'none',opacity:_fadeTo}).fadeIn(1500);
+				
+				// hover effects
+				thumb.hover(
+					function() { thumb.fadeTo('fast',1); },
+					function() { _li.not('.active').children('img').fadeTo('fast',0.3); } // don't fade out if the parent is active
+				)
+			}
+		});
+	});
+	
+	</script>
+	<style media="screen,projection" type="text/css">
+	
+	/* BEGIN DEMO STYLE */
+	*{margin:0;padding:0}
+	body{padding:20px;background:white;text-align:center;background:black;color:#bba;font:80%/140% georgia,serif;}
+	h1,h2{font:bold 80% 'helvetica neue',sans-serif;letter-spacing:3px;text-transform:uppercase;}
+	a{color:#348;text-decoration:none;outline:none;}
+	a:hover{color:#67a;}
+	.caption{font-style:italic;color:#887;}
+	.demo{position:relative;margin-top:2em;}
+	.gallery_demo{width:702px;margin:0 auto;}
+	.gallery_demo li{width:68px;height:50px;border:3px double #111;margin: 0 2px;background:#000;}
+	.gallery_demo li div{left:240px}
+	.gallery_demo li div .caption{font:italic 0.7em/1.4 georgia,serif;}
+	
+	#main_image{margin:0 auto 60px auto;height:450px;width:600px;background:black;}
+	#main_image img{margin-bottom:10px;}
+	
+	.nav{padding-top:15px;clear:both;font:80% 'helvetica neue',sans-serif;letter-spacing:3px;text-transform:uppercase;}
+	
+	.info{text-align:left;width:700px;margin:30px auto;border-top:1px dotted #221;padding-top:30px;}
+	.info p{margin-top:1.6em;}
+	
+    </style>
+	
+</head>
+<body>
+    <h1>Cruzada Evangelística realizada no dia 15/05/2010</h1>
+    <div class="demo">
+    <div id="main_image"></div>
+        <ul class="gallery_demo_unstyled">
+        	<li class="active"><img src="01.jpg" alt="Sea Mist" title=""></li>
+            <li><img src="02.jpg" alt="Flowing Rock" title=""></li>
+            <li><img src="03.jpg" alt="Stones" title=""></li>
+            <li><img src="04.jpg" alt="Grass Blades" title=""></li>
+            <li><img src="05.jpg" alt="Ladybug" title=""></li>
+            <li><img src="06.jpg" alt="Lightning" title=""></li>
+            <li><img src="07.jpg" alt="Lotus" title=""></li>
+            <li><img src="08.jpg" alt="Mojave" title=""></li>
+            <li><img src="09.jpg" alt="Pier" title=""></li>
+            <li><img src="10.jpg" alt="Sea Mist" title=""></li>
+        	<li><img src="11.jpg" alt="Sea Mist" title=""></li>
+            <li><img src="12.jpg" alt="Flowing Rock" title=""></li>
+            <li><img src="13.jpg" alt="Stones" title=""></li>
+            <li><img src="14.jpg" alt="Grass Blades" title=""></li>
+            <li><img src="15.jpg" alt="Ladybug" title=""></li>
+            <li><img src="16.jpg" alt="Lightning" title=""></li>
+            <li><img src="17.jpg" alt="Lotus" title=""></li>
+            <li><img src="18.jpg" alt="Mojave" title=""></li>
+            <li><img src="19.jpg" alt="Pier" title=""></li>
+            <li><img src="20.jpg" alt="Sea Mist" title=""></li>
+            <li><img src="21.jpg" alt="Sea Mist" title=""></li>
+            <li><img src="22.jpg" alt="Flowing Rock" title=""></li>
+            <li><img src="23.jpg" alt="Stones" title=""></li>
+            <li><img src="24.jpg" alt="Grass Blades" title=""></li>
+            <li><img src="25.jpg" alt="Ladybug" title=""></li>
+            <li><img src="26.jpg" alt="Lightning" title=""></li>
+            <li><img src="27.jpg" alt="Lotus" title=""></li>
+            <li><img src="28.jpg" alt="Mojave" title=""></li>
+            <li><img src="29.jpg" alt="Pier" title=""></li>
+            <li><img src="30.jpg" alt="Sea Mist" title=""></li>
+        	<li><img src="31.jpg" alt="Sea Mist" title=""></li>
+            <li><img src="32.jpg" alt="Flowing Rock" title=""></li>
+			<li><img src="33.jpg" alt="Flowing Rock" title=""></li>
+			<li><img src="34.jpg" alt="Flowing Rock" title=""></li>
+			<li><img src="35.jpg" alt="Flowing Rock" title=""></li>
+			<li><img src="36.jpg" alt="Flowing Rock" title=""></li>
+			<li><img src="37.jpg" alt="Flowing Rock" title=""></li>
+			<li><img src="38.jpg" alt="Flowing Rock" title=""></li>
+			<li><img src="39.jpg" alt="Mojave" title=""></li>
+            <li><img src="40.jpg" alt="Pier" title=""></li>
+            <li><img src="41.jpg" alt="Sea Mist" title=""></li>
+        	<li><img src="42.jpg" alt="Sea Mist" title=""></li>
+            <li><img src="43.jpg" alt="Flowing Rock" title=""></li>
+			<li><img src="44.jpg" alt="Flowing Rock" title=""></li>
+			<li><img src="45.jpg" alt="Flowing Rock" title=""></li>
+			<li><img src="46.jpg" alt="Flowing Rock" title=""></li>
+			<li><img src="47.jpg" alt="Flowing Rock" title=""></li>
+			<li><img src="48.jpg" alt="Flowing Rock" title=""></li>
+			<li><img src="49.jpg" alt="Flowing Rock" title=""></li>
+			<li><img src="50.jpg" alt="Flowing Rock" title=""></li>
+			<li><img src="51.jpg" alt="Sea Mist" title=""></li>
+        	<li><img src="52.jpg" alt="Sea Mist" title=""></li>
+            <li><img src="53.jpg" alt="Flowing Rock" title=""></li>
+			<li><img src="54.jpg" alt="Flowing Rock" title=""></li>
+			<li><img src="55.jpg" alt="Flowing Rock" title=""></li>
+			<li><img src="56.jpg" alt="Sea Mist" title=""></li>
+        	<li><img src="57.jpg" alt="Sea Mist" title=""></li>
+            <li><img src="58.jpg" alt="Flowing Rock" title=""></li>
+			<li><img src="59.jpg" alt="Flowing Rock" title=""></li>
+			<li><img src="60.jpg" alt="Flowing Rock" title=""></li>
+			<li><img src="61.jpg" alt="Flowing Rock" title=""></li>
+			<li><img src="62.jpg" alt="Flowing Rock" title=""></li>
+			<li><img src="63.jpg" alt="Flowing Rock" title=""></li>
+			<li><img src="64.jpg" alt="Flowing Rock" title=""></li>
+			<li><img src="65.jpg" alt="Flowing Rock" title=""></li>
+			<li><img src="66.jpg" alt="Sea Mist" title=""></li>
+        	<li><img src="67.jpg" alt="Sea Mist" title=""></li>
+            <li><img src="68.jpg" alt="Flowing Rock" title=""></li>
+			<li><img src="69.jpg" alt="Flowing Rock" title=""></li>
+			<li><img src="70.jpg" alt="Flowing Rock" title=""></li>
+			<li><img src="71.jpg" alt="Flowing Rock" title=""></li>
+			<li><img src="72.jpg" alt="Flowing Rock" title=""></li>
+			<li><img src="73.jpg" alt="Flowing Rock" title=""></li>
+			<li><img src="74.jpg" alt="Flowing Rock" title=""></li>
+			<li><img src="75.jpg" alt="Flowing Rock" title=""></li>
+			<li><img src="76.jpg" alt="Sea Mist" title=""></li>
+        	<li><img src="77.jpg" alt="Sea Mist" title=""></li>
+            <li><img src="78.jpg" alt="Flowing Rock" title=""></li>
+			<li><img src="79.jpg" alt="Flowing Rock" title=""></li>
+			<li><img src="80.jpg" alt="Flowing Rock" title=""></li>
+			<li><img src="81.jpg" alt="Flowing Rock" title=""></li>
+			<li><img src="82.jpg" alt="Flowing Rock" title=""></li>
+			<li><img src="83.jpg" alt="Flowing Rock" title=""></li>
+			<li><img src="84.jpg" alt="Flowing Rock" title=""></li>
+			<li><img src="85.jpg" alt="Flowing Rock" title=""></li>
+			<li><img src="86.jpg" alt="Sea Mist" title=""></li>
+        	<li><img src="87.jpg" alt="Sea Mist" title=""></li>
+            <li><img src="88.jpg" alt="Flowing Rock" title=""></li>
+        </ul>
+        <p class="nav"><a href="#" onclick="$.galleria.prev(); return false;">&laquo; previous</a> | <a href="#" onclick="$.galleria.next(); return false;">next &raquo;</a></p>
+    </div>
+    <div class="info">
+</body>
+</html>
