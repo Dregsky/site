@@ -35,7 +35,7 @@ class Cultos extends Principal_Controller {
          */
         $dados['panel1'] = $this->includePanel1();
 
-        return $this->load->view('simple_page', $dados, true);
+        return $this->load->view('components/page/simple_page', $dados, true);
     }
 
     /**

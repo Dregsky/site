@@ -1,8 +1,8 @@
         <div id="nav1">
             <ul class="menusm">
-                <li><a href="/site">Principal</a></li>
-                <li><a href="/site/agenda">Agenda</a></li>
-                <li><a href="/site/cultos">Cultos</a></li>
+                <li><a href="<?=  base_url() ?>">Principal</a></li>
+                <li><a href="<?= base_url('historia') ?>">História</a></li>
+                <li><a href="<?= base_url('cultos') ?>">Cultos</a></li>
                 <li><a href="#">Departamentos</a>
                     <ul>
                         <li><a href="ang">Adolescentes</a></li>
@@ -20,17 +20,14 @@
                 <li><a href="diretoria.php">Diretoria</a></li>
                 <li><a href="#">Diversos</a>
                     <ul>
-                        <li><a href="/site/diversos/adcruzNosLares">ADCruz nos Lares</a></li>
-                        <li><a href="/site/diversos/nistoCremos">Nisto Cremos</a></li>
-                        <li><a href="/site/diversos/tesouraria">Tesouraria</a></li>
-                        <!--li><a href="evangelismo.php">Evangelizar</a></li-->
+                        <li><a href="<?= base_url('diversos/agenda') ?>">Agenda</a></li>
+                        <li><a href="<?= base_url('diversos/tesouraria') ?>">Tesouraria</a></li>
                         <li><a href="faleComPastor.php">Fale com o Pastor</a></li>
                         <li><a href="estudos_biblicos.php">Estudos Bíblicos</a></li>
-                        <li><a href="historia.php">História</a></li>
-                        <li><a href="cadastro_membro.php">Cadastro de Membro</a></li>
+                        <li><a href="/site/diversos/adcruzNosLares">Testemunhos</a></li>
                     </ul>
                 </li>
-                <li><a href="testemunhos.php">Testemunhos</a></li>
+                <li><a href="testemunhos.php">Cadastro</a></li>
                 <li><a href="novo_admin/login_.html">Restrito</a></li>
             </ul>
         </div>

@@ -6,10 +6,10 @@ if (!defined('BASEPATH'))
 if (!function_exists('embedVideo')) {
 
     function embedVideoYoutube($link) {
-        if(preg_match("#http://(.*)\.youtube\.com/watch\?v=(.*)(&(.*))?#", $link, $matches)){
+        if (preg_match("#http://(.*)\.youtube\.com/watch\?v=(.*)(&(.*))?#", $link, $matches)) {
             $dados['match'] = $matches[2];
             return $dados;
-        }else{
+        } else {
             die('Function embedVideo Link fornecido não é um link do youtube válido.');
         }
     }
@@ -25,4 +25,16 @@ if (!function_exists('limitaTexto')) {
         }
         return $var;
     }
+
+}
+
+if (!function_exists('linkPath')) {
+    
+    function linkPath($link, $path) {
+        return array(
+            'link' => $link,
+            'path' => $path
+        );
+    }
+
 }

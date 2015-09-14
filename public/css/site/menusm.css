@@ -52,12 +52,12 @@ ul.menusm { font-size:14px; line-height:14px;}
 #nav1 ul li.current-cat a,
 #nav1 ul li a.a_hover_main { color:#fff; background-color:#97AF71; text-decoration:none;  border:1px solid white;}				/* on hover */
 /* level 1 */
-#nav1 ul li ul { margin:0; padding:2px 0; width:190px; height:auto; top:29px; left:0px; background-color:#000000;}				/* position of submenu */
+#nav1 ul li ul { margin:0; padding:1px 0; width:190px; height:auto; top:29px; left:0px; background-color:#99B173;}				/* position of submenu */
 #nav1 ul li ul li { margin:0; padding:0; float:none;}
-#nav1 ul li ul li a { color:#3cb9d3; background:none; border-top:1px solid transparent; border-bottom:1px solid transparent; border-left:none; border-right:none;}
+#nav1 ul li ul li a { color:#fff; background:none; border-top:1px solid transparent; border-bottom:1px solid transparent; border-left:none; border-right:none;}
 #nav1 ul li ul li a.have_submenu { }																/* if item have submenu */
 #nav1 ul li ul li a:hover,
-#nav1 ul li ul li a.have_submenu_hover { color:#fff; text-decoration:none; background:#0ca3c2 url(../images/submenu_a.gif) repeat-x left top; border-top:1px solid #fff; border-bottom:1px solid #fff;}
+#nav1 ul li ul li a.have_submenu_hover { color:#97AF71; text-decoration:none; background:#000 url(../images/submenu_a.gif) repeat-x left top; border-top:1px solid #fff; border-bottom:1px solid #fff;}
 #nav1 ul li ul li ul { top:-2px; left:170px;}		/* position of submenu level 2 */
 
 #nav1 * { z-index:100;}

@@ -1,1 +1,0 @@
-    <a href="faleComPastor.php"><img src="<?php echo base_url('public/images/home/fale_com_pastor.png') ?>" /></a>

@@ -1299,9 +1299,26 @@ form#contact fieldset button {
     text-align: left !important;   
 }
 
+.title-row-page{
+    padding: 0px 0px 0px 6px;
+    //text-shadow: #96B410 493px 43px 4px, #96B21E 153px 42px 5px, #96B379 665px 0px 1px, #96B38D 326px 0px 4px;
+}
 .title-row-page h2{
     font-size: 25pt;
     margin: 10px 0 10px 0;
     font-family: cursive;
-    color: inherit;
+    color: #64794F;
+}
+.img-culto-lar{
+    height: 270px;
+    width: 270px;
+    border-radius: 23px;
+}
+
+
+.menu-fixo {
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    width: 954px;
 }

@@ -51,10 +51,18 @@ class Home extends Principal_Controller {
     }
 
     private function includeSlide() {
-        $noticiaModel = new NoticiaModel();
-        $dados['noticias'] = $noticiaModel->retrieveAtivasPrincipais(3);
-        return $this->load->view('home/slide_comp', $dados, true);
+        $dados['banners'] = array(
+            linkPath('#','principal/450Almas.960x268.png'),
+            linkPath('#','principal/AtividadesAdcruz.960x268.png'),
+            linkPath('#','principal/Discipulado.960x268.png'),
+            linkPath('#','principal/Etuseumabencao.960x268.png'),
+            linkPath('#','principal/MesdeOracao.960x268.png'),
+            linkPath('#','principal/SextadaVitoria.960x268.png'),
+            linkPath('#','principal/TemaAno.960x268.png'),
+        );
+        return $this->load->view('components/slide_comp', $dados, true);
     }
+    
 
     /**
      * 
@@ -63,7 +71,7 @@ class Home extends Principal_Controller {
     private function includePanel1() {
         $col1 = new AuxComponet($this->faleComOPastor(), 'index-col-1');
         $col2 = new AuxComponet($this->includeComunicados());
-        $col3 = new AuxComponet($this->includeMuralRecados());
+        $col3 = new AuxComponet($this->cultoLar());
         $indexColsPanel = new IndexColsPanel($col1, $col2, $col3);
         $rowPanel = new RowPanel($indexColsPanel->getComponent());
         return $rowPanel->getComponent();
@@ -74,7 +82,9 @@ class Home extends Principal_Controller {
      * @return string contendo o html do fale com o pastor
      */
     private function faleComOPastor() {
-        return $this->load->view('home/faleComOPastor_comp', '', true);
+        $dados = linkPath('#','public/images/home/fale_com_pastor.png');
+        $dados['class'] = '';
+        return $this->load->view('home/imgLink_comp', $dados, true);
     }
 
     /**
@@ -89,6 +99,15 @@ class Home extends Principal_Controller {
         return $this->load->view('home/comunicados_comp', $dados, true);
     }
 
+    /**
+     * 
+     * @return string contendo o html do fale com o pastor
+     */
+    private function cultoLar() {
+        $dados = linkPath('#', 'public/images/home/cultoLar.jpg');
+        $dados['class'] = 'img-culto-lar';
+        return $this->load->view('home/imgLink_comp', $dados, true);
+    }
     /**
      * 
      * @return string contendo o html do mural de recados
@@ -146,7 +165,7 @@ class Home extends Principal_Controller {
      * @return string contendo o html do panel
      */
     private function includePanel4() {
-        $panel = new RowWrapper1Panel($this->videos());
+        $panel = new RowWrapper1Panel('');
         return $panel->getComponent();
     }
 

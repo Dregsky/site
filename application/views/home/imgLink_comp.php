@@ -1,0 +1,1 @@
+    <a href="<?=$link?>"><img class='<?= $class ?>' src="<?= base_url($path) ?>" /></a>

@@ -13,9 +13,6 @@
         <script type="text/javascript" src="<?= base_url('public/js/coin-slider.min.js') ?>"><!-- slider --></script>
         <script type="text/javascript" src="<?= base_url('public/js/menusm.js') ?>"><!-- menu --></script>
         <script type="text/javascript" src="<?= base_url('public/js/script.js') ?>"><!-- scripts for use --></script>
-        <script type="text/javascript" src="<?= base_url('public/js/BellCent_Add_BT_400.font.js') ?>"><!-- scripts for use --></script>
-        <script type="text/javascript" src="<?= base_url('public/js/AvantGarde_Bk_BT_400.font.js') ?>"><!-- scripts for use --></script>
-        <script type="text/javascript" src="<?= base_url('public/js/Abadi_MT_Condensed_Light_300.font.js') ?>"><!-- scripts for use --></script>
 
         <link rel="stylesheet" type="text/css" href="<?= base_url('public/css/site/style.css') ?>" media="screen" />
         <link rel="stylesheet" type="text/css" href="<?= base_url('public/css/site/coin-slider-styles.css') ?>" media="screen" />
