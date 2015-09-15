@@ -156,6 +156,8 @@ p {
 
     padding:0 0 1.3em;
 
+    margin: 0 0 0 0 !important;
+
 }
 
 
@@ -265,7 +267,7 @@ p {
 #nav1{
     height: 31px;
     background-color: black;
-    border: ridge;
+    border: solid white;
     border-radius: 10px;
 }
 
@@ -307,7 +309,7 @@ p {
 
 
 
-.row { 
+.row-site { 
     width:960px; 
     margin: 30px 0px 30px 0px;
 }
@@ -1083,7 +1085,7 @@ select { padding:1px;}
 
     text-align:justify;
 
-    padding-left:10px;
+    padding-left:30px;
 
     padding-right:10px;
 
@@ -1109,8 +1111,9 @@ form#contact{
 
     margin-right:123px;
 
-    margin-top:20px;		
+    margin-top:20px;	
 
+    text-align: center;
 }
 
 
@@ -1133,13 +1136,13 @@ form#contact fieldset input, form#contact fieldset textarea {
 
     background-image: url(../../images/formBG.png);
 
+    width:100%;
+
 }
 
 
 
 form#contact fieldset input {
-
-    width:360px;
 
     background-color: #e6e6e6;
 
@@ -1175,13 +1178,12 @@ form#contact fieldset label {
 
     display:block;
 
+    text-align: left;
 }
 
 
 
 form#contact fieldset textarea {
-
-    width:360px;
 
     overflow:auto;
 
@@ -1189,9 +1191,12 @@ form#contact fieldset textarea {
 
 
 
+form#contact fieldset button{
+    margin: 10px 0 10px 0;
+    float: right;
+}
 
-
-form#contact fieldset button {
+button.png {
 
     background-image: url(../../images/icons/icon-plus-circled-128.png);
     background-position: right;
@@ -1217,7 +1222,7 @@ form#contact fieldset button {
 
     text-align:justify;
 
-    margin: 0px 30px 20px 10px;
+    margin: 0px 32px 29px 30px;
 
     background: #cccccc;
 
@@ -1231,7 +1236,7 @@ form#contact fieldset button {
 
     text-align:justify;
 
-    margin: 0px 30px 20px 10px;
+    margin: 0px 32px 29px 30px;
 
     background: #dcdcdc;
 
@@ -1301,6 +1306,7 @@ form#contact fieldset button {
 
 .title-row-page{
     padding: 0px 0px 0px 6px;
+    text-align: center;
     //text-shadow: #96B410 493px 43px 4px, #96B21E 153px 42px 5px, #96B379 665px 0px 1px, #96B38D 326px 0px 4px;
 }
 .title-row-page h2{
@@ -1322,3 +1328,66 @@ form#contact fieldset button {
     z-index: 1000;
     width: 954px;
 }
+
+.alert-custom{
+    border-radius: 15px !important;
+}
+
+.content-adjust{
+    display: table !important;
+    width: 0 !important;
+}
+
+.next, .prev{
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    width: 0;
+    height: 0;
+    border-top: 35px solid transparent;
+    border-bottom: 35px solid transparent;
+    cursor:pointer;
+}
+.next{
+    border-left: 55px solid black;
+    margin: 100px -50px 0px 0px;
+    float: right;
+}
+
+.prev{
+    border-right: 55px solid black;
+    margin: 101px 0px 0px -45px;
+    float: left;
+}
+
+.next:hover{
+    border-left: 55px solid white;
+}
+
+.prev:hover{
+    border-right: 55px solid white;
+}
+
+.setas{
+    display: none;
+    text-align: center;
+    opacity: 0.3;
+}
+
+.setas-fixas{
+    display: block;
+    position: fixed;
+    top: 25px;
+    z-index: 1000;
+    width: 954px;
+}
+
+.texto_paginacao_pgatual, .texto_paginacao{
+    padding: 4px;
+    font-size: 14pt;
+}
+
+.texto_paginacao{
+    cursor: pointer;
+}
+

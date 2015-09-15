@@ -1,6 +1,7 @@
 <?php
 
 namespace Entities;
+require_once APPPATH.'models\Entities\AbstractEntity.php';
 
 /**
  * Pessoa
@@ -10,7 +11,7 @@ namespace Entities;
  * @Entity
  * @Table(name="tbl_pessoa")
  */
-class Pessoa {
+class Pessoa extends AbstractEntity {
 
     const name = "Entities\Pessoa";
 
@@ -38,7 +39,7 @@ class Pessoa {
      * @Column(type="string", length=150, nullable=true)
      */
     private $nome;
-    
+
     /**
      *
      * @var string
@@ -78,7 +79,7 @@ class Pessoa {
      * @Column(type="datetime", nullable=true)
      */
     private $dataCadastro;
-    
+
     /**
      *
      * @var datetime
@@ -94,8 +95,8 @@ class Pessoa {
      * @Column(type="date", nullable=true)
      */
     private $dataNascimento;
-    
-     /**
+
+    /**
      *
      * @var Status
      * 
@@ -103,14 +104,14 @@ class Pessoa {
      * @JoinColumn(name="cod_status", referencedColumnName="cod_status")
      */
     private $status;
-    
+
     /**
      * @var integer
      * @Column(type="integer", nullable=true)
      */
     private $cartaoMembro;
-    
-     /**
+
+    /**
      *
      * @var string
      * 
@@ -180,7 +181,7 @@ class Pessoa {
      * @Column(name="data_emissao", type="date", nullable=false)
      */
     private $dataEmissao;
-    
+
     /**
      *
      * @var FuncaoMinisterial
@@ -189,7 +190,7 @@ class Pessoa {
      * @JoinColumn(name="cod_funcao_ministerial", referencedColumnName="cod_funcao_ministerial")
      */
     private $funcaoMinisterial;
-    
+
     /**
      *
      * @var Profissao
@@ -198,7 +199,7 @@ class Pessoa {
      * @JoinColumn(name="cod_profissao", referencedColumnName="cod_profissao")
      */
     private $profissao;
-    
+
     /**
      *
      * @var Escolaridade
@@ -207,7 +208,7 @@ class Pessoa {
      * @JoinColumn(name="cod_escolaridade", referencedColumnName="cod_escolaridade")
      */
     private $escolaridade;
-    
+
     /**
      *
      * @var EstadoCivil
@@ -216,7 +217,7 @@ class Pessoa {
      * @JoinColumn(name="cod_estado_civil", referencedColumnName="cod_estado_civil")
      */
     private $estadoCivil;
-    
+
     /**
      *
      * @var Departamento
@@ -292,7 +293,6 @@ class Pessoa {
      * 
      * Getters and Setters
      */
-   
     public function getId() {
         return $this->id;
     }
@@ -428,7 +428,6 @@ class Pessoa {
     public function getQtdFilho() {
         return $this->qtdFilho;
     }
-
 
     public function setPerfil(Perfil $perfil) {
         $this->perfil = $perfil;
@@ -594,7 +593,5 @@ class Pessoa {
         $this->qtdFilho = $qtdFilho;
         return $this;
     }
-
-
 
 }

@@ -29,12 +29,32 @@ if (!function_exists('limitaTexto')) {
 }
 
 if (!function_exists('linkPath')) {
-    
+
     function linkPath($link, $path) {
         return array(
             'link' => $link,
             'path' => $path
         );
+    }
+
+}
+
+if (!function_exists('scriptSetasScroll')) {
+
+    function scriptSetasScroll() {
+        return
+                "<script>" .
+                "$(function () {
+                var nav = $('.setas');
+                $(window).scroll(function () {
+                    if ($(this).scrollTop() > 250) {
+                        nav.addClass('setas-fixas');
+                    } else {
+                        nav.removeClass('setas-fixas');
+                    }
+                    });
+                });"
+                ;
     }
 
 }

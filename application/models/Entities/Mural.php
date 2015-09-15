@@ -10,7 +10,7 @@ namespace Entities;
  * @Entity
  * @Table(name="tbl_mural")
  */
-class Mural {
+class Mural extends AbstractEntity {
 
     const name = "Entities\Mural";
 
@@ -94,12 +94,11 @@ class Mural {
      * @Column(name="ip_usuario", type="string", length=30, nullable=false)
      */
     private $ipUsuario;
-    
+
     /**
      * 
      * Getters and Setters
      */
-    
     public function getId() {
         return $this->id;
     }
@@ -189,6 +188,5 @@ class Mural {
         $this->ipUsuario = $ipUsuario;
         return $this;
     }
-
 
 }

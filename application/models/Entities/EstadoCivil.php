@@ -10,7 +10,7 @@ namespace Entities;
  * @Entity
  * @Table(name="tbl_estado_civil")
  */
-class EstadoCivil {
+class EstadoCivil extends AbstractEntity {
 
     const name = "Entities\EstadoCivil";
 
@@ -45,6 +45,5 @@ class EstadoCivil {
         $this->descricao = $descricao;
         return $this;
     }
-
 
 }

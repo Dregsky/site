@@ -146,3 +146,9 @@ WHERE `tbl_noticia`.`cod_perfil` = 14;
 UPDATE `adcru732_adcruz`.`tbl_noticia` SET `cod_departamento` = 1 
 WHERE `tbl_noticia`.`cod_perfil` = 9;
 
+
+/**
+* tbl_testemunho
+*/
+ALTER TABLE `tbl_testemunho` ADD CONSTRAINT `fk3_status` FOREIGN KEY ( `cod_status` ) 
+REFERENCES `tbl_status` ( `cod_status` ) ;

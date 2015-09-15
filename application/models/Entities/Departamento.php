@@ -10,7 +10,7 @@ namespace Entities;
  * @Entity
  * @Table(name="tbl_departamento")
  */
-class Departamento {
+class Departamento extends AbstractEntity {
 
     const name = "Entities\Departamento";
 

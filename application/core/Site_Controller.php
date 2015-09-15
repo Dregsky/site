@@ -19,6 +19,7 @@ abstract class Site_Controller extends CI_Controller {
      */
     function __construct() {
         parent::__construct();
+        date_default_timezone_set('America/Sao_Paulo');
         $dados['menu'] = $this->getMenu();
         $dados['customPage'] = $this->getCustomPage();
         $this->load->view('template_site', $dados);

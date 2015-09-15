@@ -46,6 +46,7 @@ class Home extends Principal_Controller {
         $dados['panel3'] = $this->includePanel3();
         $dados['panel4'] = $this->includePanel4();
         $dados['panel5'] = $this->includePanel5();
+        $dados['panel6'] = $this->includePanel6();
 
         return $this->load->view('home/home_page', $dados, true);
     }
@@ -69,7 +70,7 @@ class Home extends Principal_Controller {
      * @return string contendo o html do panel
      */
     private function includePanel1() {
-        $col1 = new AuxComponet($this->faleComOPastor(), 'index-col-1');
+        $col1 = new AuxComponet($this->faleComOPastor());
         $col2 = new AuxComponet($this->includeComunicados());
         $col3 = new AuxComponet($this->cultoLar());
         $indexColsPanel = new IndexColsPanel($col1, $col2, $col3);
@@ -82,7 +83,7 @@ class Home extends Principal_Controller {
      * @return string contendo o html do fale com o pastor
      */
     private function faleComOPastor() {
-        $dados = linkPath('#','public/images/home/fale_com_pastor.png');
+        $dados = linkPath(base_url('diversos/pastor'),'public/images/home/fale_com_pastor.png');
         $dados['class'] = '';
         return $this->load->view('home/imgLink_comp', $dados, true);
     }
@@ -189,6 +190,18 @@ class Home extends Principal_Controller {
      * @return string contendo o html do panel
      */
     private function includePanel5() {
+        $panel = new RowWrapper1Panel($this->agenda());
+        return $panel->getComponent();
+    }
+    
+    private function agenda(){
+        return $this->load->view('home/agenda_comp', '', true);
+    } 
+    /**
+     * 
+     * @return string contendo o html do panel
+     */
+    private function includePanel6() {
         $panel = new RowWrapper1Panel($this->palavraDoPastor());
         return $panel->getComponent();
     }

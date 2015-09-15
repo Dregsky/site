@@ -10,15 +10,15 @@ namespace Entities;
  * @Entity
  * @Table(name="tbl_status")
  */
-class Status {
+class Status extends AbstractEntity {
 
     const name = "Entities\Status";
-    
+
     public function __construct($id) {
         $this->id = $id;
     }
 
-        /**
+    /**
      *
      * @Id
      * @GeneratedValue(strategy="IDENTITY")

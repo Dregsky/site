@@ -22,9 +22,9 @@
                     <ul>
                         <li><a href="<?= base_url('diversos/agenda') ?>">Agenda</a></li>
                         <li><a href="<?= base_url('diversos/tesouraria') ?>">Tesouraria</a></li>
-                        <li><a href="faleComPastor.php">Fale com o Pastor</a></li>
-                        <li><a href="estudos_biblicos.php">Estudos Bíblicos</a></li>
-                        <li><a href="/site/diversos/adcruzNosLares">Testemunhos</a></li>
+                        <li><a href="<?= base_url('diversos/pastor') ?>">Fale com o Pastor</a></li>
+                        <li><a href="<?= base_url('diversos/estudos') ?>">Estudos Bíblicos</a></li>
+                        <li><a href="<?= base_url('diversos/testemunho') ?>">Testemunhos</a></li>
                     </ul>
                 </li>
                 <li><a href="testemunhos.php">Cadastro</a></li>

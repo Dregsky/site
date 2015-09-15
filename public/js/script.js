@@ -4,7 +4,7 @@ $(function () {
     $('#coin-slider').coinslider({width: 960, height: 268, opacity: 1});
 
     // radius Box
-    $('.menusm .top_level, .topnav li a').css({"border-radius": "15px", "-moz-border-radius": "15px", "-webkit-border-radius": "15px"});
+    //$('.menusm .top_level, .topnav li a').css({"border-radius": "15px", "-moz-border-radius": "15px", "-webkit-border-radius": "15px"});
     $('.topnav ul').css({"border-radius": "19px", "-moz-border-radius": "19px", "-webkit-border-radius": "19px"});
     $('.topnav ul li ul').css({"border-top-left-radius": "0px", "border-top-right-radius": "0px", "-moz-border-radius-topleft": "0px", "-moz-border-radius-topright": "0px", "-webkit-border-top-left-radius": "0px", "-webkit-border-top-right-radius": "0px"});
     $('.topnav ul li ul li ul').css({"border-top-left-radius": "19px", "border-top-right-radius": "19px", "-moz-border-radius-topleft": "19px", "-moz-border-radius-topright": "19px", "-webkit-border-top-left-radius": "19px", "-webkit-border-top-right-radius": "19px"});
@@ -24,3 +24,17 @@ $(function () {
         }
     });
 });
+
+$(function () {
+    var nav = $('.setas');
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 250) {
+            nav.addClass('setas-fixas');
+        } else {
+            nav.removeClass('setas-fixas');
+        }
+    });
+});
+
+
+

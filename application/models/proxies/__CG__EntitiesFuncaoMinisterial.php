@@ -81,6 +81,30 @@ class FuncaoMinisterial extends \Entities\FuncaoMinisterial implements \Doctrine
         return parent::setSituacao($situacao);
     }
 
+    public function __set($property, $value)
+    {
+        $this->__load();
+        return parent::__set($property, $value);
+    }
+
+    public function __call($method, $value)
+    {
+        $this->__load();
+        return parent::__call($method, $value);
+    }
+
+    public function setAll(array $data)
+    {
+        $this->__load();
+        return parent::setAll($data);
+    }
+
+    public function toArray()
+    {
+        $this->__load();
+        return parent::toArray();
+    }
+
 
     public function __sleep()
     {

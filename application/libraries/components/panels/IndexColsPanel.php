@@ -37,7 +37,7 @@ class IndexColsPanel extends WebComponent {
 
     private function setClassDefaults($instancias = []) {
         foreach ($instancias as $id => $i) {
-            if (!empty($i) && !empty($i->getParentClass())) {
+            if (!empty($i) && empty($i->getParentClass())) {
                 $i->setParentClass('index-col' . ($id + 1));
             }
         }
