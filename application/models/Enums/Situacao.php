@@ -13,4 +13,7 @@ class Situacao extends Enum {
     const ATIVO = 1;
 
 //put your code here
+     public function getReferencedModelEntity() {
+         return null;
+    }
 }

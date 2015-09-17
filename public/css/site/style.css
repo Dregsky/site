@@ -169,6 +169,7 @@ p {
     margin:0 auto; 
 
     padding:0;
+    display: table;
 
 }
 
@@ -1041,11 +1042,10 @@ select { padding:1px;}
 
 .index-cols_fotos .titulo_fotos {
 
-    padding:8px 2px;
-
-    font-size:11px;
-
-    color:#6f6f6f;
+    padding: 8px 2px;
+    font-size: 12px;
+    color: rgb(0, 0, 0);
+    font-weight: 600;
 
 }
 
@@ -1262,8 +1262,7 @@ button.png {
 
 .tdBotao{
 
-    background: #9C9C9C;
-
+    width: 100%;
 }
 
 
@@ -1380,6 +1379,7 @@ button.png {
     top: 25px;
     z-index: 1000;
     width: 954px;
+    height: 1px;
 }
 
 .texto_paginacao_pgatual, .texto_paginacao{
@@ -1389,5 +1389,97 @@ button.png {
 
 .texto_paginacao{
     cursor: pointer;
+}
+
+.icon-facebook{
+    background-image: url('../../images/icons/icon-face.png');
+}
+.icon-twitter{
+    background-image: url('../../images/icons/icon-twitter.png');
+}
+.icon-youtube{
+    background-image: url('../../images/icons/icon-youtube.png');
+}
+
+.redes-sociais img{
+    border: 0px solid ; 
+    width: 48px; 
+    height: 48px;
+    border-radius: 50%;
+    opacity: 0.3;
+}
+
+.redes-sociais{
+    float:right;
+    margin-top: 50px;
+}
+
+.redes-sociais img:hover{
+    opacity:1;
+    background-color: white; 
+}
+
+.tabelaMembro{
+    width: 100%;
+    border-spacing: 3px; 
+    border-collapse: initial; 
+}
+.tabelaMembro td{
+    padding: 4px;
+}
+.tabelaMembro td select{
+    width: 196px;
+    height: 38px;
+}
+.tabelaMembro input{
+    height: 30px;
+    width: 300px;
+}
+.tabelaMembro input[type=file]{
+}
+
+.foto_click a{
+    pointer-events: none;
+    cursor: default;
+}
+
+.foto_click{
+    cursor: pointer;
+}
+
+.flickr-small{
+    width: 150px;
+    height: 150px;
+}
+
+.flickr-medium{
+    width: 600px !important;
+    height: 400px !important;
+}
+
+#modalSlide{
+    width: 670px  !important;
+    top:25px;
+}
+
+#modalSlide .modal-dialog{
+    width: auto !important;
+}
+
+#modalSlide .modal-content{
+    width: 630px  !important;
+    background-color:#000;
+}
+
+#modalSlide .modal-footer{
+    display: none;
+}
+
+#modalSlide .modal-header{
+    color: white;
+}
+
+#modalSlide .modal-header .close{
+    color: white;
 }
 

@@ -40,8 +40,22 @@ function carregarPaginaTestemunho(pagina) {
                 setas.append(next);
             }
             var test = $('#testemunhos');
+            var paginaAnterior = $('#paginaAnterior').val();
             test.empty();
             test.append(result);
+            var corpo = $('#testemunhos_body');
+            
+            if(pagina > paginaAnterior){
+                corpo.addClass('bounceInLeft');
+            }else{
+                corpo.addClass('bounceInRight');
+            }
+            //corpo.css({'position': 'relative',
+              //  'left': '-160px',
+                //'opacity': '0.1'});
+            //corpo.animate({'left': '0', 'opacity': '1'});
+            console.log(pagina);
+            console.log(paginaAnterior);
         }
     });
 

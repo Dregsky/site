@@ -23,6 +23,8 @@ Use Entities\Departamento;
  * @author Rafael Rocha <rafaeltbt@gmail.com>
  */
 class NoticiaModel extends Model {
+    
+        const name = 'EntitiesModels\NoticiaModel';
 
     /**
      * Método que busca as últimas noticias 

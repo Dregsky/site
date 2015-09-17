@@ -7,12 +7,10 @@ namespace enums;
  *
  * @author Rafael
  */
-class DiversosPaginas extends Enum {
+class DiversosPaginas {
 
     const ADCRUZ_NOS_LARES = 'adcruzNosLares';
     const NISTO_CREMOS = 'nistoCremos';
     const TESOURARIA = 'tesouraria';
-    
 
-//put your code here
 }

@@ -32,7 +32,7 @@ class Comunicado extends AbstractEntity {
      *
      * @var text
      * 
-     * @Column(type="text", length=60, nullable=true)
+     * @Column(type="text", nullable=true)
      */
     private $assunto;
 
@@ -138,7 +138,7 @@ class Comunicado extends AbstractEntity {
         return $this;
     }
 
-    public function setAssunto(text $assunto) {
+    public function setAssunto($assunto) {
         $this->assunto = $assunto;
         return $this;
     }

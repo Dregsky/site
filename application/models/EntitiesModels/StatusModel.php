@@ -1,7 +1,9 @@
 <?php
+
 include_once(APPPATH . "models/" . 'Model' . EXT);
 
 Use Entities\Status;
+
 /**
  * Description of StatusModel
  * Model from:
@@ -10,6 +12,8 @@ Use Entities\Status;
  * @author Rafael Rocha <rafaeltbt@gmail.com>
  */
 class StatusModel extends Model {
+
+    const name = 'EntitiesModels\StatusModel';
 
     /**
      * 

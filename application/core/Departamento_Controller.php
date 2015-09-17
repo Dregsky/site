@@ -8,14 +8,13 @@
  * @package  CodeIgniter
  * @author Rafael Rocha <rafaeltbt@gmail.com>
  */
-class Departamento_Controller extends Site_Controller {
+abstract class Departamento_Controller extends Site_Controller {
 
- 
-    /**
-     * Constructor of Base Controller
-     */
-    function __construct() {
-        parent::__construct();
+    
+    public function getMenu() {
+        $dados['departamento'] = $this->getNameDepartamento();
+        return $this->load->view('_inc/menuDepartamentos', $dados, true);
     }
 
+    abstract function getNameDepartamento();
 }

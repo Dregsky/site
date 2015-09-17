@@ -28,6 +28,8 @@
         <link rel="stylesheet" type="text/css" href="<?= base_url('public/css/site/style2.css') ?>" media="screen" />
         <link rel="stylesheet" type="text/css" href="<?= base_url('public/css/bootstrap.min.css') ?>" />
         <link rel="stylesheet" type="text/css" href="<?= base_url('public/css/bootstrap-theme.min.css') ?>" media="screen" />
+        <link rel="stylesheet" type="text/css" href="<?= base_url('public/css/efeitos.css') ?>" media="screen" />
+        <link rel="stylesheet" type="text/css" href="<?= base_url('public/css/animate-custom.css') ?>" media="screen" />
 
     </head>
 

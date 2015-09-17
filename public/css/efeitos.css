@@ -1,0 +1,76 @@
+@import url(animate-custom.css);
+
+.bounceInLeft{
+    -webkit-animation-name: bounceInLeft;
+    -webkit-animation-fill-mode: both;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-name:bounceInLeft;
+    -moz-animation-fill-mode: both;
+    -moz-animation-duration: 1s;
+    -moz-animation-iteration-count: 1;
+    -moz-animation-timing-function: linear;
+    animation-name: bounceInLeft;
+    animation-fill-mode: both;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+}
+
+.bounceInRight{
+    -webkit-animation-name: bounceInRight;
+    -webkit-animation-fill-mode: both;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-name:bounceInRight;
+    -moz-animation-fill-mode: both;
+    -moz-animation-duration: 1s;
+    -moz-animation-iteration-count: 1;
+    -moz-animation-timing-function: linear;
+    animation-name: bounceInRight;
+    animation-fill-mode: both;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+}
+
+.bounceIn{
+    -webkit-animation-name: bounceIn;
+    -webkit-animation-fill-mode: both;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-name:bounceIn;
+    -moz-animation-fill-mode: both;
+    -moz-animation-duration: 1s;
+    -moz-animation-iteration-count: 1;
+    -moz-animation-timing-function: linear;
+    animation-name: bounceIn;
+    animation-fill-mode: both;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+}
+
+.fadeIn{
+    -webkit-animation-name: fadeIn;
+    -webkit-animation-fill-mode: both;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-name:fadeIn;
+    -moz-animation-fill-mode: both;
+    -moz-animation-duration: 1s;
+    -moz-animation-iteration-count: 1;
+    -moz-animation-timing-function: linear;
+    animation-name: fadeIn;
+    animation-fill-mode: both;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+}
+
+
+

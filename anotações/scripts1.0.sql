@@ -60,6 +60,12 @@ REFERENCES `tbl_departamento` ( `cod_departamento` ) ;
 UPDATE `tbl_pessoa` set `codPessoaExclusao` = null;
 ALTER TABLE `tbl_pessoa` DROP `codPessoaExclusao`;
 
+ALTER TABLE `tbl_pessoa` CHANGE `nome_conjuge` `nome_conjuge` VARCHAR(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL;
+ALTER TABLE `tbl_pessoa` CHANGE `data_casamento` `data_casamento` DATE NULL;
+ALTER TABLE `tbl_pessoa` CHANGE `data_batismo_aguas` `data_batismo_aguas` DATE NULL;
+ALTER TABLE `tbl_pessoa` CHANGE `data_batismo_espirito` `data_batismo_espirito` DATE NULL;
+ALTER TABLE `tbl_pessoa` CHANGE `senha` `senha` VARCHAR(80) CHARACTER SET utf8 COLLATE utf8_general_ci NULL;
+ALTER TABLE `tbl_pessoa` CHANGE `qtd_filhos` `qtd_filhos` INT(3) NULL DEFAULT '0';
 
 /**
 * Scripts tbl_noticia
@@ -152,3 +158,31 @@ WHERE `tbl_noticia`.`cod_perfil` = 9;
 */
 ALTER TABLE `tbl_testemunho` ADD CONSTRAINT `fk3_status` FOREIGN KEY ( `cod_status` ) 
 REFERENCES `tbl_status` ( `cod_status` ) ;
+
+/**
+*tbl_album
+*/
+
+ALTER TABLE `tbl_album` 
+CHANGE `link_flickr` `link_flickr` VARCHAR(600) CHARACTER SET latin1 
+COLLATE latin1_swedish_ci NULL DEFAULT NULL;
+
+ALTER TABLE `tbl_album` CHANGE `cod_status` `cod_status` INT(11) NULL DEFAULT NULL;
+
+ALTER TABLE `tbl_album` ADD CONSTRAINT `fk4_status` FOREIGN KEY ( `cod_status` ) 
+REFERENCES `tbl_status` ( `cod_status` ) ;
+
+SET FOREIGN_KEY_CHECKS=0;
+ALTER TABLE `tbl_album` ADD CONSTRAINT `fk2_dapartamento` FOREIGN KEY ( `codDepartamento` ) 
+REFERENCES `tbl_departamento` ( `cod_departamento` ) ;
+
+SET FOREIGN_KEY_CHECKS=0;
+ALTER TABLE `tbl_album` ADD CONSTRAINT `fk2_pessoa_exclusao` FOREIGN KEY ( `codPessoaExclusao` ) 
+REFERENCES `tbl_pessoa` ( `cod_pessoa` ) ;
+
+SET FOREIGN_KEY_CHECKS=0;
+ALTER TABLE `tbl_album` ADD CONSTRAINT `fk2_pessoa_cadastro` FOREIGN KEY ( `codPessoaCadastro` ) 
+REFERENCES `tbl_pessoa` ( `cod_pessoa` ) ;
+
+ALTER TABLE `tbl_album` CHANGE `codDepartamento` `codDepartamento` INT(11) NOT NULL DEFAULT '8';
+UPDATE `tbl_album` SET `codDepartamento`=8 WHERE 1;

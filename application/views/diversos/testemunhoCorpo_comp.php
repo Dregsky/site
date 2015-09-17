@@ -12,7 +12,7 @@
         <p class="texto_interno_noticias">
             <a href="<?= base_url('diversos/testemunho/cadastro') ?>"><?php echo htmlentities("Deixe seu testemunho aqui.") ?></a>
         </p>
-        <center>
+        <center id="paginas">
             <?php
             for ($i = 0; ($i * $regPorPagina) <= $total; $i++):
                 if ($i == ($next - 1)) {
@@ -23,21 +23,24 @@
                 <?php } endfor; ?>
         </center>
         <p></p>
-        <?php foreach ($testemunhos as $i => $t) : ?>
-            <div class="<?= ($i % 2) == 0 ? 'div_testemunho' : 'div_testemunho2' ?>">
-                <h2 class="nome_testemunho">
-                    <?= $t->getNomeTestemunho() ?> - <span class="nome_irmao_testemunho"><?php echo htmlentities("Irmão (ã):") ?> 
-                        <?= $t->getNomePessoa() ?></span>
-                </h2>
-                <p class="descricao_testemunho">
-                    <?= $t->getDescricao() ?>
-                </p>
-                <p class="descricao_testemunho">
-                    <span class="postadoEm">Postado em: <?= $t->getDataCadastro()->format('d/m/Y') ?></span>
-                </p>
-            </div>
-        <?php endforeach; ?>
+        <div id="testemunhos_body">
+            <?php foreach ($testemunhos as $i => $t) : ?>
+                <div class="<?= ($i % 2) == 0 ? 'div_testemunho' : 'div_testemunho2' ?>">
+                    <h2 class="nome_testemunho">
+                        <?= $t->getNomeTestemunho() ?> - <span class="nome_irmao_testemunho"><?php echo htmlentities("Irmão (ã):") ?> 
+                            <?= $t->getNomePessoa() ?></span>
+                    </h2>
+                    <p class="descricao_testemunho">
+                        <?= $t->getDescricao() ?>
+                    </p>
+                    <p class="descricao_testemunho">
+                        <span class="postadoEm">Postado em: <?= $t->getDataCadastro()->format('d/m/Y') ?></span>
+                    </p>
+                </div>
+            <?php endforeach; ?>
+        </div>
     </div>
+    <input id="total" type="hidden" value="<?= $total ?>"/>
+    <input id="paginaAnterior" type="hidden" value="<?= ($next-1) ?>"/>
+    <input id="regPorPag" type="hidden" value="<?= $regPorPagina ?>"/>
 </div>
-<input id="total" type="hidden" value="<?= $total ?>">
-<input id="regPorPag" type="hidden" value="<?= $regPorPagina ?>">

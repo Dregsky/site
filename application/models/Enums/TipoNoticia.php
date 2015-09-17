@@ -2,6 +2,8 @@
 
 namespace enums;
 
+require_once APPPATH. 'models/EntitiesModels/NoticiaModel.php';
+
 /**
  * Description of TipoNoticia
  *
@@ -15,6 +17,10 @@ class TipoNoticia extends Enum {
     const CURSOS = 4;
     const MISSOES = 5;
     
+
+    public function getReferencedModelEntity() {
+        return \NoticiaModel::name;
+    }
 
 //put your code here
 }

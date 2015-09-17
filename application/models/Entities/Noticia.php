@@ -34,7 +34,7 @@ class Noticia extends AbstractEntity {
      *
      * @var text
      * 
-     * @Column(type="text", length=45, nullable=true)
+     * @Column(type="text", nullable=true)
      */
     private $descricao;
 
@@ -72,7 +72,7 @@ class Noticia extends AbstractEntity {
 
     /**
      *
-     * @var datetime
+     * @var \Datetime
      * 
      * @Column(type="datetime", nullable=true)
      */
@@ -80,7 +80,7 @@ class Noticia extends AbstractEntity {
 
     /**
      *
-     * @var datetime
+     * @var \Datetime
      * 
      * @Column(type="datetime", nullable=true)
      */
@@ -115,7 +115,7 @@ class Noticia extends AbstractEntity {
 
     /**
      *
-     * @var datetime
+     * @var \Datetime
      * 
      * @Column(type="datetime", nullable=true)
      */
@@ -238,7 +238,7 @@ class Noticia extends AbstractEntity {
         return $this;
     }
 
-    public function setDescricao(text $descricao) {
+    public function setDescricao($descricao) {
         $this->descricao = $descricao;
         return $this;
     }
@@ -263,12 +263,12 @@ class Noticia extends AbstractEntity {
         return $this;
     }
 
-    public function setDataCadastro(datetime $dataCadastro) {
+    public function setDataCadastro(\Datetime $dataCadastro) {
         $this->dataCadastro = $dataCadastro;
         return $this;
     }
 
-    public function setDataSaiNovo(datetime $dataSaiNovo) {
+    public function setDataSaiNovo(\Datetime $dataSaiNovo) {
         $this->dataSaiNovo = $dataSaiNovo;
         return $this;
     }
@@ -288,7 +288,7 @@ class Noticia extends AbstractEntity {
         return $this;
     }
 
-    public function setDataExclusao(datetime $dataExclusao) {
+    public function setDataExclusao(\Datetime $dataExclusao) {
         $this->dataExclusao = $dataExclusao;
         return $this;
     }

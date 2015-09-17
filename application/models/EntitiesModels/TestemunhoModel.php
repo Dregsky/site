@@ -14,6 +14,8 @@ Use enums\TipoStatus;
  * @author Rafael Rocha <rafaeltbt@gmail.com>
  */
 class TestemunhoModel extends Model {
+    
+        const name = 'EntitiesModels\TestemunhoModel';
 
     /**
      * Método recebe a quantidade maxima de registros a serem
@@ -55,7 +57,7 @@ class TestemunhoModel extends Model {
      * @return Testemunho
      */
     public function getEntity() {
-        return Testemunhos::name;
+        return Entities\Testemunho::name;
     }
 
 }

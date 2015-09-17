@@ -2,6 +2,8 @@
 
 namespace enums;
 
+require_once APPPATH. 'models/EntitiesModels/DepartamentoModel.php';
+
 /**
  * Description of Departamento
  *
@@ -24,7 +26,10 @@ class DepartamentoEnum extends Enum {
     const DATASHOW = 13;
     const SOM = 14;
     const OBREIROS = 15;
-    
+
+    public function getReferencedModelEntity() {
+        return \DepartamentoModel::name;
+    }
 
 //put your code here
 }

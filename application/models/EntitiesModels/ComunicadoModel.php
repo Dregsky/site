@@ -11,6 +11,7 @@ Use Entities\Comunicado;
  */
 class ComunicadoModel extends Model {
 
+    const name = 'EntitiesModels\ComunicadoModel';
     /**
      * Método recebe a quantidade maxima de registros a serem
      * retornado, caso não seja informado irá retornar todos

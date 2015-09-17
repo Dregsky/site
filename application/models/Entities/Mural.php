@@ -159,7 +159,7 @@ class Mural extends AbstractEntity {
         return $this;
     }
 
-    public function setMensagem(text $mensagem) {
+    public function setMensagem($mensagem) {
         $this->mensagem = $mensagem;
         return $this;
     }

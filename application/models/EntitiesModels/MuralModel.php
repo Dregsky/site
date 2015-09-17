@@ -14,6 +14,7 @@ Use enums\TipoStatus;
  */
 class MuralModel extends Model {
 
+      const name = 'EntitiesModels\MuralModel';
     /**
      * Método recebe a quantidade maxima de registros a serem
      * retornado, caso não seja informado irá retornar todos

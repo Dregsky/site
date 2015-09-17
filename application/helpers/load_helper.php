@@ -41,7 +41,7 @@ function enumLoad() {
         while (false !== ($file = readdir($handle))) {
             if (strpos($file, ".php")) { // * Só inclui arquivos PHP
                 if (!in_array($file, $arrayExcecoes)) {
-                    include($diretorio . "\\" . $file);
+                    require_once $diretorio . "\\" . $file;
                 }
             }
         }
@@ -58,6 +58,19 @@ function entityLoad($entities) {
     foreach ($entities as $e) {
         if (file_exists(APPPATH . 'models\Entities\\' . $e . '.php')) {
             require_once APPPATH . 'models\Entities\\' . $e . '.php';
+        }
+    }
+}
+
+/**
+ * Metodo que recebe um array com o nome das classes
+ * a serem carregada.
+ * @param type string $entity
+ */
+function modelLoad($entities) {
+    foreach ($entities as $e) {
+        if (file_exists(APPPATH . 'models\\' . $e . '.php')) {
+            require_once APPPATH . 'models\\' . $e . '.php';
         }
     }
 }

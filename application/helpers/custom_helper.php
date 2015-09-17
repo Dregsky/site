@@ -16,6 +16,7 @@ if (!function_exists('embedVideo')) {
 
 }
 
+
 if (!function_exists('limitaTexto')) {
 
     function limitaTexto($var, $limite) {
@@ -57,4 +58,20 @@ if (!function_exists('scriptSetasScroll')) {
                 ;
     }
 
+}
+
+if (!function_exists('pathRaiz')) {
+
+    function pathRaiz() {
+        $path = $_SERVER['SCRIPT_FILENAME'];
+        $path_parts = pathinfo($path);
+        return $path_parts['dirname'];
+    }
+
+}
+
+function addClassImgFlickr($imagem){
+    $parts = explode("alt", $imagem);
+    $imagemNova = $parts[0].' class="flickr-small" ' . 'alt'.$parts[1];
+    return $imagemNova;
 }

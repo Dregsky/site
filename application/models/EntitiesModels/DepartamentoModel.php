@@ -12,6 +12,8 @@ Use Entities\Departamento;
  * @author Rafael Rocha <rafaeltbt@gmail.com>
  */
 class DepartamentoModel extends Model {
+    
+        const name = 'EntitiesModels\DepartamentoModel';
 
     /**
      * 

@@ -53,17 +53,16 @@ class Home extends Principal_Controller {
 
     private function includeSlide() {
         $dados['banners'] = array(
-            linkPath('#','principal/450Almas.960x268.png'),
-            linkPath('#','principal/AtividadesAdcruz.960x268.png'),
-            linkPath('#','principal/Discipulado.960x268.png'),
-            linkPath('#','principal/Etuseumabencao.960x268.png'),
-            linkPath('#','principal/MesdeOracao.960x268.png'),
-            linkPath('#','principal/SextadaVitoria.960x268.png'),
-            linkPath('#','principal/TemaAno.960x268.png'),
+            linkPath('#', 'principal/450Almas.960x268.png'),
+            linkPath('#', 'principal/AtividadesAdcruz.960x268.png'),
+            linkPath('#', 'principal/Discipulado.960x268.png'),
+            linkPath('#', 'principal/Etuseumabencao.960x268.png'),
+            linkPath('#', 'principal/MesdeOracao.960x268.png'),
+            linkPath('#', 'principal/SextadaVitoria.960x268.png'),
+            linkPath('#', 'principal/TemaAno.960x268.png'),
         );
         return $this->load->view('components/slide_comp', $dados, true);
     }
-    
 
     /**
      * 
@@ -83,7 +82,7 @@ class Home extends Principal_Controller {
      * @return string contendo o html do fale com o pastor
      */
     private function faleComOPastor() {
-        $dados = linkPath(base_url('diversos/pastor'),'public/images/home/fale_com_pastor.png');
+        $dados = linkPath(base_url('diversos/pastor'), 'public/images/home/fale_com_pastor.png');
         $dados['class'] = '';
         return $this->load->view('home/imgLink_comp', $dados, true);
     }
@@ -105,10 +104,11 @@ class Home extends Principal_Controller {
      * @return string contendo o html do fale com o pastor
      */
     private function cultoLar() {
-        $dados = linkPath('#', 'public/images/home/cultoLar.jpg');
+        $dados = linkPath(base_url('diversos/cultonolar'), 'public/images/home/cultoLar.jpg');
         $dados['class'] = 'img-culto-lar';
         return $this->load->view('home/imgLink_comp', $dados, true);
     }
+
     /**
      * 
      * @return string contendo o html do mural de recados
@@ -181,10 +181,10 @@ class Home extends Principal_Controller {
 
         $video1 = new YoutubeVideoPanel($youtubeVideo2);
         $video2 = new YoutubeVideoPanel($youtubeVideo4);
-        
-        return $video1->getComponent().$video2->getComponent();
+
+        return $video1->getComponent() . $video2->getComponent();
     }
-    
+
     /**
      * 
      * @return string contendo o html do panel
@@ -193,10 +193,11 @@ class Home extends Principal_Controller {
         $panel = new RowWrapper1Panel($this->agenda());
         return $panel->getComponent();
     }
-    
-    private function agenda(){
+
+    private function agenda() {
         return $this->load->view('home/agenda_comp', '', true);
-    } 
+    }
+
     /**
      * 
      * @return string contendo o html do panel
@@ -205,9 +206,9 @@ class Home extends Principal_Controller {
         $panel = new RowWrapper1Panel($this->palavraDoPastor());
         return $panel->getComponent();
     }
-    
-    private function palavraDoPastor(){
+
+    private function palavraDoPastor() {
         return $this->load->view('home/palavraDoPastor_comp', '', true);
-    } 
+    }
 
 }

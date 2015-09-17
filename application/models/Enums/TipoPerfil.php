@@ -2,6 +2,8 @@
 
 namespace enums;
 
+require_once APPPATH. 'models/EntitiesModels/PerfilModel.php';
+
 /**
  * Description of TipoPerfil
  *
@@ -27,4 +29,8 @@ class TipoPerfil extends Enum {
     const MEMBRO = 16;
 
 //put your code here
+    
+     public function getReferencedModelEntity() {
+        return \PerfilModel::name;
+    }
 }

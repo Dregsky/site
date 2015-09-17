@@ -82,8 +82,8 @@ if (!function_exists('errorEmail')) {
 }
 if (!function_exists('successEmail')) {
 
-    function successEmail() {
-        success('Sucesso', 'Email enviado com sucesso!');
+    function successEmail($textAdicional = '') {
+        success('Sucesso', 'Email enviado com sucesso! '.$textAdicional);
     }
 
 }

@@ -74,7 +74,7 @@ class Pessoa extends AbstractEntity {
 
     /**
      *
-     * @var datetime
+     * @var \Datetime
      * 
      * @Column(type="datetime", nullable=true)
      */
@@ -82,7 +82,7 @@ class Pessoa extends AbstractEntity {
 
     /**
      *
-     * @var datetime
+     * @var \Datetime
      * 
      * @Column(type="datetime", nullable=true)
      */
@@ -239,7 +239,7 @@ class Pessoa extends AbstractEntity {
      *
      * @var date
      * 
-     * @Column(name="data_batismo_aguas", type="date", nullable=false)
+     * @Column(name="data_batismo_aguas", type="date", nullable=true)
      */
     private $dataBatismoAguas;
 
@@ -247,7 +247,7 @@ class Pessoa extends AbstractEntity {
      *
      * @var date
      * 
-     * @Column(name="data_batismo_espirito", type="date", nullable=false)
+     * @Column(name="data_batismo_espirito", type="date", nullable=true)
      */
     private $dataBatismoEspirito;
 
@@ -271,7 +271,7 @@ class Pessoa extends AbstractEntity {
      *
      * @var string
      * 
-     * @Column(name="nome_conjuge", type="string", length=100, nullable=false)
+     * @Column(name="nome_conjuge", type="string", length=100, nullable=true)
      */
     private $nomeConjuge;
 
@@ -279,7 +279,7 @@ class Pessoa extends AbstractEntity {
      *
      * @var date
      * 
-     * @Column(name="data_casamento", type="date", nullable=false)
+     * @Column(name="data_casamento", type="date", nullable=true)
      */
     private $dataCasamento;
 
@@ -287,7 +287,7 @@ class Pessoa extends AbstractEntity {
      *
      * @Column(name="qtd_filhos", type="integer", nullable=true)
      */
-    private $qtdFilho;
+    private $qtdFilhos;
 
     /**
      * 
@@ -425,8 +425,8 @@ class Pessoa extends AbstractEntity {
         return $this->dataCasamento;
     }
 
-    public function getQtdFilho() {
-        return $this->qtdFilho;
+    public function getQtdFilhos() {
+        return $this->qtdFilhos;
     }
 
     public function setPerfil(Perfil $perfil) {
@@ -459,17 +459,17 @@ class Pessoa extends AbstractEntity {
         return $this;
     }
 
-    public function setDataCadastro(datetime $dataCadastro) {
+    public function setDataCadastro(\Datetime $dataCadastro) {
         $this->dataCadastro = $dataCadastro;
         return $this;
     }
 
-    public function setDataExclusao(datetime $dataExclusao) {
+    public function setDataExclusao(\Datetime $dataExclusao) {
         $this->dataExclusao = $dataExclusao;
         return $this;
     }
 
-    public function setDataNascimento(date $dataNascimento) {
+    public function setDataNascimento(\Datetime $dataNascimento) {
         $this->dataNascimento = $dataNascimento;
         return $this;
     }
@@ -524,7 +524,7 @@ class Pessoa extends AbstractEntity {
         return $this;
     }
 
-    public function setDataEmissao(date $dataEmissao) {
+    public function setDataEmissao($dataEmissao) {
         $this->dataEmissao = $dataEmissao;
         return $this;
     }
@@ -554,17 +554,17 @@ class Pessoa extends AbstractEntity {
         return $this;
     }
 
-    public function setDataChegada(date $dataChegada) {
+    public function setDataChegada($dataChegada) {
         $this->dataChegada = $dataChegada;
         return $this;
     }
 
-    public function setDataBatismoAguas(date $dataBatismoAguas) {
+    public function setDataBatismoAguas($dataBatismoAguas) {
         $this->dataBatismoAguas = $dataBatismoAguas;
         return $this;
     }
 
-    public function setDataBatismoEspirito(date $dataBatismoEspirito) {
+    public function setDataBatismoEspirito($dataBatismoEspirito) {
         $this->dataBatismoEspirito = $dataBatismoEspirito;
         return $this;
     }
@@ -584,13 +584,13 @@ class Pessoa extends AbstractEntity {
         return $this;
     }
 
-    public function setDataCasamento(date $dataCasamento) {
+    public function setDataCasamento($dataCasamento) {
         $this->dataCasamento = $dataCasamento;
         return $this;
     }
 
-    public function setQtdFilho($qtdFilho) {
-        $this->qtdFilho = $qtdFilho;
+    public function setQtdFilho($qtdFilhos) {
+        $this->qtdFilhos = $qtdFilhos;
         return $this;
     }
 

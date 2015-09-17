@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 use enums\TipoStatus;
 use Entities\Status;
-use Entities\Testemunhos;
+use Entities\Testemunho as TestemunhoEntity;
 
 /**
  * @author Rafael Rocha <rafaeltbt@gmail.com>
@@ -28,6 +28,7 @@ class Testemunho extends Principal_Controller {
          * Includes de models
          */
         $this->load->model('EntitiesModels/TestemunhoModel');
+        $this->load->model('EntitiesModels/StatusModel');
         /**
          * Includes de components
          */
@@ -77,10 +78,9 @@ class Testemunho extends Principal_Controller {
     public function cadastrar() {
         $dados = $this->input->post();
         $dados['dataCadastro'] = new DateTime();
-        $dados['status'] = new Status(TipoStatus::AGUARDANDO_LIBERACAO);
-        $testemunho = new Testemunhos();
+        $dados['status'] = (new TipoStatus())->retrieveReferencedEntity(TipoStatus::AGUARDANDO_LIBERACAO);
+        $testemunho = new TestemunhoEntity();
         $testemunho->setAll($dados);
-        // die(var_dump($testemunho));
         $model = new TestemunhoModel();
         $model->saveOrUpdate($testemunho);
         success('Sucesso', 'Testemunho enviado com sucesso! Ele agora será avaliado para então ser postado.');
