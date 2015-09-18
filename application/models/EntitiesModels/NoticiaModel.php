@@ -69,7 +69,9 @@ class NoticiaModel extends Model {
         try {
             $repository = $this->em->getRepository($this->getEntity());
             $qtd1 = ($qtd == 0 ? NULL : $qtd);
-            $dep = $departamento == null ? new Departamento(DepartamentoEnum::IGREJA) : new Departamento($departamento);
+            $dep = $departamento == null ? 
+                    (new DepartamentoEnum())->retrieveReferencedEntity(DepartamentoEnum::IGREJA)
+                    : (new DepartamentoEnum())->retrieveReferencedEntity($departamento);
             $where = array(
                 'departamento' => $dep,
                 'status' => TipoStatus::ATIVO

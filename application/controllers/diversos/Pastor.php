@@ -40,15 +40,11 @@ class Pastor extends Principal_Controller {
      * @return string contendo o html do panel
      */
     public function falePage() {
-        $content = $this->load->view('diversos/faleComOPastor_comp', '', true);
-        $content = $content . $this->getScript();
+        $content = $this->load->view('diversos/faleComOPastor_form', '', true);
         $page = new SimplePage('Fale Com O Pastor', $content);
         return $page->getComponent();
     }
 
-    public function getScript() {
-        return "<script>$('.title-row-page').css('text-align', 'center')</script>";
-    }
 
     public function enviarEmail() {
         $emailPastor = 'rafaeltbt@gmail.com';

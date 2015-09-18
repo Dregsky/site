@@ -1431,11 +1431,20 @@ button.png {
     width: 196px;
     height: 38px;
 }
+
+.tabelaMembro td select[multiple]{
+    height: auto;
+}
+
 .tabelaMembro input{
     height: 30px;
     width: 300px;
 }
 .tabelaMembro input[type=file]{
+}
+
+.tabelaMembro input[type=date]{
+    width:200px;
 }
 
 .foto_click a{
@@ -1454,7 +1463,6 @@ button.png {
 
 .flickr-medium{
     width: 600px !important;
-    height: 400px !important;
 }
 
 #modalSlide{
@@ -1482,4 +1490,16 @@ button.png {
 #modalSlide .modal-header .close{
     color: white;
 }
+
+/**
+* Multiple Select
+*/
+.ms-container{
+    width: auto !important;
+}
+
+.ms-container li{
+    margin-left: 0px;
+}
+
 

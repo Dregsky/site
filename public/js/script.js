@@ -55,14 +55,6 @@ function mtel(v) {
     v = v.replace(/(\d)(\d{4})$/, "$1-$2");    //Coloca hífen entre o quarto e o quinto dígitos
     return v;
 }
-function id(el) {
-    return document.getElementById(el);
-}
-window.onload = function () {
-    id('telefone').onkeyup = function () {
-        mascara(this, mtel);
-    }
-}
 
 /**
  * Validação data maior
@@ -218,3 +210,20 @@ function carregaAlbum(foto) {
     $('#modalSlide h4').append(link.next().next().val());
     $('#modalSlide').modal('show');
 }
+
+/**
+ * Estilizando scroll slide
+ * @param {type} $
+ * @returns {undefined}
+ */
+(function ($) {
+    $(window).load(function () {
+
+        $("#modalSlide").mCustomScrollbar({
+            autoHideScrollbar: true,
+            setHeight: 600,
+            theme: "inset-2-dark"
+        });
+
+    });
+})(jQuery);

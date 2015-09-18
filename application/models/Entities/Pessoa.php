@@ -1,7 +1,10 @@
 <?php
 
 namespace Entities;
-require_once APPPATH.'models\Entities\AbstractEntity.php';
+
+require_once APPPATH . 'models\Entities\AbstractEntity.php';
+
+Use \Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Pessoa
@@ -15,6 +18,10 @@ class Pessoa extends AbstractEntity {
 
     const name = "Entities\Pessoa";
 
+    public function __construct() {
+        $this->departamentos = new ArrayCollection();
+    }
+
     /**
      *
      * @Id
@@ -22,6 +29,15 @@ class Pessoa extends AbstractEntity {
      * @Column(name="cod_pessoa", type="integer", nullable=false)
      */
     private $id;
+
+    /**
+     * @ManyToMany(targetEntity="Departamento", cascade={"persist","remove"})
+     * @JoinTable(name="tbl_pessoa_departamento",
+     *      joinColumns={@JoinColumn(name="cod_pessoa", referencedColumnName="cod_pessoa")},
+     *      inverseJoinColumns={@JoinColumn(name="cod_departamento", referencedColumnName="cod_departamento")})
+     * 
+     */
+    private $departamentos;
 
     /**
      *
@@ -220,15 +236,6 @@ class Pessoa extends AbstractEntity {
 
     /**
      *
-     * @var Departamento
-     * 
-     * @ManyToOne(targetEntity="Departamento", fetch="EAGER")
-     * @JoinColumn(name="cod_departamento", referencedColumnName="cod_departamento")
-     */
-    private $departamento;
-
-    /**
-     *
      * @var date
      * 
      * @Column(name="data_chegada", type="date", nullable=false)
@@ -393,10 +400,6 @@ class Pessoa extends AbstractEntity {
         return $this->estadoCivil;
     }
 
-    public function getDepartamento() {
-        return $this->departamento;
-    }
-
     public function getDataChegada() {
         return $this->dataChegada;
     }
@@ -427,6 +430,10 @@ class Pessoa extends AbstractEntity {
 
     public function getQtdFilhos() {
         return $this->qtdFilhos;
+    }
+
+    public function getDepartamentos() {
+        return $this->departamentos;
     }
 
     public function setPerfil(Perfil $perfil) {
@@ -549,11 +556,6 @@ class Pessoa extends AbstractEntity {
         return $this;
     }
 
-    public function setDepartamento(Departamento $departamento) {
-        $this->departamento = $departamento;
-        return $this;
-    }
-
     public function setDataChegada($dataChegada) {
         $this->dataChegada = $dataChegada;
         return $this;
@@ -591,6 +593,15 @@ class Pessoa extends AbstractEntity {
 
     public function setQtdFilho($qtdFilhos) {
         $this->qtdFilhos = $qtdFilhos;
+        return $this;
+    }
+
+    public function setDepartamentos($departamentos) {
+        if (is_array($departamentos)) {
+            foreach ($departamentos as $d) {
+                $this->departamentos->add($d);
+            }
+        }
         return $this;
     }
 

@@ -2,6 +2,8 @@
 
 namespace Entities;
 
+require_once APPPATH . 'models\Entities\AbstractEntity.php';
+
 /**
  * Description of Departamento
  *
@@ -13,10 +15,6 @@ namespace Entities;
 class Departamento extends AbstractEntity {
 
     const name = "Entities\Departamento";
-
-    public function __construct($id) {
-        $this->id = $id;
-    }
 
     /**
      *
@@ -52,6 +50,14 @@ class Departamento extends AbstractEntity {
     private $apelido;
 
     /**
+     *
+     * @var string
+     * 
+     * @Column(type="string", length=900, nullable=true)
+     */
+    private $agendaGoogle;
+
+    /**
      * Getters and Setters
      */
     public function getId() {
@@ -68,6 +74,10 @@ class Departamento extends AbstractEntity {
 
     public function getApelido() {
         return $this->apelido;
+    }
+
+    public function getAgendaGoogle() {
+        return $this->agendaGoogle;
     }
 
     public function setId($id) {
@@ -87,6 +97,11 @@ class Departamento extends AbstractEntity {
 
     public function setApelido($apelido) {
         $this->apelido = $apelido;
+        return $this;
+    }
+
+    public function setAgendaGoogle($agendaGoogle) {
+        $this->agendaGoogle = $agendaGoogle;
         return $this;
     }
 

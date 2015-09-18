@@ -56,7 +56,7 @@ class Membro extends Principal_Controller {
     public function cadastroPage(&$dados) {
         $this->retrieveSelectsList($dados);
         $this->initializeDados($dados);
-        $content = $this->load->view('diversos/cadastroMembro_comp', $dados, true);
+        $content = $this->load->view('diversos/cadastroMembro_form', $dados, true);
         $page = new SimplePage('Cadastro de Membro', $content);
         return $page->getComponent();
     }
@@ -66,7 +66,7 @@ class Membro extends Principal_Controller {
         $dados['profissoes'] = $this->prof->retrieveAll();
         $dados['estadoCivilList'] = $this->est->retrieveAll();
         $dados['funcaoList'] = $this->func->retrieveAll();
-        $dados['departamentos'] = $this->dep->retrieveAll();
+        $dados['departamentosList'] = $this->dep->retrieveAllSemIgreja();
     }
 
     private function initializeDados(&$dados) {
@@ -75,7 +75,7 @@ class Membro extends Principal_Controller {
             'bairro', 'cidade', 'email',
             'cidadeNatal', 'telefone', 'escolaridade',
             'profissao', 'rg', 'orgaoEmissor',
-            'estadoCivil', 'funcaoMinisterial', 'departamento',
+            'estadoCivil', 'funcaoMinisterial',
             'nomePai', 'nomeMae', 'nomeConjuge', 'qtdFilhos'
         );
         $datas = array(
@@ -83,6 +83,9 @@ class Membro extends Principal_Controller {
             'dataBatismoEspirito', 'dataBatismoAguas', 'dataChegada',
             'dataCasamento'
         );
+
+        $indexesArray = array('departamentos');
+        $this->setDadosArray($dados, $indexesArray);
         $this->setDados($dados, $indexes);
         $this->setDatasToString($dados, $datas);
     }
@@ -94,6 +97,18 @@ class Membro extends Principal_Controller {
             } else {
                 if ($dados[$index] instanceof Entities\AbstractEntity) {
                     $dados[$index] = $dados[$index]->getId();
+                }
+            }
+        }
+    }
+
+    private function setDadosArray(&$dados, $indexes) {
+        foreach ($indexes as $index) {
+            if (!isset($dados[$index])) {
+                $dados[$index] = array();
+            } else {
+                foreach ($dados[$index] as $i => $value) {
+                    $dados[$index][$i] = $value->getId();
                 }
             }
         }
@@ -112,17 +127,23 @@ class Membro extends Principal_Controller {
     }
 
     public function cadastrar() {
-        $dados = $this->input->post();
-        $dados = $this->processaDados($dados);
-        //var_dump($dados);
-        $this->validaCPF($dados);
-        $pessoa = new Pessoa();
-        $pessoa->setAll($dados);
-        $pessoaModel = new PessoaModel();
-        //var_dump($pessoa);
-        $pessoaModel->saveOrUpdate($pessoa);
-        success('Sucesso', 'Membro cadastrado com sucesso. Obrigado!');
-        redirect('diversos/membro/success');
+        try {
+            $dados = $this->input->post();
+            $dados = $this->processaDados($dados);
+//var_dump($dados);
+            $this->validaCPF($dados);
+            $pessoa = new Pessoa();
+            $pessoa->setAll($dados);
+            $pessoaModel = new PessoaModel();
+//var_dump($pessoa);
+            $pessoaModel->saveOrUpdate($pessoa);
+            success('Sucesso', 'Membro cadastrado com sucesso. Obrigado!');
+            redirect('diversos/membro/success');
+        } catch (Exception $e) {
+            error('ERRO', 'Erro ao tentar salvar!Tente Novamente mais tarde ou Contate o Administrador!');
+            $this->session->set_flashdata('membros', $dados);
+            redirect('diversos/membro/error');
+        }
     }
 
     private function processaDados($dados) {
@@ -134,14 +155,15 @@ class Membro extends Principal_Controller {
             'dataBatismoEspirito'
                 )
         );
-        $dados['cpf'] = preg_replace( '#[^0-9]#', '', $dados['cpf']);
+        $dados['cpf'] = preg_replace('#[^0-9]#', '', $dados['cpf']);
         $dados['fotoPessoa'] = $this->processaImagem($dados, 'fotoPessoa');
         $dados['dataCadastro'] = new DateTime();
         $dados['escolaridade'] = $this->esc->retrieve($dados['escolaridade']);
         $dados['profissao'] = $this->prof->retrieve($dados['profissao']);
         $dados['estadoCivil'] = $this->est->retrieve($dados['estadoCivil']);
         $dados['funcaoMinisterial'] = $this->func->retrieve($dados['funcaoMinisterial']);
-        $dados['departamento'] = $this->dep->retrieve($dados['departamento']);
+        array_push($dados['departamentos'], enums\DepartamentoEnum::IGREJA);
+        $dados['departamentos'] = $this->dep->retrieveByIds($dados['departamentos']);
         $dados['status'] = (new TipoStatus())->retrieveReferencedEntity(TipoStatus::ATIVO);
         $dados['perfil'] = (new TipoPerfil())->retrieveReferencedEntity(TipoPerfil::MEMBRO);
         return $dados;

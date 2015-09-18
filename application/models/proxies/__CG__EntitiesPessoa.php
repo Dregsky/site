@@ -195,12 +195,6 @@ class Pessoa extends \Entities\Pessoa implements \Doctrine\ORM\Proxy\Proxy
         return parent::getEstadoCivil();
     }
 
-    public function getDepartamento()
-    {
-        $this->__load();
-        return parent::getDepartamento();
-    }
-
     public function getDataChegada()
     {
         $this->__load();
@@ -247,6 +241,12 @@ class Pessoa extends \Entities\Pessoa implements \Doctrine\ORM\Proxy\Proxy
     {
         $this->__load();
         return parent::getQtdFilhos();
+    }
+
+    public function getDepartamentos()
+    {
+        $this->__load();
+        return parent::getDepartamentos();
     }
 
     public function setPerfil(\Entities\Perfil $perfil)
@@ -393,12 +393,6 @@ class Pessoa extends \Entities\Pessoa implements \Doctrine\ORM\Proxy\Proxy
         return parent::setEstadoCivil($estadoCivil);
     }
 
-    public function setDepartamento(\Entities\Departamento $departamento)
-    {
-        $this->__load();
-        return parent::setDepartamento($departamento);
-    }
-
     public function setDataChegada($dataChegada)
     {
         $this->__load();
@@ -447,6 +441,12 @@ class Pessoa extends \Entities\Pessoa implements \Doctrine\ORM\Proxy\Proxy
         return parent::setQtdFilho($qtdFilhos);
     }
 
+    public function setDepartamentos($departamentos)
+    {
+        $this->__load();
+        return parent::setDepartamentos($departamentos);
+    }
+
     public function __set($property, $value)
     {
         $this->__load();
@@ -474,7 +474,7 @@ class Pessoa extends \Entities\Pessoa implements \Doctrine\ORM\Proxy\Proxy
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'id', 'nome', 'login', 'senha', 'email', 'telefone', 'dataCadastro', 'dataExclusao', 'dataNascimento', 'cartaoMembro', 'fotoPessoa', 'cpf', 'cidadeNatal', 'rua', 'bairro', 'cidade', 'rg', 'orgaoEmissor', 'dataEmissao', 'dataChegada', 'dataBatismoAguas', 'dataBatismoEspirito', 'nomePai', 'nomeMae', 'nomeConjuge', 'dataCasamento', 'qtdFilhos', 'perfil', 'status', 'funcaoMinisterial', 'profissao', 'escolaridade', 'estadoCivil', 'departamento');
+        return array('__isInitialized__', 'id', 'nome', 'login', 'senha', 'email', 'telefone', 'dataCadastro', 'dataExclusao', 'dataNascimento', 'cartaoMembro', 'fotoPessoa', 'cpf', 'cidadeNatal', 'rua', 'bairro', 'cidade', 'rg', 'orgaoEmissor', 'dataEmissao', 'dataChegada', 'dataBatismoAguas', 'dataBatismoEspirito', 'nomePai', 'nomeMae', 'nomeConjuge', 'dataCasamento', 'qtdFilhos', 'departamentos', 'perfil', 'status', 'funcaoMinisterial', 'profissao', 'escolaridade', 'estadoCivil');
     }
 
     public function __clone()

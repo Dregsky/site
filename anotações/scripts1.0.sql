@@ -52,10 +52,12 @@ UPDATE `adcru732_adcruz`.`tbl_pessoa` SET `cod_estado_civil` = 1 WHERE `cod_esta
 ALTER TABLE `tbl_pessoa` ADD CONSTRAINT `fk_estado_civil` FOREIGN KEY ( `cod_estado_civil` ) 
 REFERENCES `tbl_estado_civil` ( `cod_estado_civil` ) ;
 
-UPDATE `adcru732_adcruz`.`tbl_pessoa` SET `cod_departamento` = 6 WHERE `cod_departamento` = 0;
+/*UPDATE `adcru732_adcruz`.`tbl_pessoa` SET `cod_departamento` = 6 WHERE `cod_departamento` = 0;
 
-ALTER TABLE `tbl_pessoa` ADD CONSTRAINT `fk_dapartamento` FOREIGN KEY ( `cod_departamento` ) 
-REFERENCES `tbl_departamento` ( `cod_departamento` ) ;
+#ALTER TABLE `tbl_pessoa` ADD CONSTRAINT `fk_departamento` FOREIGN KEY ( `cod_departamento` ) 
+#REFERENCES `tbl_departamento` ( `cod_departamento` ) ;
+*/
+ALTER TABLE `tbl_pessoa` DROP `cod_departamento`;
 
 UPDATE `tbl_pessoa` set `codPessoaExclusao` = null;
 ALTER TABLE `tbl_pessoa` DROP `codPessoaExclusao`;
@@ -76,7 +78,7 @@ ALTER TABLE `tbl_noticia` ENGINE = InnoDB;
 ALTER TABLE `tbl_noticia` CHANGE `cod_departamento` `cod_departamento` INT(11) NULL;
 
 SET FOREIGN_KEY_CHECKS=0;
-ALTER TABLE `tbl_noticia` ADD CONSTRAINT `fk_dapartamento` FOREIGN KEY ( `cod_departamento` ) 
+ALTER TABLE `tbl_noticia` ADD CONSTRAINT `fk1_departamento` FOREIGN KEY ( `cod_departamento` ) 
 REFERENCES `tbl_departamento` ( `cod_departamento` ) ;
 
 ALTER TABLE `tbl_noticia` ADD CONSTRAINT `fk_tipo` FOREIGN KEY ( `cod_tipo` ) 
@@ -152,6 +154,38 @@ WHERE `tbl_noticia`.`cod_perfil` = 14;
 UPDATE `adcru732_adcruz`.`tbl_noticia` SET `cod_departamento` = 1 
 WHERE `tbl_noticia`.`cod_perfil` = 9;
 
+UPDATE `adcru732_adcruz`.`tbl_departamento` SET `apelido` = 'EBD' WHERE `tbl_departamento`.`cod_departamento` = 7;
+
+UPDATE `adcru732_adcruz`.`tbl_departamento` SET `nomeCompleto` = 'CVKIDS', `apelido` = 'CVKIDS' 
+WHERE `tbl_departamento`.`cod_departamento` = 3; 
+UPDATE `adcru732_adcruz`.`tbl_departamento` SET `nomeCompleto` = 'Orquestra', `apelido` = 'Orquestra' 
+WHERE `tbl_departamento`.`cod_departamento` = 4; 
+UPDATE `adcru732_adcruz`.`tbl_departamento` SET `nomeCompleto` = 'CIBE', `apelido` = 'CIBE' 
+WHERE `tbl_departamento`.`cod_departamento` = 5; 
+UPDATE `adcru732_adcruz`.`tbl_departamento` SET `nomeDepartamento` = 'Geração de Davi', `nomeCompleto` = 'Ministério Geração de Davi', `apelido` = 'MGD' 
+WHERE `tbl_departamento`.`cod_departamento` = 6; 
+UPDATE `adcru732_adcruz`.`tbl_departamento` SET `nomeCompleto` = 'Igreja', `apelido` = 'ADCRUZ' 
+WHERE `tbl_departamento`.`cod_departamento` = 8; 
+UPDATE `adcru732_adcruz`.`tbl_departamento` SET `nomeCompleto` = 'Varões', `apelido` = 'Varoes' 
+WHERE `tbl_departamento`.`cod_departamento` = 9; 
+UPDATE `adcru732_adcruz`.`tbl_departamento` SET `nomeDepartamento` = 'Secretária', `nomeCompleto` = 'Secretária', `apelido` = 'Secretaria' 
+WHERE `tbl_departamento`.`cod_departamento` = 10; 
+UPDATE `adcru732_adcruz`.`tbl_departamento` SET `nomeCompleto` = 'Diretoria', `apelido` = 'Diretoria' 
+WHERE `tbl_departamento`.`cod_departamento` = 11;
+UPDATE `adcru732_adcruz`.`tbl_departamento` SET `nomeDepartamento` = 'Missões', `nomeCompleto` = 'Departamento de Missões', `apelido` = 'Missoes' 
+WHERE `tbl_departamento`.`cod_departamento` = 12;
+UPDATE `adcru732_adcruz`.`tbl_departamento` SET `nomeCompleto` = 'DataShow', `apelido` = 'DataShow'
+WHERE `tbl_departamento`.`cod_departamento` = 13;
+UPDATE `adcru732_adcruz`.`tbl_departamento` SET `nomeCompleto` = 'Som', `apelido` = 'Som' 
+WHERE `tbl_departamento`.`cod_departamento` = 14; 
+UPDATE `adcru732_adcruz`.`tbl_departamento` SET `nomeCompleto` = 'Obreiros', `apelido` = 'Obreiros' 
+WHERE `tbl_departamento`.`cod_departamento` = 15;
+
+INSERT INTO `adcru732_adcruz`.`tbl_departamento` (`cod_departamento`, `nomeDepartamento`, `nomeCompleto`, `apelido`) 
+VALUES (NULL, 'Família', 'Familia', 'Familia');
+
+ALTER TABLE `tbl_departamento` ADD `agendaGoogle` VARCHAR(900) CHARACTER SET utf8 COLLATE utf8_general_ci NULL ;
+
 
 /**
 * tbl_testemunho
@@ -186,3 +220,12 @@ REFERENCES `tbl_pessoa` ( `cod_pessoa` ) ;
 
 ALTER TABLE `tbl_album` CHANGE `codDepartamento` `codDepartamento` INT(11) NOT NULL DEFAULT '8';
 UPDATE `tbl_album` SET `codDepartamento`=8 WHERE 1;
+
+/**
+* tbl_pessoa_departamento
+*/
+SET FOREIGN_KEY_CHECKS=0;
+ALTER TABLE `tbl_pessoa_departamento` ADD CONSTRAINT `fk2_departamento` 
+FOREIGN KEY ( `cod_departamento` ) REFERENCES `tbl_departamento` ( `cod_departamento` ) ;
+ALTER TABLE `tbl_pessoa_departamento` ADD CONSTRAINT `fk_pessoa` FOREIGN KEY ( `cod_pessoa` ) 
+REFERENCES `tbl_pessoa` ( `cod_pessoa` ) ;

@@ -143,9 +143,9 @@ class Home extends Principal_Controller {
      * @return string contendo o html do panel
      */
     private function includePanel3() {
-        $col1 = $this->noticiaCol(DepartamentoEnum::ADOLESCENTES);
+        $col1 = $this->noticiaCol(DepartamentoEnum::ANG);
         $col2 = $this->noticiaCol(DepartamentoEnum::EBD);
-        $col3 = $this->noticiaCol(DepartamentoEnum::MOCIDADE);
+        $col3 = $this->noticiaCol(DepartamentoEnum::JTV);
         $indexCol = new IndexColsPanel($col1, $col2, $col3);
         $rowPanel = new RowPanel($indexCol->getComponent());
         return $rowPanel->getComponent();
@@ -195,7 +195,13 @@ class Home extends Principal_Controller {
     }
 
     private function agenda() {
-        return $this->load->view('home/agenda_comp', '', true);
+        $dados['agenda'] = '<iframe src="https://www.google.com/calendar/embed?title=Calend%C3%A1rio%20de%20Atividades%20ADCruz&amp;'
+                . 'showCalendars=0&amp;height=400&amp;wkst=1&amp;'
+                . 'hl=pt_BR&amp;bgcolor=%23FFFFFF&amp;src=69gj215aqna07lr9gv3bsv2dt0%40group.calendar.google.com&amp;'
+                . 'color=%23d9ce16&amp;ctz=America%2FSao_Paulo" '
+                . 'style=" border-width:0 " width="940" height="400" frameborder="0" scrolling="no">'
+                . '</iframe>';
+        return $this->load->view('components/agenda_comp', $dados, true);
     }
 
     /**

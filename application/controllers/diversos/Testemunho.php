@@ -3,7 +3,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 use enums\TipoStatus;
-use Entities\Status;
 use Entities\Testemunho as TestemunhoEntity;
 
 /**
@@ -70,7 +69,7 @@ class Testemunho extends Principal_Controller {
     }
 
     public function cadastro() {
-        $content = $this->load->view('diversos/testemunhoCadastro_comp', '', true);
+        $content = $this->load->view('diversos/testemunhoCadastro_form', '', true);
         $page = new SimplePage('Postar Testemunho', $content);
         return $page->getComponent();
     }

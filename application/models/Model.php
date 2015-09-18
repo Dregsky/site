@@ -57,7 +57,8 @@ abstract class Model extends CI_Model {
             $this->em->persist($entity);
             $this->em->flush();
         } catch (Exception $exc) {
-            echo $exc->getTraceAsString();
+            throw $exc;
+            
         }
     }
 
