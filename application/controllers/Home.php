@@ -217,4 +217,8 @@ class Home extends Principal_Controller {
         return $this->load->view('home/palavraDoPastor_comp', '', true);
     }
 
+    public function getMenuSelecionado() {
+        return 'principal';
+    }
+
 }

@@ -8,7 +8,7 @@ use Entities\Testemunho as TestemunhoEntity;
 /**
  * @author Rafael Rocha <rafaeltbt@gmail.com>
  */
-class Testemunho extends Principal_Controller {
+class Testemunho extends Diversos_Controller {
 
     /**
      * Método Construtor
@@ -64,7 +64,7 @@ class Testemunho extends Principal_Controller {
         $dados['next'] = $page + 1;
         $dados['prev'] = $page - 1;
         $dados['regPorPagina'] = $registrosPorPagina;
-        $dados['total'] = $testemunhoModel->countByStatus();
+        $dados['total'] = $testemunhoModel->countByStatus() - 1;
         return $dados;
     }
 

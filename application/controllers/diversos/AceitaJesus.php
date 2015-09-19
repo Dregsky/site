@@ -8,7 +8,7 @@ use Entities\AceitaJesus as Aceita;
  * @author Rafael Rocha <rafaeltbt@gmail.com>
  * @params $email Email
  */
-class AceitaJesus extends Principal_Controller {
+class AceitaJesus extends Diversos_Controller {
 
     /**
      * Método Construtor

@@ -14,12 +14,16 @@ Use Entities\Departamento;
 abstract class Departamento_Controller extends Site_Controller {
 
     const AGENDA = 'agenda';
+    const COORDENACAO = 'coordenacao';
 
     private $departamento;
+    private $menuSelecionado = '';
 
     abstract function getDepartamento();
 
     protected abstract function includeSlide();
+
+    protected abstract function getCoordenadores();
 
     public function __construct() {
         parent::__construct();
@@ -45,9 +49,15 @@ abstract class Departamento_Controller extends Site_Controller {
          */
         switch ($this->uri->segment(3)) {
             case $this::AGENDA:
+                $this->menuSelecionado = $this::AGENDA;
                 return $this->agenda();
 
+            case $this::COORDENACAO:
+                $this->menuSelecionado = $this::COORDENACAO;
+                return $this->coordenacao();
+
             default:
+                $this->menuSelecionado = 'principal';
                 $dados['slide'] = $this->includeSlide();
                 return $this->load->view('departamentos/home_page', $dados, true);
         }
@@ -62,6 +72,25 @@ abstract class Departamento_Controller extends Site_Controller {
         $panel = new RowWrapper1Panel($agendaPage);
         $page = new SimplePage('Agenda ' . $this->departamento->getNomeCompleto(), $panel->getComponent());
         return $page->getComponent();
+    }
+
+    public function coordenacao() {
+        $dados['pessoas'] = $this->getCoordenadores();
+        $cPage = $this->load->view('departamentos/coordenacao_comp', $dados, true);
+        $page = new SimplePage('Coordenação ' . $this->departamento->getNomeCompleto(), $cPage);
+        return $page->getComponent();
+    }
+
+    protected function getCoordenador($nome = '', $cargo = '', $foto = '') {
+        return array(
+            'nome' => $nome,
+            'cargo' => $cargo,
+            'foto' => $foto
+        );
+    }
+
+    function getMenuSelecionado() {
+        return $this->menuSelecionado;
     }
 
 }

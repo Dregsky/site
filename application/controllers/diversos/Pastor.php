@@ -6,7 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @author Rafael Rocha <rafaeltbt@gmail.com>
  * @params $email Email
  */
-class Pastor extends Principal_Controller {
+class Pastor extends Diversos_Controller {
 
     /**
      * Método Construtor

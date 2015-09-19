@@ -10,7 +10,7 @@ use Entities\Pessoa;
  * @author Rafael Rocha <rafaeltbt@gmail.com>
  * @params $
  */
-class Membro extends Principal_Controller {
+class Membro extends Diversos_Controller {
 
     /**
      * Método Construtor
@@ -234,6 +234,10 @@ class Membro extends Principal_Controller {
 
     public function success() {
         
+    }
+    
+    public function getMenuSelecionado() {
+        return 'cadastro';
     }
 
 }

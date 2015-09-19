@@ -39,4 +39,21 @@ class JTV extends Departamento_Controller {
         return (new DepartamentoModel())->retrieve(DepartamentoEnum::JTV);
     }
 
+    /*
+     * @Override
+     */
+
+    protected function getCoordenadores() {
+        return array(
+            $this->getCoordenador('Ir. Nome', 'Cargo1'),
+            $this->getCoordenador('Ir. Nome', 'Cargo1'),
+            $this->getCoordenador('Ir. Nome', 'Cargo1'),
+            $this->getCoordenador('Ir. Nome', 'Cargo1'),
+            $this->getCoordenador('Ir. Nome', 'Cargo1'),
+            $this->getCoordenador('Ir. Nome', 'Cargo1'),
+            $this->getCoordenador('Ir. Nome', 'Cargo1'),
+            $this->getCoordenador('Ir. Nome', 'Cargo1')
+        );
+    }
+
 }

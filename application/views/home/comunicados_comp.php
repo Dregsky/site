@@ -5,7 +5,7 @@ foreach ($comunicados as $comunicado):
     ?>
     <p>&bull;&nbsp;
         <?php echo $comunicado->getDataCadastro()->format('d/m/Y'); ?> - 
-        <a href="comunicados.php?cod_comunicado=<?php echo $comunicado->getId(); ?>">
+        <a href="<?=base_url('comunicado/'.$comunicado->getId()) ?>">
             <font color="#2e2e2e"><?php echo htmlentities($comunicado->getAssunto()); ?></font>
         </a>
         <?php

@@ -27,7 +27,6 @@ class EBD extends Departamento_Controller {
         
     }
 
-    
     protected function includeSlide() {
         $dados['banners'] = array(
             linkPath('#', 'ebd/EBD.960x268.png')
@@ -35,9 +34,26 @@ class EBD extends Departamento_Controller {
         return $this->load->view('components/slide_comp', $dados, true);
     }
 
-   public function getDepartamento() {
+    public function getDepartamento() {
         $this->load->model('EntitiesModels/DepartamentoModel');
         return (new DepartamentoModel())->retrieve(DepartamentoEnum::EBD);
+    }
+
+    /*
+     * @Override
+     */
+
+    protected function getCoordenadores() {
+        return array(
+            $this->getCoordenador('Ir. Nome', 'Cargo1'),
+            $this->getCoordenador('Ir. Nome', 'Cargo1'),
+            $this->getCoordenador('Ir. Nome', 'Cargo1'),
+            $this->getCoordenador('Ir. Nome', 'Cargo1'),
+            $this->getCoordenador('Ir. Nome', 'Cargo1'),
+            $this->getCoordenador('Ir. Nome', 'Cargo1'),
+            $this->getCoordenador('Ir. Nome', 'Cargo1'),
+            $this->getCoordenador('Ir. Nome', 'Cargo1')
+        );
     }
 
 }

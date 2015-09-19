@@ -26,7 +26,7 @@ class TestemunhoModel extends Model {
      * Tambem Recebe um objeto do tipo TipoStatus, caso esse objeto
      * seja null será filtrado por Status::LIBERADO
      * @param integer $qtd maxima de registros
-     * @return Entities\Mural (array)
+     * @return Entities\Testemunho (array)
      */
     public function retrieveUltimosByStatusAndPage($tipoStatus = null, $qtd = 0, $page = 0) {
         try {

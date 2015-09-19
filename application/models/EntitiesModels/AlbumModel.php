@@ -28,6 +28,24 @@ class AlbumModel extends Model {
             echo $exc->getTraceAsString();
         }
     }
+    
+    /**
+     * Método recebe a quantidade maxima de registros a serem
+     * retornado, caso não seja informado irá retornar todos
+     * registros;
+     * @param integer $qtd maxima de registros
+     * @return Album (array)
+     */
+    public function retrieveUltimos($qtd = 0) {
+        try {
+        $repository = $this->em->getRepository($this->getEntity());
+        $qtd = $qtd == 0 ? NULL : $qtd;
+        return $repository->findBy(array(), array('id' => 'desc'), $qtd);
+            
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
 
     /**
      * 

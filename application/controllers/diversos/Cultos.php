@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  * @author Rafael Rocha <rafaeltbt@gmail.com>
  */
-class Cultos extends Principal_Controller {
+class Cultos extends Diversos_Controller {
 
     /**
      * Método Construtor
@@ -112,6 +112,10 @@ class Cultos extends Principal_Controller {
             'Sexta da Vitória',
             'Consagração'
         );
+    }
+
+    public function getMenuSelecionado() {
+        return 'cultos';
     }
 
 }

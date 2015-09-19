@@ -40,5 +40,21 @@ class CVKIDS extends Departamento_Controller {
         $this->load->model('EntitiesModels/DepartamentoModel');
         return (new DepartamentoModel())->retrieve(DepartamentoEnum::CVKIDS);
     }
+    
+     /*
+     * @Override
+     */
+    protected function getCoordenadores() {
+        return array(
+            $this->getCoordenador('Ir. Nome', 'Cargo1'),
+            $this->getCoordenador('Ir. Nome', 'Cargo1'),
+            $this->getCoordenador('Ir. Nome', 'Cargo1'),
+            $this->getCoordenador('Ir. Nome', 'Cargo1'),
+            $this->getCoordenador('Ir. Nome', 'Cargo1'),
+            $this->getCoordenador('Ir. Nome', 'Cargo1'),
+            $this->getCoordenador('Ir. Nome', 'Cargo1'),
+            $this->getCoordenador('Ir. Nome', 'Cargo1')
+        );
+    }
 
 }

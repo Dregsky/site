@@ -21,6 +21,11 @@ class AjaxController extends CI_Controller {
         
     }
 
+    /**
+     * Recebe uma requisiaçãoa ajax.
+     * Criar uma nova pagina e retorna ela em forma de
+     * string concatenando com um script contido no custom_helper
+     */
     public function ajaxTestemunhoNewPage() {
         $data = $this->input->post();
         $dados = $this->getTestemunhos($data['pagina']);
@@ -37,7 +42,31 @@ class AjaxController extends CI_Controller {
         $dados['next'] = $page + 1;
         $dados['prev'] = $page - 1;
         $dados['regPorPagina'] = $registrosPorPagina;
-        $dados['total'] = $testemunhoModel->countByStatus();
+        $dados['total'] = $testemunhoModel->countByStatus() - 1;
+        return $dados;
+    }
+    
+    /**
+     * Recebe uma requisiaçãoa ajax.
+     * Criar uma nova pagina e retorna ela em forma de
+     * string concatenando com um script contido no custom_helper
+     */
+    public function ajaxNoticiaNewPage() {
+        $data = $this->input->post();
+        $dados = $this->getNoticias($data['pagina']);
+        $content = $this->load->view('diversos/noticiasCorpo_comp', $dados, true);
+        echo $content.scriptSetasScroll();
+    }
+    
+    public function getNoticias($page = 0) {
+        $this->load->model('EntitiesModels/NoticiaModel');
+        $model = new NoticiaModel();
+        $registrosPorPagina = 10;
+        $dados['noticias'] = $model->retrieveUltimosByStatusAndPage(TipoStatus::ATIVO, $registrosPorPagina, $page);
+        $dados['next'] = $page + 1;
+        $dados['prev'] = $page - 1;
+        $dados['regPorPagina'] = $registrosPorPagina;
+        $dados['total'] = $model->countByStatus() - 1;
         return $dados;
     }
 

@@ -14,6 +14,8 @@ abstract class Site_Controller extends CI_Controller {
 
     abstract function getCustomPage();
     
+    abstract function getMenuSelecionado();
+    
     /**
      * Constructor of Base Controller
      */
@@ -22,8 +24,17 @@ abstract class Site_Controller extends CI_Controller {
         date_default_timezone_set('America/Sao_Paulo');
         $dados['menu'] = $this->getMenu();
         $dados['customPage'] = $this->getCustomPage();
+        $dados['fotos'] = $this->getFooterFotos();
+        $dados['menuSelecionado'] = $this->getMenuSelecionado();
         $this->load->view('template_site', $dados);
         
+    }
+    
+    private function getFooterFotos(){
+        $this->load->model('EntitiesModels/AlbumModel');
+        $model = new AlbumModel();
+        $dados['albuns'] = $model->retrieveUltimos(2);
+        return $this->load->view('_inc/footer_fotos',$dados,true);
     }
     
 

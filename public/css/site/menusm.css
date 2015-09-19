@@ -57,7 +57,7 @@ ul.menusm { font-size:14px; line-height:14px;}
 #nav1 ul li ul li a { color:#fff; background:none; border-top:1px solid transparent; border-bottom:1px solid transparent; border-left:none; border-right:none;}
 #nav1 ul li ul li a.have_submenu { }																/* if item have submenu */
 #nav1 ul li ul li a:hover,
-#nav1 ul li ul li a.have_submenu_hover { color:#97AF71; text-decoration:none; background:#000 url(../images/submenu_a.gif) repeat-x left top; border-top:1px solid #fff; border-bottom:1px solid #fff;}
+#nav1 ul li ul li a.have_submenu_hover { color:#97AF71; text-decoration:none; background:#000; border-top:1px solid #fff; border-bottom:1px solid #fff;}
 #nav1 ul li ul li ul { top:-2px; left:170px;}		/* position of submenu level 2 */
 
 #nav1 * { z-index:100;}
@@ -69,3 +69,7 @@ ul.menusm li { cursor:pointer; position:relative;}
 ul.menusm li a { position:relative;}
 ul.menusm li ul { display:none; position:absolute; list-style:none;}
 ul.menusm li ul li ul { position:absolute; list-style:none;}
+
+#nav1 .active{
+     color:#fff; background-color:#97AF71; text-decoration:none;  border:1px solid white;
+}

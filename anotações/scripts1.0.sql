@@ -99,6 +99,8 @@ SET FOREIGN_KEY_CHECKS=0;
 ALTER TABLE `tbl_noticia` ADD CONSTRAINT `fk1_perfil` FOREIGN KEY ( `cod_perfil` ) 
 REFERENCES `tbl_perfil` ( `cod_perfil` ) ;
 
+UPDATE `tbl_noticia` SET `cod_status` = 3;
+
 /**
 * Scripts Comunicado tbl_comunicado
 */

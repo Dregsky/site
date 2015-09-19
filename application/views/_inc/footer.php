@@ -42,25 +42,8 @@
             </div>
 
             <div class="fcol3">
-                <h2>Galeria de Fotos</h2>
-                <a href="images/album/virada_de_ano/exibir_fotos.php?cod_album=14" title="" target="_blank">
-                    <img src="<?= base_url('public/images/album/virada_de_ano/exibir.jpg') ?>" alt="Sign of the times" width="75" height="75"/>
-                </a>
-                <a href="images/album/cruzada_15052010/exibir_fotos.php?cod_album=2" title="" target="_blank">
-                    <img src="<?= base_url('public/images/album/cruzada_15052010/exibir.jpg') ?>" alt="Another City Sunrise" width="75" height="75"/>
-                </a>
-                <a href="images/album/dia_com_Deus/exibir_fotos.php?cod_album=12" title="City Girl" target="_blank">
-                    <img src="<?= base_url('public/images/album/dia_com_Deus/exibir.jpg') ?>" alt="" width="75" height="75"/>
-                </a>
-                <a href="images/album/160_almas/exibir_fotos.php?cod_album=11" title="We Still Care" target="_blank">
-                    <img src="<?= base_url('public/images/album/160_almas/exibir.jpg') ?>" alt="" width="75" height="75"/>
-                </a>
-                <a href="images/album/orquestra_abertura_2010/exibir_fotos.php?cod_album=5" title="Artwork for Advanced Photoshop" target="_blank">
-                    <img src="<?= base_url('public/images/album/orquestra_abertura_2010/exibir.jpg') ?>" alt="" width="75" height="75"/>
-                </a>
-                <a href="images/album/cantata_2009/exibir_fotos.php?cod_album=1" title="shaun white" target="_blank">
-                    <img src="<?= base_url('public/images/album/cantata_2009/exibir.jpg') ?>" alt="" width="75" height="75"/>
-                </a>					
+                <a href="<?= base_url('diversos/fotos') ?>"><h2>Galeria de Fotos</h2></a>
+                <?= $fotos ?>
                 <!--p>Sed sit amet turpis nisl. Mauris digim euismod nibh <a href="#" class="readmore">more ...</a></p-->
             </div>
             <div class="clr"></div>
@@ -112,7 +95,16 @@
     <div class="clr"></div>
 
 </footer>
-<?= $this->load->view('components/modalSlide_comp','',true) ?>
+<input id="menuSelecionado" type="hidden" value="<?= $menuSelecionado ?>">
+<script>
+    $(document).ready(function () {
+        var menu = $("#menuSelecionado").val();
+        $("#"+menu).addClass('active');
+        
+    });
+</script>
+
+<?= $this->load->view('components/modalSlide_comp', '', true) ?>
 
 
 

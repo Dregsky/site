@@ -669,9 +669,9 @@ select { padding:1px;}
 
     width:179px; 
 
-    padding-left:80px; 
+    padding-left:57px; 
 
-    padding-right:80px;
+    padding-right:57px;
 
 }
 
@@ -679,7 +679,7 @@ select { padding:1px;}
 
 #footer .fcol3 { 
 
-    width:291px;
+    width: 336px;
 
 }
 
@@ -716,15 +716,6 @@ select { padding:1px;}
     border:none;
 
 }
-
-
-
-.img_noticia{
-
-    border: 8px solid transparent;
-
-}
-
 
 
 #footer .fcol1 .fnews a { 
@@ -1075,7 +1066,9 @@ select { padding:1px;}
 
 }
 
-
+/**
+* Página de Noticia
+*/
 
 .texto_interno_noticias{
 
@@ -1085,14 +1078,38 @@ select { padding:1px;}
 
     text-align:justify;
 
-    padding-left:30px;
+    padding-left:11px;
 
     padding-right:10px;
 
     padding-bottom:10px;
+    line-height:155%;
 
 }
 
+.title-noticia{
+    font-size: 18px;
+    padding: 4px 0px 0 12px;
+    text-align: left;
+    color:#45839C;
+}
+
+.noticia_fonte{
+    color:blue;
+}
+
+
+.img_noticia{
+
+    border: 4px solid transparent;
+    margin-left: 10px;
+    float: left;
+    padding-right: 10px;
+}
+
+.redes_sociais_botoes{
+    padding-bottom: 40px;
+}
 
 
 
@@ -1228,6 +1245,8 @@ button.png {
 
     padding: 5px 5px 5px 5px;
 
+    border-radius: 10px;
+
 }
 
 
@@ -1241,6 +1260,8 @@ button.png {
     background: #dcdcdc;
 
     padding: 5px 5px 5px 5px;
+
+    border-radius: 10px;
 
 }
 
@@ -1292,6 +1313,7 @@ button.png {
     text-align: center;
     display: table;
     width: 937px;
+    border-radius: 10px;
 }
 
 .col{
@@ -1462,7 +1484,14 @@ button.png {
 }
 
 .flickr-medium{
-    width: 600px !important;
+    max-width: 600px !important;
+    max-height: 480px;
+    height: auto;
+    width: auto;
+}
+
+#conteudoModal{
+    text-align: center;
 }
 
 #modalSlide{
@@ -1502,4 +1531,33 @@ button.png {
     margin-left: 0px;
 }
 
+/**
+* Css coordenação e diretoria col
+*/
+
+.col_coordenacao{
+    width: 160px;
+    float: left;
+    margin: 12px;
+}
+
+.col_coordenacao img{
+    border: solid 5px #95AE74;
+    width: 120px;
+    height: 150px;
+    border-radius: 10px;
+
+}
+
+.col_coordenacao h4{
+    color: black;
+}
+
+.col_coordenacao .underh4{
+    color: green;
+    font-weight: bold;
+}
+.index-cols_dirigentes{
+    margin-top: 50px;
+}
 

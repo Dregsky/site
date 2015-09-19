@@ -36,9 +36,26 @@ class Orquestra extends Departamento_Controller {
         return $this->load->view('components/slide_comp', $dados, true);
     }
 
-   public function getDepartamento() {
+    public function getDepartamento() {
         $this->load->model('EntitiesModels/DepartamentoModel');
         return (new DepartamentoModel())->retrieve(DepartamentoEnum::ORQUESTRA);
+    }
+
+    /*
+     * @Override
+     */
+
+    protected function getCoordenadores() {
+        return array(
+            $this->getCoordenador('Ir. Nome', 'Cargo1'),
+            $this->getCoordenador('Ir. Nome', 'Cargo1'),
+            $this->getCoordenador('Ir. Nome', 'Cargo1'),
+            $this->getCoordenador('Ir. Nome', 'Cargo1'),
+            $this->getCoordenador('Ir. Nome', 'Cargo1'),
+            $this->getCoordenador('Ir. Nome', 'Cargo1'),
+            $this->getCoordenador('Ir. Nome', 'Cargo1'),
+            $this->getCoordenador('Ir. Nome', 'Cargo1')
+        );
     }
 
 }

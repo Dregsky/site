@@ -39,5 +39,21 @@ class Missoes extends Departamento_Controller {
         return (new DepartamentoModel())->retrieve(DepartamentoEnum::MISSOES);
     }
 
+    /*
+     * @Override
+     */
+
+    protected function getCoordenadores() {
+        return array(
+            $this->getCoordenador('Ir. Nome', 'Cargo1'),
+            $this->getCoordenador('Ir. Nome', 'Cargo1'),
+            $this->getCoordenador('Ir. Nome', 'Cargo1'),
+            $this->getCoordenador('Ir. Nome', 'Cargo1'),
+            $this->getCoordenador('Ir. Nome', 'Cargo1'),
+            $this->getCoordenador('Ir. Nome', 'Cargo1'),
+            $this->getCoordenador('Ir. Nome', 'Cargo1'),
+            $this->getCoordenador('Ir. Nome', 'Cargo1')
+        );
+    }
 
 }

@@ -2,14 +2,14 @@
 
     <div class="fnews">
         <p>
-            <img style="float: left" class="img_noticia"
+            <img style="float: left; margin-top: 40px;" class="img_noticia"
                  src="<?= base_url('public/images/adcruz2.jpg') ?>" 
                  width="304" height="218" alt="<?php echo htmlentities("História ADCruz") ?>" />
         </p>
 
         <h2 style="padding: 0 0 0 35%"><?php echo htmlentities("Assembleia de Deus do Cruzeiro") ?></h2>
 
-        <p class="texto_interno_noticias" style="line-height:170%; text-indent:20px;">
+        <p class="texto_interno_noticias" style="line-height:170%;">
             <?php echo htmlentities("A Igreja Evangélica Assembléia de Deus, atualmente situada à Quadra 07, Área Especial 01, Cruzeiro Velho, DF, 
                 teve seus trabalhos de evangelização principiados no início da década de 60, em um Ponto de Pregação na 
                 Quadra 16 casa 12 do então Bairro do Gavião (atual Cruzeiro), na residência dos irmãos conhecidos como 

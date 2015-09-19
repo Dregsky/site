@@ -39,4 +39,17 @@ class ANG extends Departamento_Controller {
         return (new DepartamentoModel())->retrieve(DepartamentoEnum::ANG);
     }
 
+    protected function getCoordenadores() {
+        return array(
+            $this->getCoordenador('Ir. Nome','Cargo1'),
+            $this->getCoordenador('Ir. Nome','Cargo1'),
+            $this->getCoordenador('Ir. Nome','Cargo1'),
+            $this->getCoordenador('Ir. Nome','Cargo1'),
+            $this->getCoordenador('Ir. Nome','Cargo1'),
+            $this->getCoordenador('Ir. Nome','Cargo1'),
+            $this->getCoordenador('Ir. Nome','Cargo1'),
+            $this->getCoordenador('Ir. Nome','Cargo1')
+        );
+    }
+
 }

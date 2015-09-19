@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  * @author Rafael Rocha <rafaeltbt@gmail.com>
  */
-class Estudos extends Principal_Controller {
+class Estudos extends Diversos_Controller {
 
     /**
      * Método Construtor

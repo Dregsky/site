@@ -9,7 +9,7 @@ use Entities\Testemunho as TestemunhoEntity;
 /**
  * @author Rafael Rocha <rafaeltbt@gmail.com>
  */
-class Fotos extends Principal_Controller {
+class Fotos extends Diversos_Controller {
 
     /**
      * Método Construtor
@@ -73,6 +73,10 @@ class Fotos extends Principal_Controller {
         $content = $this->load->view('diversos/testemunhoCadastro_comp', '', true);
         $page = new SimplePage('Postar Testemunho', $content);
         return $page->getComponent();
+    }
+    
+    public function getMenuSelecionado() {
+        return 'fotos';
     }
 
 }

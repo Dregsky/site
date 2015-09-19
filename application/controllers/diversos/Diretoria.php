@@ -5,12 +5,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  * @author Rafael Rocha <rafaeltbt@gmail.com>
  */
-class Historia extends Principal_Controller {
+class Diretoria extends Diversos_Controller {
 
     /**
      * Método Construtor
      */
-    public function Historia() {
+    public function Diretoria() {
         parent::__construct();
     }
 
@@ -29,7 +29,7 @@ class Historia extends Principal_Controller {
         /**
          * criação de panels
          */
-        $dados['panel1'] = $this->historiaPage();
+        $dados['panel1'] = $this->diretoriaPage();
 
         return $this->load->view('components/page/simple_page', $dados, true);
     }
@@ -38,10 +38,14 @@ class Historia extends Principal_Controller {
      * 
      * @return string contendo o html do panel
      */
-    public function historiaPage() {
-        $content = $this->load->view('historia/historia_comp', '', true);
-        $page = new SimplePage('História', $content);
+    public function diretoriaPage() {
+        $content = $this->load->view('diversos/diretoria_comp', '', true);
+        $page = new SimplePage('Diretoria', $content);
         return $page->getComponent();
+    }
+
+    public function getMenuSelecionado() {
+        return 'diretoria';
     }
 
 }

@@ -1,9 +1,9 @@
 jQuery(document).ready(function($){
 
     // menu smothness
-    $('.menusm li').click(function() {
-      window.location = $(this).find('a:first').attr('href');
-    });
+//    $('.menusm li').click(function() {
+//      window.location = $(this).find('a:first').attr('href');
+//    });
     var dropdown_level = 0;
     $('.menusm li ul').parent().find('a:first').addClass('have_submenu');
     $('.menusm').children('li').children('a').addClass('top_level');
