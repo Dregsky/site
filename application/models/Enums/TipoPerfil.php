@@ -11,8 +11,8 @@ require_once APPPATH. 'models/EntitiesModels/PerfilModel.php';
  */
 class TipoPerfil extends Enum {
 
-    const ADMINISTRADOR_1 = 1;
-    const ADMINISTRADOR_2 = 2;
+    const SUPER_ADMINISTRADOR = 1;
+    const ADMINISTRADOR = 2;
     const JORNALISTA = 3;
     const SECRETARIO = 4;
     const TESOUREIRO = 5;

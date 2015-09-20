@@ -31,6 +31,27 @@ class PessoaModel extends Model {
             echo $exc->getTraceAsString();
         }
     }
+    
+     /**
+     * 
+     * @param String login e senha
+     * @return Pessoa encontrada
+     */
+    public function login($login, $senha) {
+        try {
+            $dql = "SELECT p.nome, p.fotoPessoa as foto, p.id, pf.id as perfil, pf.descricao as nomePerfil "
+                    . "FROM " . $this->getEntity() . " p join p.perfil pf"
+                    . " WHERE p.login = :login and p.senha = :senha";
+            $query = $this->em->createQuery($dql);
+            $query->setParameter("login", $login);
+            $query->setParameter("senha", $senha);
+            $query->execute();
+            return $query->getResult();
+        } catch (Exception $exc) {
+            throw $exc;
+        }
+    }
+
 
     /**
      * 

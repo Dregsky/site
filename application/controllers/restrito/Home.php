@@ -8,23 +8,27 @@ Use Entities\Pessoa as Pessoa;
  * 
  * @author Rafael Rocha <rafaeltbt@gmail.com>
  */
-class Home extends Base_Controller {
+class Home extends Restrito_Controller {
 
     /**
      * Método Construtor
      */
     public function __construct() {
         parent::__construct();
-        $this->load->model('home_model', 'homeModel');
     }
 
     /**
      * @property Pessoa $pessoa 
      */
     public function index() {
-        $estado = $this->homeModel->retrieve(Entities\EstadoCivil::name, 2);
-        $dados['perfil'] = $estado;
-        $this->load->view('welcome_message', $dados);
+    }
+
+    protected function getMenuAtivo() {
+        return 'home';
+    }
+
+    protected function getContent() {
+        return $this->load->view('restrito/home','',true);
     }
 
 }

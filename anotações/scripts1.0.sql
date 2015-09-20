@@ -231,3 +231,10 @@ ALTER TABLE `tbl_pessoa_departamento` ADD CONSTRAINT `fk2_departamento`
 FOREIGN KEY ( `cod_departamento` ) REFERENCES `tbl_departamento` ( `cod_departamento` ) ;
 ALTER TABLE `tbl_pessoa_departamento` ADD CONSTRAINT `fk_pessoa` FOREIGN KEY ( `cod_pessoa` ) 
 REFERENCES `tbl_pessoa` ( `cod_pessoa` ) ;
+
+/*
+* tbl_perfil
+*/
+
+UPDATE `adcru732_adcruz`.`tbl_perfil` SET `descricao` = 'Super Administrador' WHERE `tbl_perfil`.`cod_perfil` = 1;
+UPDATE `adcru732_adcruz`.`tbl_perfil` SET `descricao` = 'Administrador' WHERE `tbl_perfil`.`cod_perfil` = 2;

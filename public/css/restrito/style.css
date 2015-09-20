@@ -1,0 +1,53 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 19/09/2015, 17:52:25
+    Author     : Rafael Rocha <rafaeltbt@gmail.com>
+*/
+
+.user-panel>.image>img {
+    min-height: 30px;
+}
+
+.login-logo{
+    //background: url('../../images/logo/logo_adcruz_final.png') no-repeat 0px 0px;
+    //background-size: 50px;
+}
+.login-box-body{
+    border: solid !important;
+}
+
+.btn-black{
+    background-color:black !important;
+    border:solid 2px #6A6D6A !important;
+}
+.btn-black:hover{
+    background-color:black !important;
+    opacity: 0.7;
+}
+
+.box1{
+    background: #367FA9  !important;
+    color:#fff !important;
+    border-radius: 20px !important;
+}
+.box1 .even{
+    color: #fff !important;
+    background-color: #C7C7C7 !important;
+}
+
+.rowHead{
+    color:#fff !important;
+    background-color: #000 !important;
+}
+.pagination>.active>a{
+    background-color: #020202 !important;
+    border-color: #040404 !important;
+}
+
+.content-wrapper{
+    min-height: auto !important;
+}
