@@ -6,7 +6,7 @@
             echo process_alert($alert);
         }
         ?>
-        <?= form_open('diversos/pastor/enviarEmail', 'id="contact"'); ?>
+        <?= form_open('diversos/Pastor/enviarEmail', 'id="contact"'); ?>
         <fieldset>
             <label>Nome:<span class="required">*</span></label>
             <div>

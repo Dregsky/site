@@ -35,13 +35,13 @@ function entitiesLoadAll() {
  * @return void
  */
 function enumLoad() {
-    $diretorio = APPPATH . "models\Enums";
+    $diretorio = APPPATH . "models/Enums";
     $arrayExcecoes = array();
     if ($handle = opendir($diretorio)) {
         while (false !== ($file = readdir($handle))) {
             if (strpos($file, ".php")) { // * Só inclui arquivos PHP
                 if (!in_array($file, $arrayExcecoes)) {
-                    require_once $diretorio . "\\" . $file;
+                    require_once $diretorio . "/" . $file;
                 }
             }
         }

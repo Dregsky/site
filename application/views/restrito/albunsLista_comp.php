@@ -7,7 +7,8 @@
     </h1>
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i>Fotos</a></li>
-        <li class="active">Albuns</li>
+        <li>Albuns</li>
+        <li class="active">Mantem</li>
     </ol>
 </section>
 
@@ -16,7 +17,7 @@
         <div class="col-xs-12">
             <div class="box box1">
                 <div class="box-header">
-                    <h3 class="box-title"><a class="btn btn-primary btn-black" href="<?=base_url('restrito/fotos/mantemAlbum')?>">Novo Album</a></h3>
+                    <h3 class="box-title pull-right"><a class="btn btn-default" href="<?= base_url('restrito/fotos/albumMantem') ?>">Novo Album</a></h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                     <table id="dataTable" class="table table-bordered table-striped">
@@ -31,17 +32,20 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php if(!empty($albuns)):?>
-                            <?php foreach ($albuns as $a): ?>
-                                <tr class="row1">
-                                    <td><?= $a->getId() ?></td>
-                                    <td><?= $a->getNomeAlbum() ?></td>
-                                    <td><?= $a->getAnoAlbum() ?></td>
-                                    <td><?= $a->getDataCadastro()->format('d/m/Y') ?></td>
-                                    <td><?= $a->getStatus()->getDescricao() ?></td>
-                                    <td></td>
-                                </tr>
-                            <?php endforeach; ?>
+                            <?php if (!empty($albuns)): ?>
+                                <?php foreach ($albuns as $a): ?>
+                                    <tr class="row1">
+                                        <td><?= $a->getId() ?></td>
+                                        <td><?= $a->getNomeAlbum() ?></td>
+                                        <td><?= $a->getAnoAlbum() ?></td>
+                                        <td><?= $a->getDataCadastro()->format('d/m/Y') ?></td>
+                                        <td><?= $a->getStatus()->getDescricao() ?></td>
+                                        <td>
+                                            <a class="glyphicon glyphicon-pencil" href="<?= base_url('restrito/fotos/albumMantem/'.$a->getId())?>">
+                                            </a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
                             <?php endif; ?>
                         </tbody>
                     </table>

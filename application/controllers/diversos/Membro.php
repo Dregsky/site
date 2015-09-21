@@ -5,6 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 use enums\TipoPerfil;
 use enums\TipoStatus;
 use Entities\Pessoa;
+use Entities\AbstractEntity;
 
 /**
  * @author Rafael Rocha <rafaeltbt@gmail.com>
@@ -71,7 +72,7 @@ class Membro extends Diversos_Controller {
 
     private function initializeDados(&$dados) {
         $indexes = array(
-            'nome', 'cpf', 'rua',
+            'nome', 'cpf', 'rua','genero',
             'bairro', 'cidade', 'email',
             'cidadeNatal', 'telefone', 'escolaridade',
             'profissao', 'rg', 'orgaoEmissor',
@@ -95,7 +96,7 @@ class Membro extends Diversos_Controller {
             if (!isset($dados[$index])) {
                 $dados[$index] = '';
             } else {
-                if ($dados[$index] instanceof Entities\AbstractEntity) {
+                if ($dados[$index] instanceof AbstractEntity) {
                     $dados[$index] = $dados[$index]->getId();
                 }
             }
@@ -135,7 +136,7 @@ class Membro extends Diversos_Controller {
             $pessoa = new Pessoa();
             $pessoa->setAll($dados);
             $pessoaModel = new PessoaModel();
-//var_dump($pessoa);
+            //var_dump($pessoa);
             $pessoaModel->saveOrUpdate($pessoa);
             success('Sucesso', 'Membro cadastrado com sucesso. Obrigado!');
             redirect('diversos/membro/success');

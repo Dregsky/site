@@ -1,6 +1,9 @@
+<?php
+$imageProfile = imagemProfileRestrito($this->session->userdata('genero'), $this->session->userdata('foto'));
+?>
 <header class="main-header">
     <!-- Logo -->
-    <a href="<?=base_url('restrito/home')?>" class="logo">
+    <a href="<?= base_url('restrito/home') ?>" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><img src="<?= base_url('public/images/logo/logo_adcruz_final.png') ?>" width="50"></span>
         <!-- logo for regular state and mobile devices -->
@@ -18,13 +21,13 @@
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="<?= base_url('public/images/membros/' . $this->session->userdata('foto')) ?>" class="user-image" alt="User Image">
+                        <img src="<?= $imageProfile ?>" class="user-image" alt="User Image">
                         <span class="hidden-xs"><?= $this->session->userdata('nome') ?></span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header">
-                            <img src="<?= base_url('public/images/membros/' . $this->session->userdata('foto')) ?>" 
+                            <img src="<?= $imageProfile ?>" 
                                  class="img-circle" alt="<?= $this->session->userdata('nome') ?>">
                             <p>
                                 <?= $this->session->userdata('nome') ?>

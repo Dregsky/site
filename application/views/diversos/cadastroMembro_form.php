@@ -40,14 +40,23 @@
         </tr>
         <tr>
             <td>Cidade Natal*</td>
-            <td colspan="2">Telefone*</td>
+            <td>Telefone*</td>
+            <td>Gênero*</td>
         </tr>
         <tr height="50" valign="top">
             <td>
                 <input type="text" name="cidadeNatal" size="20" value="<?= $cidadeNatal ?>" required>
             </td>
-            <td colspan="2">
+            <td>
                 <input id="telefone" type="text" name="telefone" value="<?= $telefone ?>" maxlength="15" required>
+            </td>
+
+            <td>
+                <select name="genero" required>
+                    <option value=""></option>
+                    <option value="M" <?= $genero == 'M' ? ' selected' : ''?>>Masculino</option>
+                    <option value="F" <?= $genero == 'F' ? ' selected' : ''?>>Feminino</option>
+                </select>
             </td>
         </tr>
         <tr>
@@ -160,7 +169,7 @@
                     <option value="<?= enums\DepartamentoEnum::IGREJA ?>" disabled="disabled" selected>Igreja</option>
                     <?php var_dump($departamentos); ?>
                     <?php foreach ($departamentosList as $d): ?>
-                        <option value=<?= $d->getId() ?><?= (in_array($d->getId(),$departamentos)) ? ' selected' : '' ?>>
+                        <option value=<?= $d->getId() ?><?= (in_array($d->getId(), $departamentos)) ? ' selected' : '' ?>>
                             <?= $d->getNomeDepartamento(); ?>
                         </option>
                     <?php endforeach; ?>>

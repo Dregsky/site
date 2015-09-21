@@ -15,6 +15,7 @@ class AjaxController extends CI_Controller {
      */
     public function AjaxController() {
         parent::__construct();
+        enumLoad();
     }
 
     public function index() {
@@ -30,22 +31,21 @@ class AjaxController extends CI_Controller {
         $data = $this->input->post();
         $dados = $this->getTestemunhos($data['pagina']);
         $content = $this->load->view('diversos/testemunhoCorpo_comp', $dados, true);
-        echo $content.scriptSetasScroll();
+        echo $content . scriptSetasScroll();
     }
 
     public function getTestemunhos($page = 0) {
         $this->load->model('EntitiesModels/TestemunhoModel');
         $testemunhoModel = new TestemunhoModel();
         $registrosPorPagina = 4;
-        $dados['testemunhos'] = $testemunhoModel->retrieveUltimosByStatusAndPage(TipoStatus::LIBERADO, 
-                $registrosPorPagina, $page);
+        $dados['testemunhos'] = $testemunhoModel->retrieveUltimosByStatusAndPage(TipoStatus::LIBERADO, $registrosPorPagina, $page);
         $dados['next'] = $page + 1;
         $dados['prev'] = $page - 1;
         $dados['regPorPagina'] = $registrosPorPagina;
         $dados['total'] = $testemunhoModel->countByStatus() - 1;
         return $dados;
     }
-    
+
     /**
      * Recebe uma requisiaçãoa ajax.
      * Criar uma nova pagina e retorna ela em forma de
@@ -55,9 +55,9 @@ class AjaxController extends CI_Controller {
         $data = $this->input->post();
         $dados = $this->getNoticias($data['pagina']);
         $content = $this->load->view('diversos/noticiasCorpo_comp', $dados, true);
-        echo $content.scriptSetasScroll();
+        echo $content . scriptSetasScroll();
     }
-    
+
     public function getNoticias($page = 0) {
         $this->load->model('EntitiesModels/NoticiaModel');
         $model = new NoticiaModel();
@@ -69,6 +69,5 @@ class AjaxController extends CI_Controller {
         $dados['total'] = $model->countByStatus() - 1;
         return $dados;
     }
-
 
 }

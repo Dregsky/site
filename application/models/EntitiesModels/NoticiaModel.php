@@ -6,7 +6,6 @@ Use Entities\Noticia;
 Use enums\TipoNoticia;
 Use enums\TipoStatus;
 Use enums\DepartamentoEnum;
-Use Entities\Departamento;
 Use Entities\Status;
 
 /*
@@ -70,9 +69,10 @@ class NoticiaModel extends Model {
         try {
             $repository = $this->em->getRepository($this->getEntity());
             $qtd1 = ($qtd == 0 ? NULL : $qtd);
+            $d = new DepartamentoEnum();
             $dep = $departamento == null ? 
-                    (new DepartamentoEnum())->retrieveReferencedEntity(DepartamentoEnum::IGREJA)
-                    : (new DepartamentoEnum())->retrieveReferencedEntity($departamento);
+                    $d->retrieveReferencedEntity(DepartamentoEnum::IGREJA)
+                    : $d->retrieveReferencedEntity($departamento);
             $where = array(
                 'departamento' => $dep,
                 'status' => TipoStatus::ATIVO

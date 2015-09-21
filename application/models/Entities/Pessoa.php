@@ -2,8 +2,6 @@
 
 namespace Entities;
 
-require_once APPPATH . 'models\Entities\AbstractEntity.php';
-
 Use \Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -29,6 +27,14 @@ class Pessoa extends AbstractEntity {
      * @Column(name="cod_pessoa", type="integer", nullable=false)
      */
     private $id;
+
+    /**
+     *
+     * @var string
+     * 
+     * @Column(type="string", length=1, nullable=true)
+     */
+    private $genero;
 
     /**
      * @ManyToMany(targetEntity="Departamento", cascade={"persist","remove"})
@@ -602,6 +608,20 @@ class Pessoa extends AbstractEntity {
                 $this->departamentos->add($d);
             }
         }
+        return $this;
+    }
+
+    public function getGenero() {
+        return $this->genero;
+    }
+
+    public function setGenero($genero) {
+        $this->genero = $genero;
+        return $this;
+    }
+
+    public function setQtdFilhos($qtdFilhos) {
+        $this->qtdFilhos = $qtdFilhos;
         return $this;
     }
 

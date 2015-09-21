@@ -40,7 +40,7 @@ class CultoNoLar extends Diversos_Controller {
      * @return string contendo o html do panel
      */
     public function cultoPage() {
-        $content = $this->load->view('diversos/cultoNoLar_comp', '', true);
+        $content = $this->load->view('diversos/cultoNoLar_form', '', true);
         $page = new SimplePage('Agende seu culto', $content);
         return $page->getComponent();
     }
@@ -48,8 +48,8 @@ class CultoNoLar extends Diversos_Controller {
     public function enviarEmail() {
         $emailDestino = array(
             'rafaeltbt@gmail.com',
-            'email@teste.com',
-            'email@email.com');
+            'adcruz.net@gmail.com',
+            'inaelfernando@gmail.com');
         $dados = $this->input->post();
 
         $config['mailtype'] = 'html';
@@ -71,7 +71,7 @@ class CultoNoLar extends Diversos_Controller {
         } else {
             errorEmail();
         }
-        redirect('diversos/cultonolar');  
+        redirect('diversos/CultoNoLar');  
     }
 
 }

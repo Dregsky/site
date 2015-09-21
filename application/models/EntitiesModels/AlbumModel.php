@@ -8,7 +8,7 @@ Use enums\DepartamentoEnum;
 /**
  * Description of AlbumModel
  * Model from:
- * @var Comunicado
+ * @var Album
  * 
  * @author Rafael Rocha <rafaeltbt@gmail.com>
  */
@@ -70,6 +70,25 @@ class AlbumModel extends Model {
             return $repository->findBy($where, array('anoAlbum' => 'desc'));
         } catch (Exception $exc) {
             echo $exc->getTraceAsString();
+        }
+    }
+    
+    /**
+     * Método recebe id e retorna dados
+     * @param integer $id 
+     * @return Album (array)
+     */
+    public function retrieveArrayById($id) {
+        try {
+            $dql = "SELECT a.nomeAlbum, a.nomeEvento, a.flickr, a.anoAlbum, a.quantidadeFotos, s.id as status,"
+                    . " d.id as departamento , a.dataCadastro "
+                    ." FROM ".$this->getEntity()." a join a.status s join a.departamento d"
+                    ." WHERE a.id = :id";
+            $query = $this->em->createQuery($dql);
+            $query->setParameter('id', $id);
+            return $query->getSingleResult();
+        } catch (Exception $exc) {
+            throw $exc;
         }
     }
 

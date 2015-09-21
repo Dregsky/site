@@ -11,7 +11,7 @@
         ?>
         <div class="index-col1_fotos">
             <?php $flickr = $a->getFlickr(); 
-                   $title = utf8_decode($a->getNomeAlbum());
+                   $title = $a->getNomeAlbum();
             ?>
             <div class="foto_click" onclick='carregaAlbum(this)'>
                 <p class="titulo_fotos"> <?= limitaTexto($title, 25) ?></p>

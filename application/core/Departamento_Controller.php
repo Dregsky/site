@@ -31,7 +31,7 @@ abstract class Departamento_Controller extends Site_Controller {
 
     public function getMenu() {
         $this->departamento = $this->getDepartamento();
-        $dados['departamento'] = strtolower($this->departamento->getApelido());
+        $dados['departamento'] = $this->departamento->getApelido();
         return $this->load->view('_inc/menuDepartamentos', $dados, true);
     }
 

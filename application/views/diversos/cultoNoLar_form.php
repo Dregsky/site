@@ -6,7 +6,7 @@
             echo process_alert($alert);
         }
         ?>
-        <?= form_open('diversos/cultonolar/enviarEmail', 'id="contact" onsubmit="return validaDataMaiorAtual()"'); ?>
+        <?= form_open('diversos/CultoNoLar/enviarEmail', 'id="contact" onsubmit="return validaDataMaiorAtual()"'); ?>
         <fieldset>
             <label>Nome:<span class="required">*</span></label>
             <div>

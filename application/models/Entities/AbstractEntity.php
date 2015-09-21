@@ -42,7 +42,7 @@ abstract class AbstractEntity {
     }
 
     public function toArray() {
-        $array = [];
+        $array = array();
 
         foreach ($this as $k => &$v) {
             $array[$k] = $v;

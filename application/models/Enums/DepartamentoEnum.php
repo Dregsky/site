@@ -2,8 +2,6 @@
 
 namespace enums;
 
-require_once APPPATH. 'models/EntitiesModels/DepartamentoModel.php';
-
 /**
  * Description of Departamento
  *

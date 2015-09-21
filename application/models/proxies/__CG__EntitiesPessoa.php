@@ -447,6 +447,24 @@ class Pessoa extends \Entities\Pessoa implements \Doctrine\ORM\Proxy\Proxy
         return parent::setDepartamentos($departamentos);
     }
 
+    public function getGenero()
+    {
+        $this->__load();
+        return parent::getGenero();
+    }
+
+    public function setGenero($genero)
+    {
+        $this->__load();
+        return parent::setGenero($genero);
+    }
+
+    public function setQtdFilhos($qtdFilhos)
+    {
+        $this->__load();
+        return parent::setQtdFilhos($qtdFilhos);
+    }
+
     public function __set($property, $value)
     {
         $this->__load();
@@ -474,7 +492,7 @@ class Pessoa extends \Entities\Pessoa implements \Doctrine\ORM\Proxy\Proxy
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'id', 'nome', 'login', 'senha', 'email', 'telefone', 'dataCadastro', 'dataExclusao', 'dataNascimento', 'cartaoMembro', 'fotoPessoa', 'cpf', 'cidadeNatal', 'rua', 'bairro', 'cidade', 'rg', 'orgaoEmissor', 'dataEmissao', 'dataChegada', 'dataBatismoAguas', 'dataBatismoEspirito', 'nomePai', 'nomeMae', 'nomeConjuge', 'dataCasamento', 'qtdFilhos', 'departamentos', 'perfil', 'status', 'funcaoMinisterial', 'profissao', 'escolaridade', 'estadoCivil');
+        return array('__isInitialized__', 'id', 'genero', 'nome', 'login', 'senha', 'email', 'telefone', 'dataCadastro', 'dataExclusao', 'dataNascimento', 'cartaoMembro', 'fotoPessoa', 'cpf', 'cidadeNatal', 'rua', 'bairro', 'cidade', 'rg', 'orgaoEmissor', 'dataEmissao', 'dataChegada', 'dataBatismoAguas', 'dataBatismoEspirito', 'nomePai', 'nomeMae', 'nomeConjuge', 'dataCasamento', 'qtdFilhos', 'departamentos', 'perfil', 'status', 'funcaoMinisterial', 'profissao', 'escolaridade', 'estadoCivil');
     }
 
     public function __clone()

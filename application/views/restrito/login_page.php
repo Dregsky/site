@@ -18,7 +18,7 @@
         <!-- Theme style -->
         <link rel="stylesheet" href="<?= base_url('public/css/restrito/template/AdminLTE.min.css') ?>" >
         <!-- iCheck -->
-        <link rel="stylesheet" href="<?= base_url('public/css/restrito/template/plugins/iCheck/square/square.css') ?>">
+        <link rel="stylesheet" href="<?= base_url('public/plugins/iCheck/square/square.css') ?>">
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -69,11 +69,11 @@
         </div><!-- /.login-box -->
 
         <!-- jQuery 2.1.4 -->
-        <script type="text/javascript" src="<?= base_url('public/js/jquery-2.1.4.min.js') ?>"></script>
+        <script type="text/javascript" src="<?= base_url('public/plugins/jQuery/jQuery-2.1.4.min.js') ?>"></script>
         <!-- Bootstrap 3.3.5 -->
         <script type="text/javascript" src="<?= base_url('public/bootstrap/js/bootstrap.min.js') ?>"></script>
         <!-- iCheck -->
-        <script type="text/javascript" src="<?= base_url('public/css/restrito/template/plugins/iCheck/icheck.min.js') ?>"></script>
+        <script type="text/javascript" src="<?= base_url('public/plugins/iCheck/icheck.min.js') ?>"></script>
         <script>
             $(function () {
                 $('input').iCheck({

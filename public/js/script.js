@@ -200,7 +200,6 @@ function formatar($src, $mask) {
 function carregaAlbum(foto) {
     var conteudoModal = $('#conteudoModal');
     conteudoModal.empty();
-    console.log($(foto).children().first());
     var link = $(foto).children().first().next();
     var conteudo = link.clone();
     var img = conteudo.children().first();
@@ -208,7 +207,7 @@ function carregaAlbum(foto) {
     img.addClass('flickr-medium');
     conteudoModal.append(conteudo);
     $('#modalSlide h4').empty();
-    $('#modalSlide h4').append(link.next().next().val());
+    $('#modalSlide h4').append(link.next().val());
     $('#modalSlide').modal('show');
 }
 
@@ -222,7 +221,7 @@ function carregaAlbumFooter(foto) {
     img.addClass('flickr-medium');
     conteudoModal.append(conteudo);
     $('#modalSlide h4').empty();
-    $('#modalSlide h4').append(link.next().next().val());
+    $('#modalSlide h4').append(link.next().val());
     $('#modalSlide').modal('show');
 }
 

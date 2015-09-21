@@ -61,6 +61,7 @@ class AceitaJesus extends Diversos_Controller {
         $model->saveOrUpdate($aceita);
         success('Sucesso', 'A paz do Senhor! Seja bem-vindo a essa família.'
                 . '<br> Aguarde, em breve entraremos em contato. <br> Deus lhe abençoe!');
+        redirect('diversos/AceitaJesus');
     }
 
 }

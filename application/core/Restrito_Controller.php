@@ -22,6 +22,7 @@ abstract class Restrito_Controller extends CI_Controller {
     function __construct() {
         parent::__construct();
         date_default_timezone_set('America/Sao_Paulo');
+        enumLoad();
         $usuario = $this->session->userdata('id');
         if ($usuario != null) {
             $this->load->model('EntitiesModels/PessoaModel', 'p');

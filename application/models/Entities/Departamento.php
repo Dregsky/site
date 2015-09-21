@@ -2,8 +2,6 @@
 
 namespace Entities;
 
-require_once APPPATH . 'models\Entities\AbstractEntity.php';
-
 /**
  * Description of Departamento
  *

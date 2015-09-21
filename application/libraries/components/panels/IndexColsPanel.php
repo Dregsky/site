@@ -26,7 +26,7 @@ class IndexColsPanel extends WebComponent {
         }
     }
 
-    public function testaInstancia($instancias = []) {
+    public function testaInstancia($instancias = array()) {
         foreach ($instancias as $i) {
             if (!($i instanceof AuxComponet)) {
                 $error = var_dump($i) . ' NÃO é uma instância de AuxComponet';
@@ -35,7 +35,7 @@ class IndexColsPanel extends WebComponent {
         }
     }
 
-    private function setClassDefaults($instancias = []) {
+    private function setClassDefaults($instancias = array()) {
         foreach ($instancias as $id => $i) {
             if (!empty($i) && empty($i->getParentClass())) {
                 $i->setParentClass('index-col' . ($id + 1));
@@ -43,7 +43,7 @@ class IndexColsPanel extends WebComponent {
         }
     }
 
-    private function getDados($instancias = []) {
+    private function getDados($instancias = array()) {
         $dados = array();
         foreach ($instancias as $id => $i) {
             if (!empty($i)) {

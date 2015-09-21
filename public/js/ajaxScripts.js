@@ -4,10 +4,10 @@
 
 function carregarPaginaTestemunho(pagina) {
     $.ajax({
-        'url': BASE_URL + "/ajax/ajaxcontroller/ajaxTestemunhoNewPage",
-        'type': 'POST',
-        'data': {'pagina': pagina},
-        'success': function (data) {
+        url: BASE_URL + "ajax/AjaxController/ajaxTestemunhoNewPage",
+        type: 'POST',
+        data: {'pagina': pagina},
+        success: function (data) {
             var result = data;
             var setas = $('.setas');
             var next = $('.next');
@@ -62,7 +62,7 @@ function carregarPaginaTestemunho(pagina) {
 function carregarPaginaNoticia(pagina) {
     console.log(pagina);
     $.ajax({
-        'url': BASE_URL + "/ajax/ajaxcontroller/ajaxNoticiaNewPage",
+        'url': BASE_URL + "/ajax/AjaxController/ajaxNoticiaNewPage",
         'type': 'POST',
         'data': {'pagina': pagina},
         'success': function (data) {

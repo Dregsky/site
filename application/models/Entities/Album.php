@@ -42,7 +42,7 @@ class Album extends AbstractEntity {
      *
      * @var string
      * 
-     * @Column(type="string", length=80, nullable=false)
+     * @Column(type="string", length=80, nullable=true)
      */
     private $diretorio;
 

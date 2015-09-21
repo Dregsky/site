@@ -104,7 +104,7 @@ class Home extends Principal_Controller {
      * @return string contendo o html do fale com o pastor
      */
     private function cultoLar() {
-        $dados = linkPath(base_url('diversos/cultonolar'), 'public/images/home/cultoLar.jpg');
+        $dados = linkPath(base_url('diversos/CultoNoLar'), 'public/images/home/cultoLar.jpg');
         $dados['class'] = 'img-culto-lar';
         return $this->load->view('home/imgLink_comp', $dados, true);
     }

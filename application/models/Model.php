@@ -1,7 +1,7 @@
 <?php
 
 (defined('BASEPATH')) OR exit('No direct script access allowed');
-
+require_once(BASEPATH.'core/Model.php');
 /**
  * Model
  * @property \Doctrine\ORM\EntityManager $em Gerenciador de Entidade
@@ -56,6 +56,7 @@ abstract class Model extends CI_Model {
         try {
             $this->em->persist($entity);
             $this->em->flush();
+            return $entity->getId();
         } catch (Exception $exc) {
             throw $exc;
             
@@ -87,7 +88,6 @@ abstract class Model extends CI_Model {
             echo $exc->getTraceAsString();
         }
     }
-    
    abstract function getEntity();
 
 }

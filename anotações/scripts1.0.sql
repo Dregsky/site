@@ -22,7 +22,7 @@ ALTER TABLE `tbl_funcao_ministerial` ENGINE = InnoDB;
 
 UPDATE `adcru732_adcruz`.`tbl_pessoa` SET `cod_funcao_ministerial` = 10 WHERE `cod_funcao_ministerial` = 0; 
 
-ALTER TABLE `tbl_funcao_ministerial` CHANGE `cod_funcao_ministerial` `cod_funcao_ministerial` INT(11) NOT NULL AUTO_INCREMENT
+ALTER TABLE `tbl_funcao_ministerial` CHANGE `cod_funcao_ministerial` `cod_funcao_ministerial` INT(11) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `tbl_pessoa` ADD CONSTRAINT `fk_funcao_ministerial` FOREIGN KEY ( `cod_funcao_ministerial` ) 
 REFERENCES `tbl_funcao_ministerial` ( `cod_funcao_ministerial` ) ;
@@ -48,7 +48,7 @@ REFERENCES `tbl_escolaridade` ( `cod_escolaridade` ) ;
 ALTER TABLE `tbl_estado_civil` CHANGE `cod_estado_civil` `cod_estado_civil` INT(10) NOT NULL AUTO_INCREMENT;
 
 UPDATE `adcru732_adcruz`.`tbl_pessoa` SET `cod_estado_civil` = 1 WHERE `cod_estado_civil` = 0;
-
+SET FOREIGN_KEY_CHECKS=0;
 ALTER TABLE `tbl_pessoa` ADD CONSTRAINT `fk_estado_civil` FOREIGN KEY ( `cod_estado_civil` ) 
 REFERENCES `tbl_estado_civil` ( `cod_estado_civil` ) ;
 

@@ -39,7 +39,7 @@
 
     <!-- SCRIPTS JS-->
     <!-- jQuery 2.1.4 -->
-    <script type="text/javascript" src="<?= base_url('public/plugins/jQuery/jquery-2.1.4.min.js') ?>"></script>
+    <script type="text/javascript" src="<?= base_url('public/plugins/jQuery/jQuery-2.1.4.min.js') ?>"></script>
     <!-- Bootstrap 3.3.5 -->
     <script type="text/javascript" src="<?= base_url('public/bootstrap/js/bootstrap.min.js') ?>"></script>
     <!-- SlimScroll -->
@@ -54,3 +54,4 @@
         var BASE_URL = "<?php echo base_url(); ?>";
     </script>
 </head><!DOCTYPE html>
+

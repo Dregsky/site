@@ -68,7 +68,7 @@ class Pastor extends Diversos_Controller {
         } else {
             errorEmail();
         }
-        redirect('diversos/pastor');
+        redirect('diversos/Pastor');
     }
 
 }

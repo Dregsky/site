@@ -6,7 +6,7 @@
             echo process_alert($alert);
         }
         ?>
-        <?= form_open('diversos/aceitajesus/cadastrar', 'id="contact"'); ?>
+        <?= form_open('diversos/AceitaJesus/cadastrar', 'id="contact"'); ?>
         <fieldset>
             <label>Nome:<span class="required">*</span></label>
             <div>

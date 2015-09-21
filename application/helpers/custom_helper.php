@@ -55,7 +55,7 @@ if (!function_exists('scriptSetasScroll')) {
                     }
                     });
                 });"
-                ;
+        ;
     }
 
 }
@@ -70,8 +70,27 @@ if (!function_exists('pathRaiz')) {
 
 }
 
-function addClassImgFlickr($imagem){
-    $parts = explode("alt", $imagem);
-    $imagemNova = $parts[0].' class="flickr-small" ' . 'alt'.$parts[1];
-    return $imagemNova;
+function addClassImgFlickr($imagem) {
+    $p = explode("class", $imagem);
+    if (count($p) == 1) {
+        $parts = explode("alt", $imagem);
+        $imagemNova = $parts[0] . ' class="flickr-small" ' . 'alt' . $parts[1];
+        $imagemNova = str_replace("[removed]", "", $imagemNova);
+        return $imagemNova;
+    }
+    return $imagem;
+}
+
+Use enums\GeneroEnum;
+
+function imagemProfileRestrito($genero, $foto) {
+    $imageProfile = base_url('public/images/membros/' . $foto);
+    if (!file_exists('/public/images/membros/' . $foto)) {
+        if ($genero == GeneroEnum::FEMININO) {
+            $imageProfile = base_url('public/images/membros/profile-woman.jpg');
+        } else {
+            $imageProfile = base_url('public/images/membros/profile-man.jpg');
+        }
+    }
+    return $imageProfile;
 }
