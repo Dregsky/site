@@ -1,5 +1,8 @@
 <?php
 
+Use enums\TipoPerfil;
+Use enums\DepartamentoEnum;
+
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
@@ -84,8 +87,11 @@ function addClassImgFlickr($imagem) {
 Use enums\GeneroEnum;
 
 function imagemProfileRestrito($genero, $foto) {
+    $path = $_SERVER['SCRIPT_FILENAME'];
+    $path_parts = pathinfo($path);
+    $diretorio = $path_parts['dirname'] . '/public/images/membros/';
     $imageProfile = base_url('public/images/membros/' . $foto);
-    if (!file_exists('/public/images/membros/' . $foto)) {
+    if (!is_file($diretorio . $foto)) {
         if ($genero == GeneroEnum::FEMININO) {
             $imageProfile = base_url('public/images/membros/profile-woman.jpg');
         } else {
@@ -93,4 +99,84 @@ function imagemProfileRestrito($genero, $foto) {
         }
     }
     return $imageProfile;
+}
+
+if (!function_exists('verificarPermissaoDepartamento')) {
+
+    function verificarPermissaoDepartamento($dados, $departamento, $redirect) {
+        if ($dados == null) {
+            error('Erro', 'Registro não existe');
+            redirect($redirect);
+        } else if ($departamento > 0 && $dados['departamento'] != $departamento) {
+            error('Sem Permissão', 'Você não tem permissão para editar esse registro');
+            redirect($redirect);
+        }
+    }
+
+}
+
+if (!function_exists('processBack')) {
+
+    function processBack($back) {
+        return '<a title="Voltar" href=' . base_url($back) . ' class="back glyphicon glyphicon-arrow-left">'
+                . '</a>';
+    }
+
+}
+if (!function_exists('back')) {
+
+    function back($back) {
+        $CI = & get_instance();
+        $CI->session->set_flashdata('back', $back);
+    }
+
+}
+if (!function_exists('pathImages')) {
+
+    function pathImages() {
+        $path = $_SERVER['SCRIPT_FILENAME'];
+        $path_parts = pathinfo($path);
+        $diretorio = $path_parts['dirname'] . '/public/images/';
+        return $diretorio;
+    }
+
+}
+
+if (!function_exists('getDepartamentoByPerfil')) {
+
+    function getDepartamentoByPerfil($perfil) {
+        switch ($perfil) {
+            case TipoPerfil::ANG:
+                return DepartamentoEnum::ANG;
+            case TipoPerfil::CIBE:
+                return DepartamentoEnum::CIBE;
+            case TipoPerfil::EBD:
+                return DepartamentoEnum::EBD;
+            case TipoPerfil::FAMILIA:
+                return DepartamentoEnum::FAMILIA;
+            case TipoPerfil::INFANTIL:
+                return DepartamentoEnum::CVKIDS;
+            case TipoPerfil::JORNALISTA:
+                return 0;
+            case TipoPerfil::MEMBRO:
+                return -1;
+            case TipoPerfil::MISSOES:
+                return DepartamentoEnum::MISSOES;
+            case TipoPerfil::MTV:
+                return DepartamentoEnum::JTV;
+            case TipoPerfil::OBREIROS:
+                return DepartamentoEnum::OBREIROS;
+            case TipoPerfil::ORQUESTRA:
+                return DepartamentoEnum::ORQUESTRA;
+            case TipoPerfil::SECRETARIO:
+                return DepartamentoEnum::SECRETARIA;
+            case TipoPerfil::SUPER_ADMINISTRADOR:
+                return 0;
+            case TipoPerfil::ADMINISTRADOR:
+                return 0;
+            case TipoPerfil::TESOUREIRO:
+                return -1;
+        }
+    }
+
 }

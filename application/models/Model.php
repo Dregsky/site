@@ -1,7 +1,9 @@
 <?php
 
 (defined('BASEPATH')) OR exit('No direct script access allowed');
-require_once(BASEPATH.'core/Model.php');
+require_once(BASEPATH . 'core/Model.php');
+
+Use enums\TipoStatus;
 /**
  * Model
  * @property \Doctrine\ORM\EntityManager $em Gerenciador de Entidade
@@ -59,7 +61,6 @@ abstract class Model extends CI_Model {
             return $entity->getId();
         } catch (Exception $exc) {
             throw $exc;
-            
         }
     }
 
@@ -85,9 +86,54 @@ abstract class Model extends CI_Model {
             $this->em->remove($entity);
             $this->em->flush();
         } catch (Exception $exc) {
-            echo $exc->getTraceAsString();
+            throw $exc;
         }
     }
-   abstract function getEntity();
+    
+     /**
+     * Inativa Entidades que têm um atributo do tipo:
+     * @var Entities\Status
+     * @param Object $id (entidade a ser inativada) 
+     */
+    public function inativarStatus($id) {
+        try {
+            $entity = $this->em->find($this->getEntity(), $id);
+            $inativo = (new TipoStatus())->retrieveReferencedEntity(TipoStatus::INATIVO);
+            $entity->setStatus($inativo);
+            $this->saveOrUpdate($entity);
+        } catch (Exception $exc) {
+            throw $exc;
+        }
+    }
+    
+     /**
+     * Ativa Entidades que têm um atributo do tipo:
+     * @var Entities\Status
+     * @param Object $id (entidade a ser inativada) 
+     */
+    public function ativarStatus($id) {
+        try {
+            $entity = $this->em->find($this->getEntity(), $id);
+            $ativo = (new TipoStatus())->retrieveReferencedEntity(TipoStatus::ATIVO);
+            $entity->setStatus($ativo);
+            $this->saveOrUpdate($entity);
+        } catch (Exception $exc) {
+            throw $exc;
+        }
+    }
 
+    /**
+     * 
+     * @param Integer $id (id da entidade a ser removida) 
+     */
+    public function deleteById($id) {
+        try {
+            $entity = $this->em->find($this->getEntity(), $id);
+            $this->delete($entity);
+        } catch (Exception $exc) {
+            throw $exc;
+        }
+    }
+
+    abstract function getEntity();
 }

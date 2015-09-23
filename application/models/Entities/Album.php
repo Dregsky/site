@@ -123,10 +123,17 @@ class Album extends AbstractEntity {
     private $departamento;
 
     /**
+     *
+     * @var boolean
+     * 
+     * @Column(type="boolean" , nullable=false)
+     */
+    private $exibirPrincipal;
+
+    /**
      * 
      * Getters and Setters
      */
-    
     public function getId() {
         return $this->id;
     }
@@ -244,5 +251,13 @@ class Album extends AbstractEntity {
         return $this;
     }
 
+    public function getExibirPrincipal() {
+        return $this->exibirPrincipal;
+    }
+
+    public function setExibirPrincipal($exibirPrincipal) {
+        $this->exibirPrincipal = $exibirPrincipal;
+        return $this;
+    }
 
 }

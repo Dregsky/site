@@ -47,7 +47,7 @@ class Pastor extends Diversos_Controller {
 
 
     public function enviarEmail() {
-        $emailPastor = 'rafaeltbt@gmail.com';
+        $emailPastor = 'pastorargileu@gmail.com';
         $dados = $this->input->post();
 
         $config['mailtype'] = 'html';

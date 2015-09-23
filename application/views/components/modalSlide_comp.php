@@ -12,7 +12,7 @@
         <p>Some text in the modal.</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          Evento: <p class="content-footer"></p>
       </div>
     </div>
 

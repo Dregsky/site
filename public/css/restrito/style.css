@@ -36,12 +36,40 @@ and open the template in the editor.
 }
 .box1 .even{
     color: #fff !important;
-    background-color: #C7C7C7 !important;
+    background-color: #6F6F6F !important;
+}
+
+.box1 .box1-title{
+    color: #fff;
+    font-size: 25px !important;
+    margin: 0 auto !important;
+    margin-left: 47% !important;
+    display: block !important;
 }
 
 .rowHead{
     color:#fff !important;
     background-color: #000 !important;
+}
+
+.edit-row{
+    cursor:pointer;
+}
+
+.edit-row:hover{
+    color:#fff  !important;
+    background-color: #222d32 !important;
+}
+
+.edit-row:hover .icon-black{
+    color:#fff  !important;
+}
+.edit-row .icon-black:hover{
+    color:#367FA9  !important;
+}
+
+.no-edit-col{
+    cursor:auto;
 }
 .pagination>.active>a{
     background-color: #020202 !important;
@@ -50,4 +78,24 @@ and open the template in the editor.
 
 .content-wrapper{
     min-height: auto !important;
+}
+
+.icon-black{
+    color: black;
+    opacity: 0.7;
+}
+
+.icon-black:hover{
+    opacity: 1;
+}
+
+.icon-actions{
+    text-align: center;
+}
+
+.back{
+    margin-left: 20px;
+    margin-top: 10px;
+    font-size:50px;
+
 }

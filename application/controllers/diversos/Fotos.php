@@ -2,10 +2,6 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-use enums\TipoStatus;
-use Entities\Status;
-use Entities\Testemunho as TestemunhoEntity;
-
 /**
  * @author Rafael Rocha <rafaeltbt@gmail.com>
  */
@@ -14,7 +10,7 @@ class Fotos extends Diversos_Controller {
     /**
      * Método Construtor
      */
-    public function Testemunho() {
+    public function Fotos() {
         parent::__construct();
     }
 
@@ -52,29 +48,12 @@ class Fotos extends Diversos_Controller {
     public function fotosPage() {
         //$dados = $this->getTestemunhos();
         $model = new AlbumModel();
-        $dados['albuns'] = $model->retrieveAllByYearAndData();
+        $dados['albuns'] = $model->retrieveAllAtivos();
         $content1 = $this->load->view('diversos/fotos_comp', $dados, true);
         $page = new SimplePage('Álbum de Fotos ADCruz', $content1);
         return $page->getComponent();
     }
 
-    public function getTestemunhos($page = 0) {
-        $testemunhoModel = new TestemunhoModel();
-        $registrosPorPagina = 4;
-        $dados['testemunhos'] = $testemunhoModel->retrieveUltimosByStatusAndPage(TipoStatus::LIBERADO, $registrosPorPagina, $page);
-        $dados['next'] = $page + 1;
-        $dados['prev'] = $page - 1;
-        $dados['regPorPagina'] = $registrosPorPagina;
-        $dados['total'] = $testemunhoModel->countByStatus();
-        return $dados;
-    }
-
-    public function cadastro() {
-        $content = $this->load->view('diversos/testemunhoCadastro_comp', '', true);
-        $page = new SimplePage('Postar Testemunho', $content);
-        return $page->getComponent();
-    }
-    
     public function getMenuSelecionado() {
         return 'fotos';
     }

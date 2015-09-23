@@ -15,6 +15,7 @@ abstract class Departamento_Controller extends Site_Controller {
 
     const AGENDA = 'agenda';
     const COORDENACAO = 'coordenacao';
+    const FOTOS = 'fotos';
 
     private $departamento;
     private $menuSelecionado = '';
@@ -39,6 +40,8 @@ abstract class Departamento_Controller extends Site_Controller {
         /**
          * Includes de models
          */
+        
+        $this->load->model('EntitiesModels/AlbumModel');
         /**
          * Includes de components
          */
@@ -55,6 +58,10 @@ abstract class Departamento_Controller extends Site_Controller {
             case $this::COORDENACAO:
                 $this->menuSelecionado = $this::COORDENACAO;
                 return $this->coordenacao();
+                
+            case $this::FOTOS:
+                $this->menuSelecionado = $this::FOTOS;
+                return $this->fotos();
 
             default:
                 $this->menuSelecionado = 'principal';
@@ -78,6 +85,14 @@ abstract class Departamento_Controller extends Site_Controller {
         $dados['pessoas'] = $this->getCoordenadores();
         $cPage = $this->load->view('departamentos/coordenacao_comp', $dados, true);
         $page = new SimplePage('Coordenação ' . $this->departamento->getNomeCompleto(), $cPage);
+        return $page->getComponent();
+    }
+    
+    public function fotos() {
+        $model = new AlbumModel();
+        $dados['albuns'] = $model->retrieveAtivosByDepartamento($this->departamento->getId());
+        $content = $this->load->view('diversos/fotos_comp', $dados, true);
+        $page = new SimplePage('Albuns ' . $this->departamento->getNomeCompleto(), $content);
         return $page->getComponent();
     }
 

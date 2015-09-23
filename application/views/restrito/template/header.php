@@ -50,6 +50,8 @@
     <script type="text/javascript" src="<?= base_url('public/js/restrito/app.min.js') ?>"></script>
     <!-- AdminLTE for demo purposes -->
     <script type="text/javascript" src="<?= base_url('public/js/restrito/demo.js') ?>"></script>
+    <!-- bootbox Modal -->
+    <script type="text/javascript" src="<?= base_url('public/js/restrito/bootbox.min.js') ?>"></script>
     <script type="text/javascript">
         var BASE_URL = "<?php echo base_url(); ?>";
     </script>

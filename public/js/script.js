@@ -197,7 +197,7 @@ function formatar($src, $mask) {
     }
 }
 
-function carregaAlbum(foto) {
+function carregaAlbum(foto, id) {
     var conteudoModal = $('#conteudoModal');
     conteudoModal.empty();
     var link = $(foto).children().first().next();
@@ -207,11 +207,13 @@ function carregaAlbum(foto) {
     img.addClass('flickr-medium');
     conteudoModal.append(conteudo);
     $('#modalSlide h4').empty();
-    $('#modalSlide h4').append(link.next().val());
+    $('#modalSlide h4').append($('#titulo'+id).val());
+    $('.content-footer').empty();
+    $('.content-footer').append($('#evento'+id).val());
     $('#modalSlide').modal('show');
 }
 
-function carregaAlbumFooter(foto) {
+function carregaAlbumFooter(foto, id) {
     var conteudoModal = $('#conteudoModal');
     conteudoModal.empty();
     var link = $(foto).children().first();
@@ -221,7 +223,9 @@ function carregaAlbumFooter(foto) {
     img.addClass('flickr-medium');
     conteudoModal.append(conteudo);
     $('#modalSlide h4').empty();
-    $('#modalSlide h4').append(link.next().val());
+    $('#modalSlide h4').append($('#titulo'+id).val());
+    $('.content-footer').empty();
+    $('.content-footer').append($('#evento'+id).val());
     $('#modalSlide').modal('show');
 }
 

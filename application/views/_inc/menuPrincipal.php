@@ -29,6 +29,6 @@
             </ul>
         </li>
         <li><a id="cadastro" href="<?= base_url('diversos/membro') ?>">Cadastro</a></li>
-        <li><a href="novo_admin/login_.html">Restrito</a></li>
+        <li><a href="<?= base_url('restrito') ?>">Restrito</a></li>
     </ul>
 </div>

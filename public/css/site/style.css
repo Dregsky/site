@@ -1481,6 +1481,8 @@ button.png {
 .flickr-small{
     width: 150px;
     height: 150px;
+    border-radius: 5px;
+    border:solid 3px white;
 }
 
 .flickr-medium{
@@ -1505,15 +1507,27 @@ button.png {
 
 #modalSlide .modal-content{
     width: 630px  !important;
+    border: solid 4px white;
     background-color:#000;
 }
 
 #modalSlide .modal-footer{
-    display: none;
+    color:white;
+    padding: 0px;
+    text-align: left;
+    padding-left: 15px;
+    margin-bottom: -15px;
+    border-top:0px;
 }
 
 #modalSlide .modal-header{
     color: white;
+    padding-bottom: 0px; 
+    border-bottom: #000;
+}
+
+#modalSlide .modal-body{
+    padding: 0px;
 }
 
 #modalSlide .modal-header .close{

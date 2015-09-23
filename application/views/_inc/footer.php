@@ -34,10 +34,6 @@
                     <li><a href="http://www.caixa.gov.br" target="_blank">Caixa Econômica Federal</a></li>
                     <li><a href="http://www.catedralbaleia.com.br" target="_blank">Catedral</a></li>
                     <li><a href="http://www.telashow.com" target="_blank">TelaShow</a></li>
-                    <li><a href="estudos_biblicos.php">Estudos Bíblicos</a></li>
-                    <li><a href="faleComPastor.php">Fale com o Pastor</a></li>
-                    <li><a href="http://twitter.com/adcruzJesus" target="_blank">Twitter</a></li>
-                    <li><a href="http://www.youtube.com/user/adcruznet" target="_blank">YouTube</a></li>
                 </ul>
             </div>
 
@@ -64,18 +60,18 @@
                 <tbody>
                     <tr>
                         <td style="text-align: left;" valign="undefined">
-                            <a href="LINK_DO_FACEBOOK" target="_blank">
+                            <a href="https://www.facebook.com/assembleiadedeusadcruz" target="_blank">
                                 <img style="" alt=""
                                      src="<?= base_url('public/images/icons/icon-face.png') ?>" title="Facebook" />
                             </a >
                         </td>
                         <td style="text-align: left;" valign="undefined">
-                            <a href="LINK_DO_TWITTER" target="_blank">
+                            <a href="http://twitter.com/adcruzJesus" target="_blank">
                                 <img src="<?= base_url('public/images/icons/icon-twitter.png') ?>" title="Twitter" />
                             </a>
                         </td>
                         <td style="text-align: left;" valign="undefined">
-                            <a href="LINK_DO_YOUTUBE" target="_blank">
+                            <a href="http://www.youtube.com/user/adcruznet" target="_blank">
                                 <img src="<?= base_url('public/images/icons/icon-youtube.png') ?>" title="YouTube" />
                             </a>
                         </td>

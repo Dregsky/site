@@ -7,6 +7,7 @@ function _base_alert($type, $title, $message = false) {
     $CI = & get_instance();
     $alert = json_encode(array('type' => $type, 'head' => $title, 'message' => $message));
     $CI->session->set_flashdata('alert', $alert);
+    $CI->session->set_flashdata('message', $message);
 }
 
 function process_alert($json) {

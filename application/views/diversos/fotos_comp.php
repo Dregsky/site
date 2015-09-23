@@ -13,13 +13,14 @@
             <?php $flickr = $a->getFlickr(); 
                    $title = $a->getNomeAlbum();
             ?>
-            <div class="foto_click" onclick='carregaAlbum(this)'>
+            <div title="<?=$title?>" class="foto_click" onclick='carregaAlbum(this, <?=$a->getId()?>)'>
                 <p class="titulo_fotos"> <?= limitaTexto($title, 25) ?></p>
                 <?= $flickr ?>
-                <input type='hidden' value="<?=$title?>">
                 <p></p>
                 <p></p>
             </div>
+            <input id="<?= 'titulo' . $a->getId() ?>" type='hidden' value="<?= $title ?>">
+                <input id="<?= 'evento' . $a->getId() ?>" type='hidden' value="<?= $a->getNomeEvento() ?>">
         </div>
     <?php endforeach; ?>
 </div>
