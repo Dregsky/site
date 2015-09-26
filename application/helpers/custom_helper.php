@@ -2,6 +2,7 @@
 
 Use enums\TipoPerfil;
 Use enums\DepartamentoEnum;
+Use Entities\AbstractEntity;
 
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
@@ -101,6 +102,21 @@ function imagemProfileRestrito($genero, $foto) {
     return $imageProfile;
 }
 
+function processaImagem($pathImage, $genero) {
+    $path = $_SERVER['SCRIPT_FILENAME'];
+    $path_parts = pathinfo($path);
+    $base_path = $path_parts['dirname'];
+    $image = base_url($pathImage);
+    if (!is_file($base_path . $pathImage)) {
+        if ($genero == GeneroEnum::FEMININO) {
+            $image = base_url('public/images/membros/profile-woman.jpg');
+        } else {
+            $image = base_url('public/images/membros/profile-man.jpg');
+        }
+    }
+    return $image;
+}
+
 if (!function_exists('verificarPermissaoDepartamento')) {
 
     function verificarPermissaoDepartamento($dados, $departamento, $redirect) {
@@ -131,6 +147,28 @@ if (!function_exists('back')) {
     }
 
 }
+
+if (!function_exists('processNew')) {
+
+    function processNew($new) {
+        return '<h3 class = "box-title pull-right" style="margin-right: 15px;">'
+        .'<a class = "btn btn-success" href ='. base_url($new). '>'
+        .'<i class = "fa fa-plus-circle"></i>'
+        .' Novo '
+        .'</a>'
+        .'</h3>';
+    }
+
+}
+if (!function_exists('new')) {
+
+    function newButton($new) {
+        $CI = & get_instance();
+        $CI->session->set_flashdata('new', $new);
+    }
+}
+
+
 if (!function_exists('pathImages')) {
 
     function pathImages() {
@@ -170,12 +208,60 @@ if (!function_exists('getDepartamentoByPerfil')) {
                 return DepartamentoEnum::ORQUESTRA;
             case TipoPerfil::SECRETARIO:
                 return DepartamentoEnum::SECRETARIA;
+            case TipoPerfil::MGD:
+                return DepartamentoEnum::MGD;
             case TipoPerfil::SUPER_ADMINISTRADOR:
                 return 0;
             case TipoPerfil::ADMINISTRADOR:
                 return 0;
             case TipoPerfil::TESOUREIRO:
                 return -1;
+        }
+    }
+
+    function setDados(&$dados, $indexes) {
+        foreach ($indexes as $index) {
+            if (!isset($dados[$index])) {
+                $dados[$index] = '';
+            } else {
+                if ($dados[$index] instanceof AbstractEntity) {
+                    $dados[$index] = $dados[$index]->getId();
+                }
+            }
+        }
+    }
+
+    function setDadosArray(&$dados, $indexes) {
+        foreach ($indexes as $index) {
+            if (!isset($dados[$index])) {
+                $dados[$index] = array();
+            } else {
+                foreach ($dados[$index] as $i => $value) {
+                    $dados[$index][$i] = is_array($value) ? $value['id'] :
+                            (is_string($value) ? $value : $value->getId());
+                }
+            }
+        }
+    }
+
+    function setDatasToString(&$dados, $indexes) {
+        foreach ($indexes as $index) {
+            if (!isset($dados[$index])) {
+                $dados[$index] = '';
+            } else {
+                if ($dados[$index] instanceof DateTime) {
+                    $dados[$index] = $dados[$index]->format('Y-m-d');
+                }
+            }
+        }
+    }
+
+    function excluirImagem($foto) {
+        if ($foto != '') {
+            $caminho = pathRaiz() . $foto;
+            if (is_file($caminho)) {
+                unlink($caminho);
+            }
         }
     }
 

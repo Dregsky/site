@@ -27,33 +27,9 @@ class JTV extends Departamento_Controller {
         
     }
 
-    protected function includeSlide() {
-        $dados['banners'] = array(
-            linkPath('#', 'jtv/JTV.960x268.png')
-        );
-        return $this->load->view('components/slide_comp', $dados, true);
-    }
-
     public function getDepartamento() {
         $this->load->model('EntitiesModels/DepartamentoModel');
         return (new DepartamentoModel())->retrieve(DepartamentoEnum::JTV);
-    }
-
-    /*
-     * @Override
-     */
-
-    protected function getCoordenadores() {
-        return array(
-            $this->getCoordenador('Ir. Nome', 'Cargo1'),
-            $this->getCoordenador('Ir. Nome', 'Cargo1'),
-            $this->getCoordenador('Ir. Nome', 'Cargo1'),
-            $this->getCoordenador('Ir. Nome', 'Cargo1'),
-            $this->getCoordenador('Ir. Nome', 'Cargo1'),
-            $this->getCoordenador('Ir. Nome', 'Cargo1'),
-            $this->getCoordenador('Ir. Nome', 'Cargo1'),
-            $this->getCoordenador('Ir. Nome', 'Cargo1')
-        );
     }
 
 }

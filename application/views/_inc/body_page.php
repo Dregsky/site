@@ -2,11 +2,14 @@
     <header id="header">
         <div id="header_site">
             <div class="header_banner">
-                <div class="logo">
-                    <a href="<?=base_url()?>"><img src="<?= base_url('public/images/logo/logo_adcruz_final.png') ?>">
+                <div class="logo_left">
+                    <a href="<?= base_url() ?>"><img src="<?= base_url('public/images/logo/logo_adcruz_final.png') ?>">
                     </a>	
                 </div>
-                <div class="header_right">
+                <div class="logo_right">
+                    <a href="http://www.catedralbaleia.com.br/">
+                        <img src="<?= base_url('public/images/logo/KtDraw.png') ?>">
+                    </a>
                 </div>
             </div>
             <?php echo html_entity_decode($menu); ?>

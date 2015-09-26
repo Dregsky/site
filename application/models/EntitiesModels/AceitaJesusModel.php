@@ -23,5 +23,9 @@ class AceitaJesusModel extends Model {
     public function getEntity() {
         return AceitaJesus::name;
     }
+    
+     public function getTable() {
+        return 'tbl_aceitajesus';
+    }
 
 }

@@ -72,7 +72,7 @@ class Membro extends Diversos_Controller {
 
     private function initializeDados(&$dados) {
         $indexes = array(
-            'nome', 'cpf', 'rua','genero',
+            'nome', 'cpf', 'rua', 'genero',
             'bairro', 'cidade', 'email',
             'cidadeNatal', 'telefone', 'escolaridade',
             'profissao', 'rg', 'orgaoEmissor',
@@ -86,69 +86,32 @@ class Membro extends Diversos_Controller {
         );
 
         $indexesArray = array('departamentos');
-        $this->setDadosArray($dados, $indexesArray);
-        $this->setDados($dados, $indexes);
-        $this->setDatasToString($dados, $datas);
+        setDadosArray($dados, $indexesArray);
+        setDados($dados, $indexes);
+        setDatasToString($dados, $datas);
     }
 
-    private function setDados(&$dados, $indexes) {
-        foreach ($indexes as $index) {
-            if (!isset($dados[$index])) {
-                $dados[$index] = '';
-            } else {
-                if ($dados[$index] instanceof AbstractEntity) {
-                    $dados[$index] = $dados[$index]->getId();
-                }
-            }
-        }
-    }
-
-    private function setDadosArray(&$dados, $indexes) {
-        foreach ($indexes as $index) {
-            if (!isset($dados[$index])) {
-                $dados[$index] = array();
-            } else {
-                foreach ($dados[$index] as $i => $value) {
-                    $dados[$index][$i] = $value->getId();
-                }
-            }
-        }
-    }
-
-    private function setDatasToString(&$dados, $indexes) {
-        foreach ($indexes as $index) {
-            if (!isset($dados[$index])) {
-                $dados[$index] = '';
-            } else {
-                if ($dados[$index] instanceof DateTime) {
-                    $dados[$index] = $dados[$index]->format('Y-m-d');
-                }
-            }
-        }
-    }
 
     public function cadastrar() {
         try {
-            $dados = $this->input->post();
-            $dados = $this->processaDados($dados);
+            $dados = $this->processaDados($this->input->post());
 //var_dump($dados);
             $this->validaCPF($dados);
             $pessoa = new Pessoa();
             $pessoa->setAll($dados);
             $pessoaModel = new PessoaModel();
-            //var_dump($pessoa);
             $pessoaModel->saveOrUpdate($pessoa);
             success('Sucesso', 'Membro cadastrado com sucesso. Obrigado!');
             redirect('diversos/membro/success');
         } catch (Exception $e) {
-            error('ERRO', 'Erro ao tentar salvar!Tente Novamente mais tarde ou Contate o Administrador!');
+            error('ERRO', 'Erro ao tentar salvar! Tente Novamente mais tarde ou Contate o Administrador!');
             $this->session->set_flashdata('membros', $dados);
             redirect('diversos/membro/error');
         }
     }
 
     private function processaDados($dados) {
-        $dados = $this->processaDatas($dados, array('dataCasamento',
+        $this->processaDatas($dados, array('dataCasamento',
             'dataNascimento',
             'dataEmissao',
             'dataChegada',
@@ -170,14 +133,13 @@ class Membro extends Diversos_Controller {
         return $dados;
     }
 
-    private function processaDatas($dados, $array) {
+    private function processaDatas(&$dados, $array) {
         foreach ($array as $index) {
-            $dados = $this->processaData($dados, $index);
+            $this->processaData($dados, $index);
         }
-        return $dados;
     }
 
-    private function processaData($dados, $index) {
+    private function processaData(&$dados, $index) {
         if (empty($dados[$index])) {
             unset($dados[$index]);
         } else {
@@ -236,7 +198,7 @@ class Membro extends Diversos_Controller {
     public function success() {
         
     }
-    
+
     public function getMenuSelecionado() {
         return 'cadastro';
     }

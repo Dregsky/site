@@ -56,6 +56,10 @@ function mtel(v) {
     return v;
 }
 
+function id(el) {
+    return document.getElementById(el);
+}
+
 /**
  * Validação data maior
  */

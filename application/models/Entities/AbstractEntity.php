@@ -45,6 +45,7 @@ abstract class AbstractEntity {
         $array = array();
 
         foreach ($this as $k => &$v) {
+            var_dump($k);
             $array[$k] = $v;
         }
 

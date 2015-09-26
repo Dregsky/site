@@ -127,4 +127,8 @@ class AlbumModel extends Model {
         return Album::name;
     }
 
+    public function getTable() {
+        return 'tbl_album';
+    }
+
 }

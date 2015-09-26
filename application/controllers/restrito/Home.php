@@ -31,4 +31,7 @@ class Home extends Restrito_Controller {
         return $this->load->view('restrito/home','',true);
     }
 
+    protected function getController() {
+        return $this->router->class;
+    }
 }

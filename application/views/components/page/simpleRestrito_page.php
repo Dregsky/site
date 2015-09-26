@@ -4,6 +4,11 @@ if ($back != null) {
     echo processBack($back);
     $this->session->set_flashdata('back', null);
 }
+$new = $this->session->flashdata('new');
+if ($new != null) {
+    echo processNew($new);
+    $this->session->set_flashdata('new', null);
+}
 ?>
 <section class="content-header">
     <h1>
@@ -16,8 +21,8 @@ if ($back != null) {
             if ($i == 0) {
                 ?>
                 <li><a href="#">
-                        <i class="fa fa-dashboard <?= $i == (count($breadcrumbs) - 1) ? 'active' : '' ?>">
-                            <?= $b ?>
+                        <i class="<?= $b[0] ?> <?= $i == (count($breadcrumbs) - 1) ? 'active' : '' ?>">
+                            <?= $b[1] ?>
                         </i>
                     </a>
                 </li>

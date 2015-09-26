@@ -4,6 +4,7 @@
 require_once(BASEPATH . 'core/Model.php');
 
 Use enums\TipoStatus;
+
 /**
  * Model
  * @property \Doctrine\ORM\EntityManager $em Gerenciador de Entidade
@@ -89,8 +90,8 @@ abstract class Model extends CI_Model {
             throw $exc;
         }
     }
-    
-     /**
+
+    /**
      * Inativa Entidades que têm um atributo do tipo:
      * @var Entities\Status
      * @param Object $id (entidade a ser inativada) 
@@ -105,8 +106,8 @@ abstract class Model extends CI_Model {
             throw $exc;
         }
     }
-    
-     /**
+
+    /**
      * Ativa Entidades que têm um atributo do tipo:
      * @var Entities\Status
      * @param Object $id (entidade a ser inativada) 
@@ -135,5 +136,35 @@ abstract class Model extends CI_Model {
         }
     }
 
+    /**
+     * 
+     * @param integer $id
+     * @return array (onde campos das tabelas são os índices)
+     */
+    public function CI_buscarById($id) {
+        $this->db->where('id', $id);
+        return $this->db->get($this->getTable())->row_array();
+    }
+
+    public function CI_saveOrUpdate($dados, $tbl_index) {
+        try {
+            if ($tbl_index != 'id') {
+                $dados[$tbl_index] = $dados['id'];
+                unset($dados['id']);
+            }
+            if ($dados[$tbl_index] == '') {
+                $this->db->insert($this->getTable(), $dados);
+                return $this->db->insert_id();
+            }
+            $this->db->where($tbl_index, $dados[$tbl_index]);
+            $this->db->update($this->getTable(), $dados);
+            return $dados[$tbl_index];
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
+
     abstract function getEntity();
+
+    abstract function getTable();
 }

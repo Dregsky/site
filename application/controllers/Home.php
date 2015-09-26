@@ -28,6 +28,7 @@ class Home extends Principal_Controller {
          */
         $this->load->model('EntitiesModels/NoticiaModel', 'noticiaModel');
         $this->load->model('EntitiesModels/DepartamentoModel');
+        $this->load->model('EntitiesModels/SlideModel');
         /**
          * Includes de components
          */
@@ -52,15 +53,7 @@ class Home extends Principal_Controller {
     }
 
     private function includeSlide() {
-        $dados['banners'] = array(
-            linkPath('#', 'principal/450Almas.960x268.png'),
-            linkPath('#', 'principal/AtividadesAdcruz.960x268.png'),
-            linkPath('#', 'principal/Discipulado.960x268.png'),
-            linkPath('#', 'principal/Etuseumabencao.960x268.png'),
-            linkPath('#', 'principal/MesdeOracao.960x268.png'),
-            linkPath('#', 'principal/SextadaVitoria.960x268.png'),
-            linkPath('#', 'principal/TemaAno.960x268.png'),
-        );
+        $dados['banners'] = (new SlideModel())->retrieveAllAtivos();
         return $this->load->view('components/slide_comp', $dados, true);
     }
 
@@ -195,12 +188,13 @@ class Home extends Principal_Controller {
     }
 
     private function agenda() {
-        $dados['agenda'] = '<iframe src="https://www.google.com/calendar/embed?title=Calend%C3%A1rio%20de%20Atividades%20ADCruz&amp;'
-                . 'showCalendars=0&amp;height=400&amp;wkst=1&amp;'
-                . 'hl=pt_BR&amp;bgcolor=%23FFFFFF&amp;src=69gj215aqna07lr9gv3bsv2dt0%40group.calendar.google.com&amp;'
-                . 'color=%23d9ce16&amp;ctz=America%2FSao_Paulo" '
-                . 'style=" border-width:0 " width="940" height="400" frameborder="0" scrolling="no">'
-                . '</iframe>';
+        $agenda1 = (new DepartamentoEnum())
+        ->retrieveReferencedEntity(DepartamentoEnum::IGREJA
+        )->getAgendaGoogle();
+        $agenda = json_decode($agenda1);
+        $dados['agenda'] = isset($agenda->agenda) ? $agenda->agenda : $agenda1;
+        $dados['tipo'] = isset($agenda->tipo) ? $agenda->tipo : 'WEEK';
+        $dados['altura'] = '400';
         return $this->load->view('components/agenda_comp', $dados, true);
     }
 

@@ -27,6 +27,7 @@ class Testemunho extends Diversos_Controller {
          * Includes de models
          */
         $this->load->model('EntitiesModels/TestemunhoModel');
+        $this->load->model('EntitiesModels/PessoaModel');
         $this->load->model('EntitiesModels/StatusModel');
         /**
          * Includes de components
@@ -82,8 +83,33 @@ class Testemunho extends Diversos_Controller {
         $testemunho->setAll($dados);
         $model = new TestemunhoModel();
         $model->saveOrUpdate($testemunho);
+        $this->enviarEmail();
         success('Sucesso', 'Testemunho enviado com sucesso! Ele agora será avaliado para então ser postado.');
         redirect('diversos/testemunho/cadastro');
+    }
+    
+    public function enviarEmail() {
+        $pessoaModel = new PessoaModel();
+        $emails = $pessoaModel->retrieveEmailsAdmins();
+
+        foreach ($emails as $i => $a){
+            $emailDestino[$i] = $a['email'];
+        }
+        $config['mailtype'] = 'html';
+        $this->load->library('email');
+
+        $this->email->initialize($config);
+
+        $this->email->from('adcruz@adcruz.org', 'Site ADCruz');
+        $this->email->to($emailDestino);
+
+        $this->email->subject('Testemunho');
+//        $corpo = $this->load->view('components/templateEmailCultoNoLar', $dados, true);
+
+        //die($corpo);
+        $this->email->message('Chegou um novo testemunho, direcione-se ao ADMIN do site para aprová-lo!');
+
+        $this->email->send();
     }
 
 }

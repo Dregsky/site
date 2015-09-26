@@ -26,6 +26,7 @@
                 <li><a href="<?= base_url('diversos/tesouraria') ?>">Tesouraria</a></li>
                 <li><a href="<?= base_url('diversos/pastor') ?>">Fale com o Pastor</a></li>
                 <li><a href="<?= base_url('diversos/estudos') ?>">Estudos Bíblicos</a></li>
+                <li><a href="<?= base_url('diversos/localizacao') ?>">Localização</a></li>
             </ul>
         </li>
         <li><a id="cadastro" href="<?= base_url('diversos/membro') ?>">Cadastro</a></li>

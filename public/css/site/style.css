@@ -201,13 +201,21 @@ p {
     height:135px;
     padding: 15px 0px 15px 0px;
 }
-.header_right{
-    width: 50%;
+.logo_right{
+    float: right;
 }
 
 
+.logo_right img{
+    max-width: 210px;
+    max-height: 120px;
+    height: auto !important;
+    width: auto;
+    margin-top: 30px;
+}
 
-.logo { 
+
+.logo_left { 
 
     float: left;
     margin: 0;

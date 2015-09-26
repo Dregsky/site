@@ -7,7 +7,7 @@
     <div class="fnews">
             <div>
                 <img class="img_noticia"
-                     src="<?= base_url('public/images/megafone.png') ?>" 
+                     src="<?= base_url('public/images/megafone.PNG') ?>" 
                      width="304" height="240" alt="Comunicado" />
             </div>
         <div class="texto_interno_noticias">

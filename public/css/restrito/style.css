@@ -97,5 +97,80 @@ and open the template in the editor.
     margin-left: 20px;
     margin-top: 10px;
     font-size:50px;
+}
 
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+.filter_export label{
+    margin-right: -65px !important;
+}
+
+/**
+* Imagem admin perfil
+*/
+.user-panel>.image>img {
+    max-height: 45px;
+    border: solid 3px white;
+}
+
+.select2{
+    width: 100% !important;
+}
+
+.ord{
+    cursor:pointer;
+    text-align: center;
+    background: #222d32;
+    color:white;
+}
+
+.ord:hover{
+    background: #3c8dbc;
+    color:white;
+}
+
+.row-ord{
+    width: auto;
+    margin-left: 20px !important;
+    border: 2px solid #3c8dbc;
+    max-width: 400px;
+}
+
+.ord-content{
+    border-bottom: 0;
+    border-top: 0;
+}
+
+.ord-num{
+    color: #fff;
+    font-size: 20px;
+    background-color: #000;
+    border-radius: 50%;
+    width: 28px;
+    float: left;
+    text-align: center;
+    height: 28px;
+    margin: 5px 10px 5px 10px;
+}
+
+.ord-name{
+    margin-top: 8px;
 }

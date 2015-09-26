@@ -2,6 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+Use enums\DepartamentoEnum;
 /**
  * @author Rafael Rocha <rafaeltbt@gmail.com>
  */
@@ -22,6 +23,8 @@ class Diretoria extends Diversos_Controller {
         /**
          * Includes de models
          */
+        $this->load->model('EntitiesModels/CoordenacaoDepartamentoModel');
+        $this->load->model('EntitiesModels/DepartamentoModel');
         /**
          * Includes de components
          */
@@ -39,7 +42,9 @@ class Diretoria extends Diversos_Controller {
      * @return string contendo o html do panel
      */
     public function diretoriaPage() {
-        $content = $this->load->view('diversos/diretoria_comp', '', true);
+        $model = new CoordenacaoDepartamentoModel();
+        $dados['pessoas'] = $model->retrieveByDepartamentoAndYear(DepartamentoEnum::DIRETORIA);
+        $content = $this->load->view('departamentos/coordenacao_comp', $dados, true);
         $page = new SimplePage('Diretoria', $content);
         return $page->getComponent();
     }

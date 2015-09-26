@@ -12,7 +12,7 @@ Use enums\DepartamentoEnum;
  * @author Rafael Rocha <rafaeltbt@gmail.com>
  */
 class ANG extends Departamento_Controller {
-    
+
     /**
      * Método Construtor
      */
@@ -27,29 +27,9 @@ class ANG extends Departamento_Controller {
         
     }
 
-    protected function includeSlide() {
-        $dados['banners'] = array(
-            linkPath('#', 'ang/ANG.960x268.png')
-        );
-        return $this->load->view('components/slide_comp', $dados, true);
-    }
-
     public function getDepartamento() {
         $this->load->model('EntitiesModels/DepartamentoModel');
         return (new DepartamentoModel())->retrieve(DepartamentoEnum::ANG);
-    }
-
-    protected function getCoordenadores() {
-        return array(
-            $this->getCoordenador('Ir. Nome','Cargo1'),
-            $this->getCoordenador('Ir. Nome','Cargo1'),
-            $this->getCoordenador('Ir. Nome','Cargo1'),
-            $this->getCoordenador('Ir. Nome','Cargo1'),
-            $this->getCoordenador('Ir. Nome','Cargo1'),
-            $this->getCoordenador('Ir. Nome','Cargo1'),
-            $this->getCoordenador('Ir. Nome','Cargo1'),
-            $this->getCoordenador('Ir. Nome','Cargo1')
-        );
     }
 
 }

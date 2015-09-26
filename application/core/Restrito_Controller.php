@@ -9,12 +9,17 @@
  * @author Rafael Rocha <rafaeltbt@gmail.com>
  */
 abstract class Restrito_Controller extends CI_Controller {
-    
+
     public $pessoa;
-    
+    public $departamento;
     public $menuAtivoFilho = '';
+    public $menuAtivoNeto = '';
+
     abstract protected function getMenuAtivo();
+
     abstract protected function getContent();
+
+    abstract protected function getController();
 
     /**
      * Constructor of Base Controller
@@ -25,11 +30,14 @@ abstract class Restrito_Controller extends CI_Controller {
         enumLoad();
         $usuario = $this->session->userdata('id');
         if ($usuario != null) {
+            $perfil = $this->session->userdata('perfil');
+            permissaoController($this->getController(), $perfil);
             $this->load->model('EntitiesModels/PessoaModel', 'p');
             $this->pessoa = $this->p->retrieve($usuario);
             $dados['content'] = $this->getContent();
             $dados['menuAtivo'] = $this->getMenuAtivo();
             $dados['menuAtivoFilho'] = $this->menuAtivoFilho;
+            $dados['menuAtivoNeto'] = $this->menuAtivoNeto;
             $this->load->view('restrito/template/template_admin', $dados);
         } else {
             redirect('restrito/login');
@@ -39,6 +47,9 @@ abstract class Restrito_Controller extends CI_Controller {
     protected function setMenuAtivoFilho($menu) {
         $this->menuAtivoFilho = $menu;
     }
-    
+
+    protected function setMenuAtivoNeto($menu) {
+        $this->menuAtivoNeto = $menu;
+    }
 
 }

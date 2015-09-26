@@ -13,8 +13,8 @@ Use enums\TipoStatus;
  * @author Rafael Rocha <rafaeltbt@gmail.com>
  */
 class TestemunhoModel extends Model {
-    
-        const name = 'EntitiesModels\TestemunhoModel';
+
+    const name = 'EntitiesModels\TestemunhoModel';
 
     /**
      * Método recebe a quantidade maxima de registros a serem
@@ -32,7 +32,7 @@ class TestemunhoModel extends Model {
             $repository = $this->em->getRepository($this->getEntity());
             $qtd1 = ($qtd == 0 ? NULL : $qtd);
             $status = $tipoStatus == null ? (new TipoStatus())->retrieveReferencedEntity(TipoStatus::LIBERADO) :
-                (new TipoStatus())->retrieveReferencedEntity($tipoStatus);
+                    (new TipoStatus())->retrieveReferencedEntity($tipoStatus);
             return $repository->findBy(array('status' => $status), array('id' => 'desc'), $qtd1, $page * $qtd);
         } catch (Exception $exc) {
             throw $exc;
@@ -44,7 +44,7 @@ class TestemunhoModel extends Model {
             $dql = "SELECT count(t.id) FROM " . $this->getEntity() . " t WHERE t.status = :status";
             $query = $this->em->createQuery($dql);
             $status = $tipoStatus == null ? (new TipoStatus())->retrieveReferencedEntity(TipoStatus::LIBERADO) :
-                (new TipoStatus())->retrieveReferencedEntity($tipoStatus);
+                    (new TipoStatus())->retrieveReferencedEntity($tipoStatus);
             $query->setParameter("status", $status);
             $query->execute();
             return $query->getSingleScalarResult();
@@ -59,6 +59,10 @@ class TestemunhoModel extends Model {
      */
     public function getEntity() {
         return Testemunho::name;
+    }
+
+    public function getTable() {
+        return 'tbl_testemunho';
     }
 
 }

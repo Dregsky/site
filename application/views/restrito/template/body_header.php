@@ -1,5 +1,5 @@
 <?php
-$imageProfile = imagemProfileRestrito($this->session->userdata('genero'), $this->session->userdata('foto'));
+$imageProfile = processaImagem($this->session->userdata('foto'), $this->session->userdata('genero'));
 ?>
 <header class="main-header">
     <!-- Logo -->

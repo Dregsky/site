@@ -4,7 +4,6 @@ include_once(APPPATH . "models/" . 'Model' . EXT);
 
 Use Entities\Profissao;
 
-
 /**
  * Description of EscolaridadeModel
  * Model from:
@@ -22,6 +21,10 @@ class ProfissaoModel extends Model {
      */
     public function getEntity() {
         return Profissao::name;
+    }
+
+    public function getTable() {
+        return 'tbl_profissao';
     }
 
 }

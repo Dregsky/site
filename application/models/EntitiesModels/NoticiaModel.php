@@ -23,8 +23,8 @@ Use Entities\Status;
  * @author Rafael Rocha <rafaeltbt@gmail.com>
  */
 class NoticiaModel extends Model {
-    
-        const name = 'EntitiesModels\NoticiaModel';
+
+    const name = 'EntitiesModels\NoticiaModel';
 
     /**
      * Método que busca as últimas noticias 
@@ -63,16 +63,15 @@ class NoticiaModel extends Model {
      * @var enums\Departamento , caso esse objeto
      * seja null será filtrado por Departamento::IGREJA
      * @param integer $qtd maxima de registros
-     * @return array(Comunicado)
+     * @return array(Noticia)
      */
     public function retrieveUltimasAtivasByDepartamento($departamento = null, $qtd = 0) {
         try {
             $repository = $this->em->getRepository($this->getEntity());
             $qtd1 = ($qtd == 0 ? NULL : $qtd);
             $d = new DepartamentoEnum();
-            $dep = $departamento == null ? 
-                    $d->retrieveReferencedEntity(DepartamentoEnum::IGREJA)
-                    : $d->retrieveReferencedEntity($departamento);
+            $dep = $departamento == null ?
+                    $d->retrieveReferencedEntity(DepartamentoEnum::IGREJA) : $d->retrieveReferencedEntity($departamento);
             $where = array(
                 'departamento' => $dep,
                 'status' => TipoStatus::ATIVO
@@ -83,6 +82,22 @@ class NoticiaModel extends Model {
         }
     }
     
+    /**
+     * Retorna todas noticias ativas.
+     * @return array(Noticia)
+     */
+    public function retrieveAtivas() {
+        try {
+            $repository = $this->em->getRepository($this->getEntity());
+            $where = array(
+                'status' => TipoStatus::ATIVO
+            );
+            return $repository->findBy($where, array('id' => 'desc'));
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
+
     /**
      * Método recebe a quantidade maxima de registros a serem
      * retornado, caso não seja informado irá retornar todos
@@ -104,8 +119,8 @@ class NoticiaModel extends Model {
             echo $exc->getTraceAsString();
         }
     }
-    
-     public function countByStatus($tipoStatus = null) {
+
+    public function countByStatus($tipoStatus = null) {
         try {
             $dql = "SELECT count(n.id) FROM " . $this->getEntity() . " n WHERE n.status = :status";
             $query = $this->em->createQuery($dql);
@@ -124,6 +139,10 @@ class NoticiaModel extends Model {
      */
     public function getEntity() {
         return Noticia::name;
+    }
+
+    public function getTable() {
+        return 'tbl_noticia';
     }
 
 }

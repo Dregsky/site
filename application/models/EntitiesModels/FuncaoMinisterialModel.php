@@ -24,4 +24,7 @@ class FuncaoMinisterialModel extends Model {
         return FuncaoMinisterial::name;
     }
 
+    public function getTable() {
+        return 'tbl_funcao_ministerial';
+    }
 }

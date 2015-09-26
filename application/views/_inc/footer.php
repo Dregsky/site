@@ -46,7 +46,9 @@
         </div>
 
         <div class="text1">
-            &copy; Copyright <a href="#">ADCruz 2011</a>. Todos os direitos reservados.
+            &copy; Copyright <a href="#">ADCruz 2015</a>. Todos os direitos reservados.
+            <br/>
+            <a href="<?= base_url('diversos/localizacao') ?>">Mapa</a>
             <br/>
             QD 07 - Área Especial 01 
             <br/>

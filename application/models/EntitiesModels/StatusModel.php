@@ -23,4 +23,8 @@ class StatusModel extends Model {
         return Status::name;
     }
 
+    public function getTable() {
+        return 'tbl_status';
+    }
+
 }

@@ -43,5 +43,9 @@ class MuralModel extends Model {
     public function getEntity() {
         return Mural::name;
     }
+    
+    public function getTable() {
+        return 'tbl_mural';
+    }
 
 }

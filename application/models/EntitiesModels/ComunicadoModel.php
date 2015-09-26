@@ -38,4 +38,8 @@ class ComunicadoModel extends Model {
         return Comunicado::name;
     }
 
+    public function getTable() {
+        return 'tbl_comunicado';
+    }
+
 }

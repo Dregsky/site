@@ -23,5 +23,9 @@ class EstadoCivilModel extends Model {
     public function getEntity() {
         return EstadoCivil::name;
     }
+    
+    public function getTable() {
+        return 'tbl_estado_civil';
+    }
 
 }

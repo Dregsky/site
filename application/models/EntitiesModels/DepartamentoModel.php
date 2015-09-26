@@ -57,5 +57,9 @@ class DepartamentoModel extends Model {
     public function getEntity() {
         return Departamento::name;
     }
+    
+     public function getTable() {
+        return 'tbl_departamento';
+    }
 
 }

@@ -60,7 +60,6 @@ function carregarPaginaTestemunho(pagina) {
 }
 
 function carregarPaginaNoticia(pagina) {
-    console.log(pagina);
     $.ajax({
         'url': BASE_URL + "/ajax/AjaxController/ajaxNoticiaNewPage",
         'type': 'POST',
@@ -112,8 +111,6 @@ function carregarPaginaNoticia(pagina) {
               //  'left': '-160px',
                 //'opacity': '0.1'});
             //corpo.animate({'left': '0', 'opacity': '1'});
-            console.log(pagina);
-            console.log(paginaAnterior);
         }
     });
 

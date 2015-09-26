@@ -5,13 +5,23 @@
         <small>Deus seja Louvado!</small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li><a href="#"><i class="glyphicon glyphicon-home"></i>Home</a></li>
     </ol>
 </section>
 
 <!-- Main content -->
 <section class="content">
-
+ <?php
+    $message = $this->session->flashdata('message');
+    if ($message != null) :
+        ?>
+        <input id='alert' type='hidden' value="<?= $message ?>">
+        <script>
+            var a = $('#alert').val();
+            bootbox.alert(a, function () {
+            });
+        </script>
+    <?php endif; ?>
     <!-- Default box -->
     <div class="box">
         <div class="box-header with-border">

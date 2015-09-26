@@ -42,7 +42,7 @@
                 <?php endif; ?>
                 <?= form_open('restrito/login/logar') ?>
                 <div class="form-group has-feedback">
-                    <input type="text" class="form-control" name="login" placeholder="Usuário" required>
+                    <input style="cursor:pointer"  type="text" class="form-control" name="login" placeholder="Usuário" required>
                     <span class="glyphicon glyphicon-user form-control-feedback"></span>
                 </div>
                 <div class="form-group has-feedback">

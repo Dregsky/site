@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="<?= base_url('public/bootstrap/css/bootstrap.min.css') ?>" >
+    <!-- Select 2 -->
+    <link rel="stylesheet" href="<?= base_url('public/plugins/select2/select2.min.css') ?>">
     <!-- Theme style -->
     <link rel="stylesheet" href="<?= base_url('public/css/restrito/template/AdminLTE.min.css') ?>" >
     <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -42,6 +44,8 @@
     <script type="text/javascript" src="<?= base_url('public/plugins/jQuery/jQuery-2.1.4.min.js') ?>"></script>
     <!-- Bootstrap 3.3.5 -->
     <script type="text/javascript" src="<?= base_url('public/bootstrap/js/bootstrap.min.js') ?>"></script>
+    <!-- Select 2 -->
+    <script type="text/javascript" src="<?= base_url('public/plugins/select2/select2.full.min.js') ?>"></script>
     <!-- SlimScroll -->
     <script type="text/javascript" src="<?= base_url('public/js/plugins/slimScroll/jquery.slimscroll.min.js') ?>"></script>
     <!-- FastClick -->

@@ -21,4 +21,8 @@ class PerfilModel extends Model {
         return Perfil::name;
     }
 
+    public function getTable() {
+        return 'tbl_perfil';
+    }
+
 }

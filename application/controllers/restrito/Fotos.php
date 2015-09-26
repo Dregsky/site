@@ -3,11 +3,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 Use Entities\Pessoa as Pessoa;
-Use Entities\Departamento;
-Use Entities\Status;
 Use Entities\Album;
-Use enums\TipoPerfil;
-Use enums\DepartamentoEnum;
 
 /**
  * @property Doctrine $doctrine Biblioteca ORM
@@ -17,8 +13,6 @@ Use enums\DepartamentoEnum;
  * @author Rafael Rocha <rafaeltbt@gmail.com>
  */
 class Fotos extends Restrito_Controller {
-
-    private $departamento;
 
     /**
      * Método Construtor
@@ -64,8 +58,9 @@ class Fotos extends Restrito_Controller {
         $model = new AlbumModel();
         //die(var_dump($departamento));
         $dados['albuns'] = $model->retrieveAllByDepartamento($this->departamento);
-        $content = $this->load->view('restrito/albunsLista_comp', $dados, true);
-        $page = new SimpleRestritoPage('Albuns', $content, array('Fotos', 'Albuns'));
+        $content = $this->load->view('restrito/fotos/albunsLista_comp', $dados, true);
+        $page = new SimpleRestritoPage('Albuns', $content, array(
+            array('glyphicon glyphicon-picture','Fotos'), 'Albuns'));
         return $page->getComponent();
     }
 
@@ -83,8 +78,9 @@ class Fotos extends Restrito_Controller {
         $dados['departamentos'] = $this->dep->retrieveAll();
         $dados['statusList'] = $this->stat->retrieveAll();
         $dados['departamentoPerfil'] = $this->departamento;
-        $content = $this->load->view('restrito/albunsMantem_comp', $dados, true);
-        $page = new SimpleRestritoPage('Mantem Album', $content, array('Fotos', 'Albuns', 'Mantem'));
+        $content = $this->load->view('restrito/fotos/albunsMantem_comp', $dados, true);
+        $page = new SimpleRestritoPage('Mantem Album', $content, array(
+            array('glyphicon glyphicon-picture','Fotos'), 'Albuns', 'Mantem'));
         return $page->getComponent();
     }
 
@@ -132,6 +128,10 @@ class Fotos extends Restrito_Controller {
                     . 'Tente novamente ou contate o administrador.');
         }
         redirect('restrito/fotos/albuns');
+    }
+    
+    protected function getController() {
+        return $this->router->class;
     }
 
 }

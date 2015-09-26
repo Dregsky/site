@@ -2,6 +2,11 @@
     $('.multiple_select').ready(function () {
         $('.multiple_select').multiSelect();
     });
+    window.onload = function () {
+    id('telefone').onkeyup = function () {
+        mascara(this, mtel);
+    };
+};
 </script>
 <center>
     <?php
@@ -114,7 +119,7 @@
         </tr>
         <tr height="50" valign="top">
             <td>
-                <select name="estadoCivil"required>
+                <select name="estadoCivil" required>
                     <option value=""></option>
                     <?php foreach ($estadoCivilList as $c): ?>
                         <option value=<?= $c->getId() ?><?= ($estadoCivil == $c->getId()) ? ' selected' : '' ?> >

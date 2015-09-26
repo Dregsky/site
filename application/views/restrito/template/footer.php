@@ -5,6 +5,10 @@
         var menuAtivoFilho = $('#menuAtivoFilho').val();
         if (menuAtivoFilho.length > 0) {
             $('#' + menuAtivoFilho).addClass('active');
+            var menuAtivoNeto = $('#menuAtivoNeto').val();
+            if (menuAtivoNeto.length > 0) {
+                $('#'+ menuAtivoFilho +' ' + '.' + menuAtivoNeto).addClass('active');
+            }
         }
     });
 

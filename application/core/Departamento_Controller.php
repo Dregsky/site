@@ -22,10 +22,6 @@ abstract class Departamento_Controller extends Site_Controller {
 
     abstract function getDepartamento();
 
-    protected abstract function includeSlide();
-
-    protected abstract function getCoordenadores();
-
     public function __construct() {
         parent::__construct();
     }
@@ -40,8 +36,9 @@ abstract class Departamento_Controller extends Site_Controller {
         /**
          * Includes de models
          */
-        
         $this->load->model('EntitiesModels/AlbumModel');
+        $this->load->model('EntitiesModels/SlideModel');
+        $this->load->model('EntitiesModels/CoordenacaoDepartamentoModel');
         /**
          * Includes de components
          */
@@ -58,7 +55,7 @@ abstract class Departamento_Controller extends Site_Controller {
             case $this::COORDENACAO:
                 $this->menuSelecionado = $this::COORDENACAO;
                 return $this->coordenacao();
-                
+
             case $this::FOTOS:
                 $this->menuSelecionado = $this::FOTOS;
                 return $this->fotos();
@@ -73,8 +70,10 @@ abstract class Departamento_Controller extends Site_Controller {
     /**
      * Paginas do controller
      */
-    public function agenda($agenda = '') {
-        $dados['agenda'] = $this->departamento->getAgendaGoogle();
+    public function agenda() {
+        $agenda = json_decode($this->departamento->getAgendaGoogle());
+        $dados['agenda'] = isset($agenda->agenda) ? $agenda->agenda : '';
+        $dados['tipo'] = isset($agenda->tipo) ? $agenda->tipo : '';
         $agendaPage = $this->load->view('components/agenda_comp', $dados, true);
         $panel = new RowWrapper1Panel($agendaPage);
         $page = new SimplePage('Agenda ' . $this->departamento->getNomeCompleto(), $panel->getComponent());
@@ -82,12 +81,13 @@ abstract class Departamento_Controller extends Site_Controller {
     }
 
     public function coordenacao() {
-        $dados['pessoas'] = $this->getCoordenadores();
+        $model = new CoordenacaoDepartamentoModel();
+        $dados['pessoas'] = $model->retrieveByDepartamentoAndYear($this->departamento->getId());
         $cPage = $this->load->view('departamentos/coordenacao_comp', $dados, true);
         $page = new SimplePage('Coordenação ' . $this->departamento->getNomeCompleto(), $cPage);
         return $page->getComponent();
     }
-    
+
     public function fotos() {
         $model = new AlbumModel();
         $dados['albuns'] = $model->retrieveAtivosByDepartamento($this->departamento->getId());
@@ -96,12 +96,9 @@ abstract class Departamento_Controller extends Site_Controller {
         return $page->getComponent();
     }
 
-    protected function getCoordenador($nome = '', $cargo = '', $foto = '') {
-        return array(
-            'nome' => $nome,
-            'cargo' => $cargo,
-            'foto' => $foto
-        );
+    private function includeSlide() {
+        $dados['banners'] = (new SlideModel())->retrieveAllByDepartamento($this->departamento->getId());
+        return $this->load->view('components/slide_comp', $dados, true);
     }
 
     function getMenuSelecionado() {

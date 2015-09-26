@@ -37,7 +37,7 @@ class Pessoa extends AbstractEntity {
     private $genero;
 
     /**
-     * @ManyToMany(targetEntity="Departamento", cascade={"persist","remove"})
+     * @ManyToMany(targetEntity="Departamento", cascade={"persist","remove"}, fetch="EAGER")
      * @JoinTable(name="tbl_pessoa_departamento",
      *      joinColumns={@JoinColumn(name="cod_pessoa", referencedColumnName="cod_pessoa")},
      *      inverseJoinColumns={@JoinColumn(name="cod_departamento", referencedColumnName="cod_departamento")})

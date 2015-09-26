@@ -24,4 +24,8 @@ class EscolaridadeModel extends Model {
         return Escolaridade::name;
     }
 
+    public function getTable() {
+        return 'tbl_escolaridade';
+    }
+
 }
