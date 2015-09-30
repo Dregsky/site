@@ -89,7 +89,7 @@ class Cultos extends Diversos_Controller {
             '21:00',
             '19:30',
             '08:00',
-            '21:00',
+            '20:00',
             '15:00',
             '21:00',
             '20:00',

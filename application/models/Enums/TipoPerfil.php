@@ -28,6 +28,7 @@ class TipoPerfil extends Enum {
     const FAMILIA = 15;
     const MEMBRO = 16;
     const MGD = 17;
+    const LIV = 18;
 
 //put your code here
     

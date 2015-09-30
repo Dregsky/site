@@ -7,11 +7,12 @@ Use enums\DepartamentoEnum;
 
 /**
  * @property Doctrine $doctrine Biblioteca ORM
+ * @property home_model $homeModel Model
  * 
  * @author Rafael Rocha <rafaeltbt@gmail.com>
  */
-class ANG extends RestritoDepartamento_Controller {
-    
+class LIV extends Departamento_Controller {
+
     /**
      * Método Construtor
      */
@@ -26,13 +27,9 @@ class ANG extends RestritoDepartamento_Controller {
         
     }
 
-    public function getDepartamentoOfPage() {
+    public function getDepartamento() {
         $this->load->model('EntitiesModels/DepartamentoModel');
-        return (new DepartamentoModel())->retrieve(DepartamentoEnum::ANG);
-    }
-    
-    protected function getController() {
-        return $this->router->class;
+        return (new DepartamentoModel())->retrieve(DepartamentoEnum::LIV);
     }
 
 }

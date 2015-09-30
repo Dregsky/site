@@ -1,6 +1,7 @@
 <?php
 
 namespace Entities;
+
 /**
  * Pessoa
  *
@@ -20,6 +21,7 @@ class Comunicado extends AbstractEntity {
      * @Column(name="cod_comunicado", type="integer", nullable=false)
      */
     private $id;
+
     /**
      *
      * @var string
@@ -88,10 +90,18 @@ class Comunicado extends AbstractEntity {
     private $pessoaExclusao;
 
     /**
+     *
+     * @var Status
+     * 
+     * @ManyToOne(targetEntity="Status", fetch="EAGER")
+     * @JoinColumn(name="cod_status", referencedColumnName="cod_status")
+     */
+    private $status;
+
+    /**
      * 
      * Getters and Setters
      */
-    
     public function getId() {
         return $this->id;
     }
@@ -171,6 +181,14 @@ class Comunicado extends AbstractEntity {
     public function setPessoaExclusao(Pessoa $pessoaExclusao) {
         $this->pessoaExclusao = $pessoaExclusao;
         return $this;
+    }
+
+    function getStatus() {
+        return $this->status;
+    }
+
+    function setStatus(Status $status) {
+        $this->status = $status;
     }
 
 

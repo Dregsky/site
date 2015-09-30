@@ -12,7 +12,7 @@ $imageProfile = processaImagem($this->session->userdata('foto'), $this->session-
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top" role="navigation">
         <!-- Sidebar toggle button-->
-        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+        <a href="#" onClick="sideBar()" class="sidebar-toggle" data-toggle="offcanvas" role="button">
             <span class="sr-only">Toggle navigation</span>
         </a>
         <div class="navbar-custom-menu">
@@ -53,3 +53,16 @@ $imageProfile = processaImagem($this->session->userdata('foto'), $this->session-
         </div>
     </nav>
 </header>
+
+<script>
+    function sideBar() {
+    $.ajax({
+        url: BASE_URL + "restrito/home/sideBar",
+        type: 'POST',
+        data: {'nada': ''},
+        success: function (data) {
+        }
+    });
+
+}
+</script>

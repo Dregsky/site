@@ -5,6 +5,7 @@
         <li><a id="cultos" href="<?= base_url('cultos') ?>">Cultos</a></li>
         <li><a href="#">Departamentos</a>
             <ul>
+                <li><a href="<?= base_url('departamento/LIV') ?>">LIV</a></li>
                 <li><a href="<?= base_url('departamento/ANG') ?>">ANG</a></li>
                 <li><a href="<?= base_url('departamento/EBD') ?>">EBD</a></li>
                 <li><a href="<?= base_url('departamento/CIBE') ?>">CIBE</a></li>
@@ -30,6 +31,6 @@
             </ul>
         </li>
         <li><a id="cadastro" href="<?= base_url('diversos/membro') ?>">Cadastro</a></li>
-        <li><a href="<?= base_url('restrito') ?>">Restrito</a></li>
+        <li><a target="_blank" href="<?= base_url('restrito') ?>">Restrito</a></li>
     </ul>
 </div>

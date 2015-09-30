@@ -110,7 +110,7 @@ base_url('public/plugins/datatables/extensions/'
     });
     $('.edit-row > td').on('click', function (e) {
         if (!$(this).hasClass('no-edit-col')) {
-            var id = $('.edit-row > td:first').text();
+            var id = $(this).parent().children().first().text();
             location.href = BASE_URL + 'restrito/membros/membroMantem/' + id;
         }
     });

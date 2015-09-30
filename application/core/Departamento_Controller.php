@@ -63,6 +63,7 @@ abstract class Departamento_Controller extends Site_Controller {
             default:
                 $this->menuSelecionado = 'principal';
                 $dados['slide'] = $this->includeSlide();
+                $dados['panel1'] = $this->includePanel1();
                 return $this->load->view('departamentos/home_page', $dados, true);
         }
     }
@@ -97,8 +98,23 @@ abstract class Departamento_Controller extends Site_Controller {
     }
 
     private function includeSlide() {
-        $dados['banners'] = (new SlideModel())->retrieveAllByDepartamento($this->departamento->getId());
+        $dados['banners'] = (new SlideModel())->retrieveAtivosByDepartamento($this->departamento->getId());
         return $this->load->view('components/slide_comp', $dados, true);
+    }
+    
+     /**
+     * 
+     * @return string contendo o html do panel
+     */
+    private function includePanel1() {
+        $panel = new RowWrapper1Panel($this->sobre());
+        return $panel->getComponent();
+    }
+
+    private function sobre() {
+        $dados['departamento'] = $this->departamento->getNomeCompleto();
+        $dados['sobre'] = $this->departamento->getSobre();
+        return $this->load->view('departamentos/sobre_comp', $dados, true);
     }
 
     function getMenuSelecionado() {

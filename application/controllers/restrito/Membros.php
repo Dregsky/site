@@ -72,19 +72,21 @@ class Membros extends Restrito_Controller {
         //die(var_dump($departamento));
         $dados['pessoas'] = $model->retrieveAll();
         $content = $this->load->view('restrito/membros/membrosLista_comp', $dados, true);
-        $page = new SimpleRestritoPage('Lista', $content, array(array('fa fa-users','Membros'), 'Lista'));
+        $page = new SimpleRestritoPage('Lista', $content, array(array('fa fa-users', 'Membros'), 'Lista'));
         return $page->getComponent();
     }
 
     public function membroMantem($id = 0, $dados = array()) {
         $title = $id == 0 ? 'Cadastro' : 'Edição';
-        $breadcrumbs = $id == 0 ? array(array('fa fa-users','Membros'), 'Mantem') 
-                : array(array('fa fa-users','Membros'), 'Lista', 'Mantem');
+        $breadcrumbs = $id == 0 ? array(array('fa fa-users', 'Membros'), 'Mantem') : array(array('fa fa-users', 'Membros'), 'Lista', 'Mantem');
         if ($id != 0 && empty($dados)) {
             $model = new PessoaModel();
             $p = $model->retrieveArray($id);
             $p['departamentos'] = $model->CI_buscarDepartamentos($id);
             $dados = $p;
+            /* Não deixa que pessoa sem permissão edite páginas e nem que seja acessado páginas de
+             * edição com id inexistente;
+             */
         }
         $this->retrieveSelectsList($dados);
         $this->initializeDados($dados);

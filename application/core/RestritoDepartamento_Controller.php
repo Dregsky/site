@@ -57,15 +57,19 @@ abstract class RestritoDepartamento_Controller extends Restrito_Controller {
                     return $this->coordenadorMantem($id);
                 }
                 return $this->coordenadorMantem();
-            case 'agenda':
-                $this->setMenuAtivoFilho($this->departamentoNome);
-                $this->setMenuAtivoNeto('agenda');
-                return $this->agenda();
             case 'coordenacaoOrdem':
                 $this->setMenuAtivoFilho($this->departamentoNome);
                 $this->setMenuAtivoNeto('coordenacao');
                 back('restrito/departamento/' . $this->departamentoNome . '/coordenacao');
                 return $this->coordenacaoOrdem();
+            case 'agenda':
+                $this->setMenuAtivoFilho($this->departamentoNome);
+                $this->setMenuAtivoNeto('agenda');
+                return $this->agenda();
+            case 'sobre':
+                $this->setMenuAtivoFilho($this->departamentoNome);
+                $this->setMenuAtivoNeto('sobre');
+                return $this->sobre();
         }
     }
 
@@ -101,6 +105,12 @@ abstract class RestritoDepartamento_Controller extends Restrito_Controller {
         } else if ($id != 0) {
             $model = new CoordenacaoDepartamentoModel();
             $coordenador = $model->CI_buscarById($id);
+            /* Não deixa que pessoa sem permissão edite páginas e nem que seja acessado páginas de
+             * edição com id inexistente;
+             */
+            $dados['departamento']= $coordenador['cod_departamento'];
+            verificarPermissaoDepartamento($dados, $this->departamento, 
+                    'restrito/departamento/'.$this->departamentoNome.'/coordenacao');
             return $this->processaDadosMantem($coordenador, $id);
         }
         return $this->processaDadosMantem(array(), $id);
@@ -132,7 +142,6 @@ abstract class RestritoDepartamento_Controller extends Restrito_Controller {
         $dados = $this->input->post();
         try {
             $dados['cod_departamento'] = $this->getDepartamentoOfPage()->getId();
-            $dados['posicao'] = 0;
             $dados['foto'] = $this->processaImagem($dados, 'foto');
             if ($dados['foto'] == null) {
                 unset($dados['foto']);
@@ -275,6 +284,34 @@ abstract class RestritoDepartamento_Controller extends Restrito_Controller {
         }
         success("Sucesso", "Ordem redefinida com sucesso!");
         redirect('restrito/departamento/' . $this->departamentoNome . '/coordenacaoOrdem');
+    }
+    
+    /**
+     * SOBRE
+     */
+
+    /**
+     * 
+     * @return pagina manter agenda
+     */
+    public function sobre() {
+        $dados['departamento'] = $this->getDepartamentoOfPage();
+        $dados['sobre'] = $this->getDepartamentoOfPage()->getSobre();
+        $dados['title'] = 'Sobre';
+        $content = $this->load->view('restrito/departamento/sobreMantem_comp', $dados, true);
+        $breadcrumbs = array(array('fa fa-cubes', 'Departamento'), $this->departamentoNome, 'Sobre');
+        $page = new SimpleRestritoPage('Sobre ' . $this->departamentoNome, $content, $breadcrumbs);
+        return $page->getComponent();
+    }
+
+    public function salvarSobre() {
+        $departamento = $this->getDepartamentoOfPage();
+        $sobre = $this->input->post('sobre');
+        $departamento->setSobre($sobre);
+        $model = new DepartamentoModel();
+        $model->saveOrUpdate($departamento);
+        success("Sucesso", "Sobre Salvo Com Sucesso");
+        redirect('restrito/departamento/' . $this->departamentoNome . '/sobre');
     }
 
     /**

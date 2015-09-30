@@ -90,33 +90,77 @@ class PessoaModel extends Model {
             throw $exc;
         }
     }
+    /**
+     * 
+     * @param String login e senha
+     * @return Pessoa encontrada
+     */
+    public function retrieveEmailAndCpf($email, $cpf) {
+        try {
+            $dql = "SELECT p.email, p.cpf, p.id "
+                    . "FROM " . $this->getEntity() . " p "
+                    . " WHERE p.email = :email and p.cpf = :cpf"
+                    . " and p.login is not null and p.login != '' ";
+            $query = $this->em->createQuery($dql);
+            $query->setParameter("email", $email);
+            $query->setParameter("cpf", $cpf);
+            $query->execute();
+            return $query->getResult();
+        } catch (Exception $exc) {
+            throw $exc;
+        }
+    }
 
     /**
      * 
      * @param String login e senha
      * @return Pessoa encontrada
      */
-    public function retrieveArray($id) {
+    public function retrieveAllMembrosUsuarios() {
         try {
-            $dql = " SELECT p.id, p.genero, "
-                    . " p.nome, p.email, p.telefone, p.dataCadastro, "
-                    . " p.dataExclusao, p.dataNascimento, "
-                    . " p.cartaoMembro, p.fotoPessoa, p.cpf, p.cidadeNatal, "
-                    . " p.rua, p.bairro, p.cidade, p.rg, p.orgaoEmissor, "
-                    . " p.dataEmissao, f.id as funcaoMinisterial, pr.id as profissao, "
-                    . " e.id as escolaridade, ec.id as estadoCivil, p.dataChegada, "
-                    . " p.dataBatismoAguas, p.dataBatismoEspirito, p.nomePai,"
-                    . " p.nomeMae, p.nomeConjuge, p.dataCasamento, p.qtdFilhos "
+            $dql = " SELECT p.id, p.nome, p.login"
                     . " FROM " . $this->getEntity() . " p "
-                    . " left join p.funcaoMinisterial f "
-                    . " left join p.profissao pr "
-                    . " left join p.escolaridade e "
-                    . " left join p.estadoCivil ec"
-                    . " WHERE p.id = :id";
+                    . " WHERE p.login is not null and p.login != '' ";
             $query = $this->em->createQuery($dql);
-            $query->setParameter("id", $id);
             $query->execute();
-            return $query->getSingleResult();
+            return $query->getResult();
+        } catch (Exception $exc) {
+            throw $exc;
+        }
+    }
+    
+    /**
+     * 
+     * @param String login e senha
+     * @return Pessoa encontrada
+     */
+    public function retrieveLoginById($id) {
+        try {
+            $dql = " SELECT p.login, p.id"
+                    . " FROM " . $this->getEntity() . " p "
+                    . " WHERE p.id = :id and p.login is not null and p.login != '' ";
+            $query = $this->em->createQuery($dql);
+            $query->setParameter('id', $id);
+            $query->execute();
+            return $query->getResult()[0];
+        } catch (Exception $exc) {
+            throw $exc;
+        }
+    }
+    
+     /**
+     * 
+     * @param String login e senha
+     * @return Pessoa encontrada
+     */
+    public function retrieveAllMembrosNotUsuarios() {
+        try {
+            $dql = " SELECT p.id, p.nome, p.login"
+                    . " FROM " . $this->getEntity() . " p "
+                    . " WHERE p.login is null or p.login = '' ";
+            $query = $this->em->createQuery($dql);
+            $query->execute();
+            return $query->getResult();
         } catch (Exception $exc) {
             throw $exc;
         }
@@ -159,6 +203,37 @@ class PessoaModel extends Model {
         $this->db->select('cod_departamento as id');
         $this->db->where('cod_pessoa', $id);
         return $this->db->get('tbl_pessoa_departamento')->result_array();
+    }
+    
+    /**
+     * 
+     * @param String id
+     * @return Array(Pessoa) encontrada
+     */
+    public function retrieveArray($id) {
+        try {
+            $dql = " SELECT p.id, p.genero, "
+                    . " p.nome, p.email, p.telefone, p.dataCadastro, "
+                    . " p.dataExclusao, p.dataNascimento, "
+                    . " p.cartaoMembro, p.fotoPessoa, p.cpf, p.cidadeNatal, "
+                    . " p.rua, p.bairro, p.cidade, p.rg, p.orgaoEmissor, "
+                    . " p.dataEmissao, f.id as funcaoMinisterial, pr.id as profissao, "
+                    . " e.id as escolaridade, ec.id as estadoCivil, p.dataChegada, "
+                    . " p.dataBatismoAguas, p.dataBatismoEspirito, p.nomePai,"
+                    . " p.nomeMae, p.nomeConjuge, p.dataCasamento, p.qtdFilhos "
+                    . " FROM " . $this->getEntity() . " p "
+                    . " left join p.funcaoMinisterial f "
+                    . " left join p.profissao pr "
+                    . " left join p.escolaridade e "
+                    . " left join p.estadoCivil ec"
+                    . " WHERE p.id = :id";
+            $query = $this->em->createQuery($dql);
+            $query->setParameter("id", $id);
+            $query->execute();
+            return $query->getSingleResult();
+        } catch (Exception $exc) {
+            throw $exc;
+        }
     }
 
     /**

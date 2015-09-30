@@ -26,6 +26,7 @@
                         <tr class="rowHead">
                             <th>Id</th>
                             <th>Nome</th>
+                            <th>Cargo</th>
                             <th>Ano</th>
                             <th>Status</th>
                             <th>Ação</th>
@@ -37,6 +38,7 @@
                                 <tr title="Editar" class="row1 edit-row">
                                     <td><?= $c->getId() ?></td>
                                     <td><?= $c->getNomePessoa() ?></td>
+                                    <td><?= $c->getNomeCargo() ?></td>
                                     <td><?= $c->getAno() ?></td>
                                     <td><?= $c->getStatus()->getDescricao() ?></td>
                                     <td title="" class='no-edit-col icon-actions'>
@@ -76,7 +78,7 @@
 
     $('.edit-row > td').on('click', function (e) {
         if (!$(this).hasClass('no-edit-col')) {
-            var id = $('.edit-row > td:first').text();
+            var id = $(this).parent().children().first().text();
             location.href = BASE_URL + 'restrito/departamento/' + $("#dep").text() + '/coordenadorMantem/' + id;
         }
 

@@ -10,7 +10,7 @@ Use enums\DepartamentoEnum;
  * 
  * @author Rafael Rocha <rafaeltbt@gmail.com>
  */
-class MGD extends RestritoDepartamento_Controller {
+class Ang extends RestritoDepartamento_Controller {
     
     /**
      * Método Construtor
@@ -28,9 +28,9 @@ class MGD extends RestritoDepartamento_Controller {
 
     public function getDepartamentoOfPage() {
         $this->load->model('EntitiesModels/DepartamentoModel');
-        return (new DepartamentoModel())->retrieve(DepartamentoEnum::MGD);
+        return (new DepartamentoModel())->retrieve(DepartamentoEnum::ANG);
     }
-
+    
     protected function getController() {
         return $this->router->class;
     }

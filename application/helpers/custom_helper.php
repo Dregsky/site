@@ -102,6 +102,18 @@ function imagemProfileRestrito($genero, $foto) {
     return $imageProfile;
 }
 
+function imagemUrl($caminho, $foto, $default) {
+    $path = $_SERVER['SCRIPT_FILENAME'];
+    $path_parts = pathinfo($path);
+    $diretorio = $path_parts['dirname'] . $caminho;
+    if ($foto == null || !is_file($diretorio . $foto)) {
+        $image = base_url($caminho.$default);
+    }else{
+        $image = base_url($caminho.$foto);
+    }
+    return $image;
+}
+
 function processaImagem($pathImage, $genero) {
     $path = $_SERVER['SCRIPT_FILENAME'];
     $path_parts = pathinfo($path);
@@ -120,7 +132,7 @@ function processaImagem($pathImage, $genero) {
 if (!function_exists('verificarPermissaoDepartamento')) {
 
     function verificarPermissaoDepartamento($dados, $departamento, $redirect) {
-        if ($dados == null) {
+        if ($dados['departamento'] == null) {
             error('Erro', 'Registro não existe');
             redirect($redirect);
         } else if ($departamento > 0 && $dados['departamento'] != $departamento) {
@@ -130,6 +142,13 @@ if (!function_exists('verificarPermissaoDepartamento')) {
     }
 
 }
+
+ function verificarExistencia($dados, $redirect) {
+        if ($dados == null) {
+            error('Erro', 'Registro não existe');
+            redirect($redirect);
+        }
+    }
 
 if (!function_exists('processBack')) {
 
@@ -210,6 +229,8 @@ if (!function_exists('getDepartamentoByPerfil')) {
                 return DepartamentoEnum::SECRETARIA;
             case TipoPerfil::MGD:
                 return DepartamentoEnum::MGD;
+            case TipoPerfil::LIV:
+                return DepartamentoEnum::LIV;
             case TipoPerfil::SUPER_ADMINISTRADOR:
                 return 0;
             case TipoPerfil::ADMINISTRADOR:

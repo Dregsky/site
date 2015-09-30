@@ -10,7 +10,7 @@ Use enums\DepartamentoEnum;
  * 
  * @author Rafael Rocha <rafaeltbt@gmail.com>
  */
-class EBD extends RestritoDepartamento_Controller {
+class Jtv extends RestritoDepartamento_Controller {
     
     /**
      * Método Construtor
@@ -28,7 +28,7 @@ class EBD extends RestritoDepartamento_Controller {
 
     public function getDepartamentoOfPage() {
         $this->load->model('EntitiesModels/DepartamentoModel');
-        return (new DepartamentoModel())->retrieve(DepartamentoEnum::EBD);
+        return (new DepartamentoModel())->retrieve(DepartamentoEnum::JTV);
     }
 
     protected function getController() {

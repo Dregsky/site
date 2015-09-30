@@ -1,18 +1,3 @@
-<script>
-    $(window).load(function () {
-        var menuAtivo = $('#menuAtivo').val();
-        $('#' + menuAtivo).addClass('active');
-        var menuAtivoFilho = $('#menuAtivoFilho').val();
-        if (menuAtivoFilho.length > 0) {
-            $('#' + menuAtivoFilho).addClass('active');
-            var menuAtivoNeto = $('#menuAtivoNeto').val();
-            if (menuAtivoNeto.length > 0) {
-                $('#'+ menuAtivoFilho +' ' + '.' + menuAtivoNeto).addClass('active');
-            }
-        }
-    });
-
-</script>
 <form id="formAux" method="post">
     <input name="id"  id="inputAux" type="hidden" >
 </form>

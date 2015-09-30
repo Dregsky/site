@@ -23,40 +23,47 @@ function processaPermissao($permitidos, $perfil) {
 function permissoes($controller) {
     $permitidos = array(
         TipoPerfil::ADMINISTRADOR,
-        TipoPerfil::SUPER_ADMINISTRADOR);
-    switch ($controller) {
-        case 'ANG':
+        TipoPerfil::SUPER_ADMINISTRADOR
+    );
+    switch (strtolower($controller)) {
+        case 'ang':
             array_push($permitidos, TipoPerfil::ANG);
             break;
-        case 'JTV':
+        case 'jtv':
             array_push($permitidos, TipoPerfil::MTV);
             break;
-        case 'CIBE':
+        case 'cibe':
             array_push($permitidos, TipoPerfil::CIBE);
             break;
-        case 'CVKIDS':
+        case 'cvkids':
             array_push($permitidos, TipoPerfil::INFANTIL);
             break;
-        case 'EBD':
+        case 'ebd':
             array_push($permitidos, TipoPerfil::EBD);
             break;
-        case 'Familia':
+        case 'familia':
             array_push($permitidos, TipoPerfil::FAMILIA);
             break;
-        case 'MGD':
+        case 'mgd':
             array_push($permitidos, TipoPerfil::MGD);
             break;
-        case 'Missoes':
+        case 'missoes':
             array_push($permitidos, TipoPerfil::MISSOES);
             break;
-        case 'Orquestra':
+        case 'liv':
+            array_push($permitidos, TipoPerfil::LIV);
+            break;
+        case 'orquestra':
             array_push($permitidos, TipoPerfil::ORQUESTRA);
             break;
-        case 'Diretoria':
+        case 'diretoria':
             break;
-        case 'ADCRUZ':
+        case 'adcruz':
             break;
-        case 'Membros':
+        case 'usuarios':
+            array_push($permitidos, TipoPerfil::PASTOR, TipoPerfil::SECRETARIO);
+            break;
+        case 'membros':
             array_push($permitidos, TipoPerfil::PASTOR, TipoPerfil::SECRETARIO);
             break;
         default:

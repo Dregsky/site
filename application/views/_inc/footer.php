@@ -5,6 +5,26 @@
                 <h2>Colaboradores</h2>
 
                 <div class="fnews"> 
+                    <a href="#" class="colaborador">
+                        <img class="img-colaborador"src="<?= base_url('public/images/footer/terapia_susy.JPG') ?>" width="64" height="44" alt="icon" class="lefticon" />
+                    </a> 
+                    <font color="#ffffff" style="font-size:18px">
+                    <a href="#" class="colaborador">Spaço Terapia</a>
+                    </font>
+                    <br/>
+                    <font color="#ffffff">Sueli Massoterapeuta</font>
+                </div>
+                <div class="fnews"> 
+                    <a href="http://renatamyracosmeticos.boxloja.com/" target="_blank">
+                        <img src="<?= base_url('public/images/footer/renatamyracosmeticos.jpg') ?>" width="64" height="44" alt="icon" class="lefticon" />
+                    </a> 
+                    <font color="#ffffff" style="font-size:18px">
+                    <a href="http://renatamyracosmeticos.boxloja.com/" target="_blank">Renata Myra Cosméticos</a>
+                    </font>
+                    <br/>
+                    <font color="#ffffff" style="font-size:12px" >Revendedora, Consultora. Pronta Entrega.</font>
+                </div>
+                <div class="fnews"> 
                     <a href="http://www.telashow.com" target="_blank">
                         <img src="<?= base_url('public/images/footer/telashow.jpg') ?>" width="64" height="44" alt="icon" class="lefticon" />
                     </a> 
@@ -73,7 +93,7 @@
                             </a>
                         </td>
                         <td style="text-align: left;" valign="undefined">
-                            <a href="http://www.youtube.com/user/adcruznet" target="_blank">
+                            <a href="https://www.youtube.com/channel/UC1YqXqu9V6fjHoSPqMUNeyw/videos" target="_blank">
                                 <img src="<?= base_url('public/images/icons/icon-youtube.png') ?>" title="YouTube" />
                             </a>
                         </td>
@@ -97,8 +117,21 @@
 <script>
     $(document).ready(function () {
         var menu = $("#menuSelecionado").val();
-        $("#"+menu).addClass('active');
-        
+        $("#" + menu).addClass('active');
+
+    });
+
+    $('.colaborador').on('click', function () {
+        var conteudoModal = $('#conteudoModal');
+        conteudoModal.empty();
+        img = $('.img-colaborador').clone();
+        img.addClass('flickr-medium');
+        conteudoModal.append(img);
+        $('#modalSlide h4').empty();
+        $('#modalSlide h4').append('Colaborador');
+        $('.content-footer').hide();
+        $('#modalSlide').modal('show');
+        return false;
     });
 </script>
 

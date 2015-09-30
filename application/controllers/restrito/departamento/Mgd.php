@@ -10,7 +10,7 @@ Use enums\DepartamentoEnum;
  * 
  * @author Rafael Rocha <rafaeltbt@gmail.com>
  */
-class CVKIDS extends RestritoDepartamento_Controller {
+class Mgd extends RestritoDepartamento_Controller {
     
     /**
      * Método Construtor
@@ -28,7 +28,7 @@ class CVKIDS extends RestritoDepartamento_Controller {
 
     public function getDepartamentoOfPage() {
         $this->load->model('EntitiesModels/DepartamentoModel');
-        return (new DepartamentoModel())->retrieve(DepartamentoEnum::CVKIDS);
+        return (new DepartamentoModel())->retrieve(DepartamentoEnum::MGD);
     }
 
     protected function getController() {

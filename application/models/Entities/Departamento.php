@@ -56,6 +56,14 @@ class Departamento extends AbstractEntity {
     private $agendaGoogle;
 
     /**
+     *
+     * @var text
+     * 
+     * @Column(type="text", nullable=false)
+     */
+    private $sobre;
+
+    /**
      * Getters and Setters
      */
     public function getId() {
@@ -101,6 +109,14 @@ class Departamento extends AbstractEntity {
     public function setAgendaGoogle($agendaGoogle) {
         $this->agendaGoogle = $agendaGoogle;
         return $this;
+    }
+
+    function getSobre() {
+        return $this->sobre;
+    }
+
+    function setSobre(text $sobre) {
+        $this->sobre = $sobre;
     }
 
 }

@@ -45,8 +45,9 @@ class AlbumModel extends Model {
     public function retrieveUltimos($qtd = 0) {
         try {
             $repository = $this->em->getRepository($this->getEntity());
+            $where = array('status' => (new TipoStatus())->retrieveReferencedEntity(TipoStatus::ATIVO));
             $qtd = $qtd == 0 ? NULL : $qtd;
-            return $repository->findBy(array(), array('id' => 'desc'), $qtd);
+            return $repository->findBy($where, array('id' => 'desc'), $qtd);
         } catch (Exception $exc) {
             echo $exc->getTraceAsString();
         }

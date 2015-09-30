@@ -30,7 +30,7 @@
     <body class="hold-transition login-page">
         <div class="login-box">
             <div class="login-logo">
-                <a href="../../index2.html"><b>ADCruz</b>Restrito</a>
+                <a href="#"><b>ADCruz</b>Restrito</a>
             </div><!-- /.login-logo -->
             <div class="login-box-body">
                 <?php
@@ -63,7 +63,7 @@
                 </div>
                 <?= form_close() ?>
 
-                <a href="<?= base_url('login/recuperarSenha') ?>">Esqueci minha senha</a><br>
+                <a href="<?= base_url('restrito/login/recuperarSenha') ?>">Esqueci minha senha</a><br>
 
             </div><!-- /.login-box-body -->
         </div><!-- /.login-box -->

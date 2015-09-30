@@ -34,6 +34,7 @@ abstract class Restrito_Controller extends CI_Controller {
             permissaoController($this->getController(), $perfil);
             $this->load->model('EntitiesModels/PessoaModel', 'p');
             $this->pessoa = $this->p->retrieve($usuario);
+            $this->departamento = getDepartamentoByPerfil($this->pessoa->getPerfil()->getId());
             $dados['content'] = $this->getContent();
             $dados['menuAtivo'] = $this->getMenuAtivo();
             $dados['menuAtivoFilho'] = $this->menuAtivoFilho;

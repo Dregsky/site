@@ -9,7 +9,7 @@ Use enums\DepartamentoEnum;
 Use Entities\Status;
 
 /*
- * To change this license header, choose License Headers in Project Properties.
+ * To change this license header, choose License Headers in Project Propertien.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -83,7 +83,7 @@ class NoticiaModel extends Model {
     }
     
     /**
-     * Retorna todas noticias ativas.
+     * Retorna todas noticias ativan.
      * @return array(Noticia)
      */
     public function retrieveAtivas() {
@@ -95,6 +95,49 @@ class NoticiaModel extends Model {
             return $repository->findBy($where, array('id' => 'desc'));
         } catch (Exception $exc) {
             echo $exc->getTraceAsString();
+        }
+    }
+    
+       /**
+     * Método recebe o id do departamento 
+     * caso o id seja zero, irá retornar todos os albuns ativos
+     * caso seja menor que 0 retornará um array vazio
+     * caso seja maior que zero retornará os albuns ativos relativos ao departamento.
+     * registros;
+     * @param integer $dep maxima de registros
+     * @return Slide (array)
+     */
+    public function retrieveAllByDepartamento($dep = 0) {
+        try {
+            $repository = $this->em->getRepository($this->getEntity());
+            $where = array();
+            if ($dep > 0) {
+                $where['departamento'] = (new DepartamentoEnum())->retrieveReferencedEntity($dep);
+            } else if ($dep < 0) {
+                return array();
+            }
+            return $repository->findBy($where, array('id' => 'desc'));
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
+    
+    /**
+     * Método recebe id e retorna dados
+     * @param integer $id 
+     * @return Noticia (array)
+     */
+    public function retrieveArrayById($id) {
+        try {
+            $dql = "SELECT n.id, n.titulo, n.fotoNoticia, n.fonte, n.descricao, n.subTitulo,  st.id as status,"
+                    . " d.id as departamento"
+                    . " FROM " . $this->getEntity() . " n join n.status st join n.departamento d"
+                    . " WHERE n.id = :id";
+            $query = $this->em->createQuery($dql);
+            $query->setParameter('id', $id);
+            return $query->getResult()[0];
+        } catch (Exception $exc) {
+            throw $exc;
         }
     }
 

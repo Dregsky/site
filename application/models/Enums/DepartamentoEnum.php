@@ -25,6 +25,7 @@ class DepartamentoEnum extends Enum {
     const SOM = 14;
     const OBREIROS = 15;
     const FAMILIA = 16;
+    const LIV = 17;
 
     public function getReferencedModelEntity() {
         return \DepartamentoModel::name;

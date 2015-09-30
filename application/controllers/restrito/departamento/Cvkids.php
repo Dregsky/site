@@ -10,7 +10,7 @@ Use enums\DepartamentoEnum;
  * 
  * @author Rafael Rocha <rafaeltbt@gmail.com>
  */
-class ADCRUZ extends RestritoDepartamento_Controller {
+class Cvkids extends RestritoDepartamento_Controller {
     
     /**
      * Método Construtor
@@ -20,7 +20,7 @@ class ADCRUZ extends RestritoDepartamento_Controller {
     }
 
     /**
-     * @property Diretoria $diretoria 
+     * @property Pessoa $pessoa 
      */
     public function index() {
         
@@ -28,9 +28,9 @@ class ADCRUZ extends RestritoDepartamento_Controller {
 
     public function getDepartamentoOfPage() {
         $this->load->model('EntitiesModels/DepartamentoModel');
-        return (new DepartamentoModel())->retrieve(DepartamentoEnum::IGREJA);
+        return (new DepartamentoModel())->retrieve(DepartamentoEnum::CVKIDS);
     }
-    
+
     protected function getController() {
         return $this->router->class;
     }

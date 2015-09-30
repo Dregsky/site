@@ -3,6 +3,9 @@
         <h3>
             <?= htmlentities($noticia->getTitulo()) ?>
         </h3>
+        <h5>
+            <?= htmlentities($noticia->getSubTitulo()) ?>
+        </h5>
     </div>
     <div class="redes_sociais_botoes">
         <?= $redesSociais ?>
@@ -21,6 +24,8 @@
         <p class="texto_interno_noticias noticia_fonte">
             <b>Fonte: <i><?= $noticia->getFonte() ?></i></b>
         </p>
+        <p style="font-size:8pt" class="texto_interno_noticias">
+            Data Notícia: <?= $noticia->getDataCadastro()->format('d/m/Y') ?></p>
 
     </div>
 
@@ -38,5 +43,5 @@
             js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.4&appId=835074536612924";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script>
-    <div class="fb-comments" data-href="http://www.adcruz.net/site/noticia/<?=$noticia->getId()?>" data-width="930" data-numposts="10"></div>
+    <div class="fb-comments" data-href="http://www.adcruz.net/site/noticia/<?= $noticia->getId() ?>" data-width="930" data-numposts="10"></div>
 </div>

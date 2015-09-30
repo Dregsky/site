@@ -1,7 +1,9 @@
 <?php
 
 defined('BASEPATH') OR exit('No direct script access allowed');
+
 Use Entities\Pessoa as Pessoa;
+
 /**
  * @property Doctrine $doctrine Biblioteca ORM
  * @property home_model $homeModel Model
@@ -21,6 +23,7 @@ class Home extends Restrito_Controller {
      * @property Pessoa $pessoa 
      */
     public function index() {
+        
     }
 
     protected function getMenuAtivo() {
@@ -28,10 +31,25 @@ class Home extends Restrito_Controller {
     }
 
     protected function getContent() {
-        return $this->load->view('restrito/home','',true);
+        return $this->load->view('restrito/home', '', true);
+    }
+
+    /**
+     * Seta na session a class do side bar
+     * para determinar como ele irá aparecer na
+     * próxima requisição
+     */
+    function sideBar() {
+        $side = $this->session->userdata('side');
+        if ($side != null && $side == 'sidebar-collapse') {
+            $this->session->set_userdata('side', '');
+        } else {
+            $this->session->set_userdata('side', 'sidebar-collapse');
+        }
     }
 
     protected function getController() {
         return $this->router->class;
     }
+
 }

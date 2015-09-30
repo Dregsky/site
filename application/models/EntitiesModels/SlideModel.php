@@ -59,7 +59,7 @@ class SlideModel extends Model {
      * caso seja maior que zero retornará os albuns ativos relativos ao departamento.
      * registros;
      * @param integer $dep maxima de registros
-     * @return Album (array)
+     * @return Slide (array)
      */
     public function retrieveAtivosByDepartamento($dep = 0) {
         try {

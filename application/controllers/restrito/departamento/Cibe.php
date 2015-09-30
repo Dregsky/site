@@ -10,7 +10,7 @@ Use enums\DepartamentoEnum;
  * 
  * @author Rafael Rocha <rafaeltbt@gmail.com>
  */
-class CIBE extends RestritoDepartamento_Controller {
+class Cibe extends RestritoDepartamento_Controller {
     
     /**
      * Método Construtor

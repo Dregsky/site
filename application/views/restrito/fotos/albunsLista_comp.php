@@ -75,12 +75,12 @@
             "order": [[0, "desc"]]
         });
     });
-    
-    $('.edit-row > td').on('click', function(e){
-        if(!$(this).hasClass('no-edit-col')){
-           var id  = $('.edit-row > td:first').text();
-           location.href = BASE_URL + 'restrito/fotos/albumMantem/' + id;
+
+    $('.edit-row > td').on('click', function (e) {
+        if (!$(this).hasClass('no-edit-col')) {
+            var id = $(this).parent().children().first().text();
+            location.href = BASE_URL + 'restrito/fotos/albumMantem/' + id;
         }
-        
+
     });
 </script>

@@ -27,136 +27,139 @@ $perfil = $this->session->userdata('perfil');
                     <i class="glyphicon glyphicon-home"></i> <span>Home</span> <i class="pull-right"></i>
                 </a>
             </li>
-            <li id="fotos" class="treeview">
+            <li id="fotos" class="treeview <?= $menuAtivo == 'fotos' ? 'active' : '' ?>">
                 <a href="#">
                     <i class="glyphicon glyphicon-camera"></i>
                     <span>Fotos</span>
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li id="albuns"><a href="<?= base_url('restrito/fotos/albuns') ?>"><i class="glyphicon glyphicon-picture"></i>Albuns</a></li>
-                    <li id="slides"><a href="<?= base_url('restrito/slide/lista') ?>"><i class="glyphicon glyphicon-sound-stereo"></i>Slides</a></li>
+                    <li id="albuns" 
+                        class="<?= ($menuAtivo == 'fotos' && $menuAtivoFilho == 'albuns') ? 'active' : '' ?>">
+                        <a href="<?= base_url('restrito/fotos/albuns') ?>"><i class="glyphicon glyphicon-picture"></i>Albuns</a></li>
+                    <li id="slides" 
+                        class="<?= ($menuAtivo == 'fotos' && $menuAtivoFilho == 'slides') ? 'active' : '' ?>">
+                        <a href="<?= base_url('restrito/slide/lista') ?>"><i class="glyphicon glyphicon-sound-stereo"></i>Slides</a></li>
                 </ul>
             </li>
-            <li id="departamentos" class="treeview">
+            <li id="departamentos" class="treeview <?= $menuAtivo == 'departamentos' ? 'active' : '' ?>">
                 <a href="#">
                     <i class="fa fa-cubes"></i> <span>Departamentos</span>
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
+                    <?php
+                    $departamentos = array(
+                        'ANG', 'JTV',
+                        'CVKIDS', 'Orquestra', 'CIBE', 'MGD',
+                        'EBD', 'Missoes', 'Familia', 'LIV'
+                    );
+                    ?>
                     <?php if (menuPermissao('ADCRUZ', $perfil)) : ?>
-                        <li id="ADCRUZ">
+                        <li id="ADCRUZ" class="<?= ($menuAtivoFilho == 'ADCRUZ') ? 'active' : '' ?>">
                             <a href="#"><i class="fa fa-circle-o"></i>ADCRUZ<i class="fa fa-angle-left pull-right"></i></a>
                             <ul class="treeview-menu">
-                                <li class="agenda" ><a href="<?= base_url('restrito/departamento/ADCRUZ/agenda') ?>"><i class="glyphicon glyphicon-calendar"></i>Agenda</a></li>
+                                <li class="agenda 
+                                    <?= ($menuAtivoFilho == 'ADCRUZ' && $menuAtivoNeto == 'agenda') ? 'active' : '' ?>">
+                                    <a href="<?= base_url('restrito/departamento/ADCRUZ/agenda') ?>"><i class="glyphicon glyphicon-calendar"></i>Agenda</a></li>
                             </ul>
                         </li>
                     <?php endif; ?>
                     <?php if (menuPermissao('Diretoria', $perfil)) : ?>
-                        <li id="Diretoria">
+                        <li id="Diretoria" class="<?= ($menuAtivoFilho == 'Diretoria') ? 'active' : '' ?>">
                             <a href="#"><i class="fa fa-circle-o"></i>Diretoria<i class="fa fa-angle-left pull-right"></i></a>
                             <ul class="treeview-menu">
-                                <li class="coordenacao"><a href="<?= base_url('restrito/departamento/Diretoria/coordenacao') ?>"><i class="glyphicon glyphicon-king"></i>Coordenação</a></li>
+                                <li class="coordenacao
+                                    <?= ($menuAtivoFilho == 'Diretoria' && $menuAtivoNeto == 'coordenacao') ? 'active' : '' ?>">
+                                    <a href="<?= base_url('restrito/departamento/Diretoria/coordenacao') ?>"><i class="glyphicon glyphicon-king"></i>Coordenação</a></li>
                             </ul>
                         </li>
                     <?php endif; ?>
-                    <?php if (menuPermissao('ANG', $perfil)) : ?>
-                        <li id="ANG">
-                            <a href="#"><i class="fa fa-circle-o"></i>ANG<i class="fa fa-angle-left pull-right"></i></a>
-                            <ul class="treeview-menu">
-                                <li class="coordenacao"><a href="<?= base_url('restrito/departamento/ANG/coordenacao') ?>"><i class="glyphicon glyphicon-king"></i>Coordenação</a></li>
-                                <li class="agenda" ><a href="<?= base_url('restrito/departamento/ANG/agenda') ?>"><i class="glyphicon glyphicon-calendar"></i>Agenda</a></li>
-                            </ul>
-                        </li>
-                    <?php endif; ?>
-                    <?php if (menuPermissao('JTV', $perfil)) : ?>
-                        <li id="JTV">
-                            <a href="#"><i class="fa fa-circle-o"></i>JTV<i class="fa fa-angle-left pull-right"></i></a>
-                            <ul class="treeview-menu">
-                                <li class="coordenacao"><a href="<?= base_url('restrito/departamento/JTV/coordenacao') ?>"><i class="glyphicon glyphicon-king"></i>Coordenação</a></li>
-                                <li class="agenda" ><a href="<?= base_url('restrito/departamento/JTV/agenda') ?>"><i class="glyphicon glyphicon-calendar"></i>Agenda</a></li>
-                            </ul>
-                        </li>
-                    <?php endif; ?>
-                    <?php if (menuPermissao('CVKIDS', $perfil)) : ?>
-                        <li id="CVKIDS">
-                            <a href="#"><i class="fa fa-circle-o"></i>CVKIDS<i class="fa fa-angle-left pull-right"></i></a>
-                            <ul class="treeview-menu">
-                                <li class="coordenacao"><a href="<?= base_url('restrito/departamento/CVKIDS/coordenacao') ?>"><i class="glyphicon glyphicon-king"></i>Coordenação</a></li>
-                                <li class="agenda" ><a href="<?= base_url('restrito/departamento/CVKIDS/agenda') ?>"><i class="glyphicon glyphicon-calendar"></i>Agenda</a></li>
-                            </ul>
-                        </li>
-                    <?php endif; ?>
-                    <?php if (menuPermissao('Orquestra', $perfil)) : ?>
-                        <li id="Orquestra">
-                            <a href="#"><i class="fa fa-circle-o"></i>Orquestra<i class="fa fa-angle-left pull-right"></i></a>
-                            <ul class="treeview-menu">
-                                <li class="coordenacao"><a href="<?= base_url('restrito/departamento/Orquestra/coordenacao') ?>"><i class="glyphicon glyphicon-king"></i>Coordenação</a></li>
-                                <li class="agenda" ><a href="<?= base_url('restrito/departamento/Orquestra/agenda') ?>"><i class="glyphicon glyphicon-calendar"></i>Agenda</a></li>
-                            </ul>
-                        </li>
-                    <?php endif; ?>
-                    <?php if (menuPermissao('CIBE', $perfil)) : ?>
-                        <li id="CIBE">
-                            <a href="#"><i class="fa fa-circle-o"></i>CIBE<i class="fa fa-angle-left pull-right"></i></a>
-                            <ul class="treeview-menu">
-                                <li class="coordenacao"><a href="<?= base_url('restrito/departamento/CIBE/coordenacao') ?>"><i class="glyphicon glyphicon-king"></i>Coordenação</a></li>
-                                <li class="agenda" ><a href="<?= base_url('restrito/departamento/CIBE/agenda') ?>"><i class="glyphicon glyphicon-calendar"></i>Agenda</a></li>
-                            </ul>
-                        </li>
-                    <?php endif; ?>
-                    <?php if (menuPermissao('MGD', $perfil)) : ?>
-                        <li id="MGD">
-                            <a href="#"><i class="fa fa-circle-o"></i>MGD<i class="fa fa-angle-left pull-right"></i></a>
-                            <ul class="treeview-menu">
-                                <li class="coordenacao"><a href="<?= base_url('restrito/departamento/MGD/coordenacao') ?>"><i class="glyphicon glyphicon-king"></i>Coordenação</a></li>
-                                <li class="agenda" ><a href="<?= base_url('restrito/departamento/MGD/agenda') ?>"><i class="glyphicon glyphicon-calendar"></i>Agenda</a></li>
-                            </ul>
-                        </li>
-                    <?php endif; ?>
-                    <?php if (menuPermissao('EBD', $perfil)) : ?>
-                        <li id="EBD">
-                            <a href="#"><i class="fa fa-circle-o"></i>EBD<i class="fa fa-angle-left pull-right"></i></a>
-                            <ul class="treeview-menu">
-                                <li class="coordenacao"><a href="<?= base_url('restrito/departamento/EBD/coordenacao') ?>"><i class="glyphicon glyphicon-king"></i>Coordenação</a></li>
-                                <li class="agenda" ><a href="<?= base_url('restrito/departamento/EBD/agenda') ?>"><i class="glyphicon glyphicon-calendar"></i>Agenda</a></li>
-                            </ul>
-                        </li>
-                    <?php endif; ?>
-                    <?php if (menuPermissao('Missoes', $perfil)) : ?>
-                        <li id="Missoes">
-                            <a href="#"><i class="fa fa-circle-o"></i>Missões<i class="fa fa-angle-left pull-right"></i></a>
-                            <ul class="treeview-menu">
-                                <li class="coordenacao"><a href="<?= base_url('restrito/departamento/Missoes/coordenacao') ?>"><i class="glyphicon glyphicon-king"></i>Coordenação</a></li>
-                                <li class="agenda" ><a href="<?= base_url('restrito/departamento/Missoes/agenda') ?>"><i class="glyphicon glyphicon-calendar"></i>Agenda</a></li>
-                            </ul>
-                        </li>
-                    <?php endif; ?>
-                    <?php if (menuPermissao('Familia', $perfil)) : ?>
-                        <li id="Familia">
-                            <a href="#"><i class="fa fa-circle-o"></i>Família<i class="fa fa-angle-left pull-right"></i></a>
-                            <ul class="treeview-menu">
-                                <li class="coordenacao"><a href="<?= base_url('restrito/departamento/Familia/coordenacao') ?>"><i class="glyphicon glyphicon-king"></i>Coordenação</a></li>
-                                <li class="agenda" ><a href="<?= base_url('restrito/departamento/Familia/agenda') ?>"><i class="glyphicon glyphicon-calendar"></i>Agenda</a></li>
-                            </ul>
-                        </li>
-                    <?php endif; ?>
+                    <?php foreach ($departamentos as $d): ?>
+                        <?php if (menuPermissao($d, $perfil)) : ?>
+                            <li id="<?= $d ?>" class="<?= ($menuAtivoFilho == $d) ? 'active' : '' ?>">
+                                <a href="#"><i class="fa fa-circle-o"></i><?= $d ?><i class="fa fa-angle-left pull-right"></i></a>
+                                <ul class="treeview-menu">
+                                    <li class="coordenacao
+                                        <?= ($menuAtivoFilho == $d && $menuAtivoNeto == 'coordenacao') ? 'active' : '' ?>">
+                                        <a href="<?= base_url('restrito/departamento/' . $d . '/coordenacao') ?>"><i class="glyphicon glyphicon-king"></i>Coordenação</a></li>
+                                    <li class="agenda
+                                         <?= ($menuAtivoFilho == $d && $menuAtivoNeto == 'agenda') ? 'active' : '' ?>">
+                                        <a href="<?= base_url('restrito/departamento/' . $d . '/agenda') ?>"><i class="glyphicon glyphicon-calendar"></i>Agenda</a></li>
+                                    <li class="sobre 
+                                         <?= ($menuAtivoFilho == $d && $menuAtivoNeto == 'sobre') ? 'active' : '' ?>">
+                                        <a href="<?= base_url('restrito/departamento/' . $d . '/sobre') ?>"><i class="glyphicon glyphicon-comment"></i>Sobre</a></li>
+                                </ul>
+                            </li>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
                 </ul>
             </li>
             <?php if (menuPermissao('Membros', $perfil)) : ?>
-                <li id="membros" class="treeview">
+                <li id="membros" class="treeview <?= $menuAtivo == 'membros' ? 'active' : '' ?>">
                     <a href="#">
                         <i class="fa fa-users"></i>
                         <span>Membros</span>
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li id="listaMembro"><a href="<?= base_url('restrito/membros/lista') ?>"><i class="fa fa-list"></i>Lista</a></li>
-                        <li id="mantemMembro"><a href="<?= base_url('restrito/membros/membroMantem') ?>"><i class="fa  fa-user-plus"></i>Cadastro</a></li>
+                        <li id="listaMembro"
+                            class="<?= ($menuAtivo == 'membros' && $menuAtivoFilho == 'listaMembro') ? 'active' : '' ?>">
+                            <a href="<?= base_url('restrito/membros/lista') ?>"><i class="fa fa-list"></i>Lista</a></li>
+                        <li id="mantemMembro"
+                            class="<?= ($menuAtivo == 'membros' && $menuAtivoFilho == 'mantemMembro') ? 'active' : '' ?>">
+                            <a href="<?= base_url('restrito/membros/membroMantem') ?>"><i class="fa  fa-user-plus"></i>Cadastro</a></li>
                     </ul>
                 </li>
             <?php endif; ?>
+            <li id="noticias" class="treeview <?= $menuAtivo == 'noticias' ? 'active' : '' ?>">
+                <a href="#">
+                    <i class="fa fa-newspaper-o"></i>
+                    <span>Notícia</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li id="listaNoticia"
+                        class="<?= ($menuAtivo == 'noticias' && $menuAtivoFilho == 'listaNoticia') ? 'active' : '' ?>">
+                        <a href="<?= base_url('restrito/noticia/lista') ?>"><i class="fa fa-list"></i>Lista</a></li>
+                    <li id="mantemNoticia"
+                        class="<?= ($menuAtivo == 'noticias' && $menuAtivoFilho == 'mantemNoticia') ? 'active' : '' ?>">
+                        <a href="<?= base_url('restrito/noticia/noticiaMantem') ?>"><i class="fa  fa-plus-square"></i>Cadastro</a></li>
+                </ul>
+            </li>
+            <li id="comunicados" class="treeview <?= $menuAtivo == 'comunicados' ? 'active' : '' ?>">
+                <a href="#">
+                    <i class="fa fa-bullhorn"></i>
+                    <span>Comunicado</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li id="listaComunicado"
+                        class="<?= ($menuAtivo == 'comunicados' && $menuAtivoFilho == 'listaComunicado') ? 'active' : '' ?>">
+                        <a href="<?= base_url('restrito/comunicado/lista') ?>"><i class="fa fa-list"></i>Lista</a></li>
+                    <li id="mantemComunicado"
+                        class="<?= ($menuAtivo == 'comunicados' && $menuAtivoFilho == 'mantemComunicado') ? 'active' : '' ?>">
+                        <a href="<?= base_url('restrito/comunicado/comunicadoMantem') ?>"><i class="fa  fa-plus-square"></i>Cadastro</a></li>
+                </ul>
+            </li>
 
+            <?php if (menuPermissao('Usuarios', $perfil)) : ?>
+                <li id="usuarios" class="treeview <?= $menuAtivo == 'usuarios' ? 'active' : '' ?>">
+                    <a href="#">
+                        <i class="glyphicon glyphicon-lock"></i>
+                        <span>Usuários Admin</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li id="listaUsuario"
+                            class="<?= ($menuAtivo == 'usuarios' && $menuAtivoFilho == 'listaUsuario') ? 'active' : '' ?>">
+                            <a href="<?= base_url('restrito/usuarios/lista') ?>"><i class="fa fa-key"></i>Lista</a></li>
+                        <li id="mantemUsuario"
+                            class="<?= ($menuAtivo == 'usuarios' && $menuAtivoFilho == 'mantemUsuario') ? 'active' : '' ?>">
+                            <a href="<?= base_url('restrito/usuarios/mantemUsuario') ?>"><i class="fa fa-user-secret"></i>Criar</a></li>
+                    </ul>
+                </li>
+            <?php endif; ?>
         </ul>
     </section>
     <!-- /.sidebar -->
