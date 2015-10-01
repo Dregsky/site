@@ -17,7 +17,7 @@
         <p></p>
         <div id="noticias_body">
             <?php foreach ($noticias as $i => $n) : ?>
-                <div class="fnews wrapper1" style="margin-bottom: 10px; height: 100px; width: 930px;"> 
+                <div class="fnews wrapper1 noticias" > 
                     <p>
                         <?php $foto = imagemUrl('/public/images/noticias/', $n->getFotoNoticia(), 'news.png'); ?>
                         <img style="float:left; margin-top: 25px;" 
@@ -31,7 +31,7 @@
                         </p>
                     </a>
                     <div class="texto_interno_noticias" style="line-height:170%; text-indent:20px;">
-                        <?php $fonte = $n->getFonte() != null ? $n->getFonte() : 'Nenhuma fonte'; ?>
+                        <?php $fonte = $n->getFonte() != null ? limitaTexto($n->getFonte(),75) : 'Nenhuma fonte'; ?>
                         <b>Fonte: <?= htmlentities(trim($fonte)) ?></b>
                         <p>(<?= $n->getDataCadastro()->format('d/m/Y') ?>)</p>
                     </div>

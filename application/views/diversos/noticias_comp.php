@@ -1,5 +1,5 @@
 <div class="setas">
-    <div class="next" style="margin: 100px -65px 0px 0px;"></div>
+    <div class="next next-noticias"></div>
 </div>
 <section id="noticias"> 
     <script>

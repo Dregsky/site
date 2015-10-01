@@ -10,7 +10,7 @@ if (sizeof($noticias)) {
     ?>
     <p>&bull;&nbsp;<?= $noticia->getDataCadastro()->format('d/m/Y'); ?> - 
         <a style="color:#BD1B1B;" href="<?=base_url('noticia/'. $noticia->getId()) ?>">
-        <?= htmlentities(limitaTexto($noticia->getTitulo(), 27)) ?></a>
+        <?= htmlentities(limitaTexto($noticia->getTitulo(), 22)) ?></a>
     </p>
     <?php
     $contAng++;

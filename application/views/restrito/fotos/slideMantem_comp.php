@@ -113,7 +113,7 @@ Selecione: NÃO";
                 <div class="box box-info" style="background-color: #222d32; color:white">
                     <div class="form-group" <?= empty($idNoticia) ? 'style="display: none;"' : '' ?>>
                         <label>Notícia</label>
-                        <select id="noticias" class="form-control select2">
+                        <select id="noticias_slide" class="form-control select2">
                             <option value=""></option>  
                             <?php
                             foreach ($noticias as $n):
@@ -128,17 +128,17 @@ Selecione: NÃO";
                     </div><!-- ./form-group -->
                     <div class="form-group" <?= empty($idComunicado) ? 'style="display: none;"' : '' ?>>
                         <label>Comunicado</label>
-                        <select id="comunicados" class="form-control select2">
+                        <select id="comunicados_slide" class="form-control select2">
                             <option value=""></option>  
                             <?php
-                            foreach ($comunicados as $c):
+                            for ($i = (sizeof($comunicados) - 1); $i >= 0; $i--):
                                 ?>
                                 <option 
-                                    value="<?= $c->getId() ?>"
-                                    <?= $idComunicado == $c->getId() ? 'selected' : '' ?>>
-                                        <?= $c->getAssunto() ?>
+                                    value="<?= $comunicados[$i]->getId() ?>"
+                                    <?= $idComunicado == $comunicados[$i]->getId() ? 'selected' : '' ?>>
+                                        <?= $comunicados[$i]->getAssunto() ?>
                                 </option>
-                            <?php endforeach; ?>
+                            <?php endfor; ?>
                         </select>
                     </div><!-- ./form-group -->
                 </div><!-- ./box -->
@@ -222,33 +222,39 @@ Selecione: NÃO";
              */
             switch (tipoSlide) {
                 case '1':
-                    $('#noticias').parent().show();
-                    $('#comunicados').parent().hide();
+                    $('#noticias_slide').parent().show();
+                    $('#comunicados_slide').parent().hide();
+                    $('#noticias_slide').attr('required', true);
+                    $('#comunicados_slide').attr('required', false);
                     $('#link').hide();
                     $('#link2').show();
                     break
                 case '2':
-                    $('#noticias').parent().hide();
-                    $('#comunicados').parent().show();
+                    $('#noticias_slide').parent().hide();
+                    $('#comunicados_slide').parent().show();
+                    $('#noticias_slide').attr('required', false);
+                    $('#comunicados_slide').attr('required', true);
                     $('#link').hide();
                     $('#link2').show();
                     break
                 default:
-                    $('#noticias').parent().hide();
-                    $('#comunicados').parent().hide();
+                    $('#noticias_slide').parent().hide();
+                    $('#comunicados_slide').parent().hide();
+                    $('#noticias_slide').attr('required', false);
+                    $('#comunicados_slide').attr('required', false);
                     $('#link').show();
                     $('#link2').hide();
                     break
             }
         });
 
-        $('#noticias').on('change', function () {
-            var link = 'noticia/' + $('#noticias').val();
+        $('#noticias_slide').on('change', function () {
+            var link = 'noticia/' + $('#noticias_slide').val();
             $('#link').val(link);
             $('#link2').val(link);
         });
-        $('#comunicados').on('change', function () {
-            var link = 'comunicado/' + $('#comunicados').val();
+        $('#comunicados_slide').on('change', function () {
+            var link = 'comunicado/' + $('#comunicados_slide').val();
             $('#link').val(link);
             $('#link2').val(link);
         });

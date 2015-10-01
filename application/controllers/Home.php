@@ -87,7 +87,7 @@ class Home extends Principal_Controller {
     private function includeComunicados() {
         $this->load->model('EntitiesModels/ComunicadoModel', 'comunicadoModel');
         $comunicadoModel = new ComunicadoModel();
-        $dados['comunicados'] = $comunicadoModel->retrieveUltimos(5);
+        $dados['comunicados'] = $comunicadoModel->retrieveUltimos(6);
         $dados['dataHoje'] = $dataHoje = date("Y-m-d");
         return $this->load->view('home/comunicados_comp', $dados, true);
     }
@@ -118,7 +118,7 @@ class Home extends Principal_Controller {
      * 
      * @return string contendo o html do panel
      */
-    private function includePanel2() {
+    private function includePanel3() {
         $panel = new RowWrapper1Panel($this->aceitarJesus());
         return $panel->getComponent();
     }
@@ -135,7 +135,7 @@ class Home extends Principal_Controller {
      * 
      * @return string contendo o html do panel
      */
-    private function includePanel3() {
+    private function includePanel2() {
         $col1 = $this->noticiaCol(DepartamentoEnum::ANG);
         $col2 = $this->noticiaCol(DepartamentoEnum::EBD);
         $col3 = $this->noticiaCol(DepartamentoEnum::JTV);

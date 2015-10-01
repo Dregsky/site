@@ -72,7 +72,7 @@ function carregarPaginaNoticia(pagina) {
             var total = $('#total').val();
             var regPorPag = $('#regPorPag').val();
             if (!(prev.length)) {
-                prev = "<div class='prev' style='margin: 101px 0px 0px -59px;'></div>"
+                prev = "<div class='prev prev-noticias'></div>"
                         + "<script>"
                         + "$('.prev').on('click', function () {"
                         + " var page = parseInt($('.texto_paginacao_pgatual').text()) - 2;"
@@ -87,7 +87,7 @@ function carregarPaginaNoticia(pagina) {
             if (next.length && ((pagina + 1) * regPorPag) >= total) {
                 next.remove();
             } else if (!next.length) {
-                next = "<div class='next' style='margin: 100px -65px 0px 0px;'></div>"
+                next = "<div class='next next-noticias'></div>"
                         + "<script>"
                         + "$('.next').on('click', function () {"
                         + " var page = parseInt($('.texto_paginacao_pgatual').text());"

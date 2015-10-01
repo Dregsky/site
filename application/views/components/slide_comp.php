@@ -9,8 +9,8 @@ use enums\TipoSlide; ?>
                 $banner->setLink(base_url($banner->getLink()));
             }
             ?>
-            <a href="<?= $banner->getLink() ?>" <?=$banner->getLink()!= '#'? ' target="_blank ' : ''?>>
-                <img src="<?= base_url($banner->getFoto()); ?>"  alt="slide2" />
+            <a href="<?= $banner->getLink() ?>" <?=$banner->getLink()!= '#'? ' target="_blank"' : ''?>>
+                <img src="<?= base_url($banner->getFoto()) ?>"  alt="slide2" />
             </a>
 <?php endforeach; ?>
     </div>				

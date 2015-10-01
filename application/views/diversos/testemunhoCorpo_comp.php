@@ -9,7 +9,7 @@
 
         <p></p>
 
-        <p class="texto_interno_noticias">
+        <p class="texto_interno_noticias" style="padding-left: 30px;">
             <a href="<?= base_url('diversos/testemunho/cadastro') ?>"><?php echo htmlentities("Deixe seu testemunho aqui.") ?></a>
         </p>
         <center id="paginas">

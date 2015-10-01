@@ -27,7 +27,7 @@ class SlideModel extends Model {
             $repository = $this->em->getRepository($this->getEntity());
             $where = array(
                 'status' => (new TipoStatus())->retrieveReferencedEntity(TipoStatus::ATIVO),
-                'exibirPrincipal' => 1
+                'exibirPrincipal' => true
             );
             return $repository->findBy($where, array('id' => 'desc'));
         } catch (Exception $exc) {

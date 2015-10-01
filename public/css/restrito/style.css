@@ -183,3 +183,7 @@ and open the template in the editor.
     border: 1px solid #dddddd; 
     padding: 10px;
 }
+
+#dataTable_wrapper{
+ overflow-x: scroll;   
+}
