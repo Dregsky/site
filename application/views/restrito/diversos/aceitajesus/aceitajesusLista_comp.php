@@ -56,7 +56,7 @@ use enums\TipoSlide;
     $('.edit-row > td').on('click', function (e) {
         if (!$(this).hasClass('no-edit-col')) {
             var id = $(this).parent().children().first().text();
-            location.href = BASE_URL + 'restrito/diversos/aceitajesus/aceitaJesusView/' + id;
+            location.href = BASE_URL + 'restrito/diversos/AceitaJesus/aceitaJesusView/' + id;
         }
 
     });

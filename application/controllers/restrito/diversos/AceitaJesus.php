@@ -2,7 +2,6 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-Use Entities\AceitaJesus as AJ;
 
 /**
  * @property Doctrine $doctrine Biblioteca ORM
@@ -35,7 +34,7 @@ class AceitaJesus extends Restrito_Controller {
                 return $this->lista();
             case 'aceitaJesusView':
                 $this->setMenuAtivoFilho('listaAceitaJesus');
-                back('restrito/diversos/aceitajesus/lista');
+                back('restrito/diversos/AceitaJesus/lista');
                 $id = $this->uri->segment(5);
                 return $this->aceitaJesusView($id);
         }

@@ -181,7 +181,7 @@ $perfil = $this->session->userdata('perfil');
                         </li>
                         <li id="listaAceitaJesus"
                             class="<?= ($menuAtivo == 'diversos' && $menuAtivoFilho == 'listaAceitaJesus') ? 'active' : '' ?>">
-                            <a href="<?= base_url('restrito/diversos/aceitajesus/lista') ?>"><i class="fa fa-hand-stop-o"></i>Aceita Jesus</a>
+                            <a href="<?= base_url('restrito/diversos/AceitaJesus/lista') ?>"><i class="fa fa-hand-stop-o"></i>Aceita Jesus</a>
                         </li>
                     </ul>
                 </li>
