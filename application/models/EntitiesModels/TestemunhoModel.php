@@ -52,6 +52,23 @@ class TestemunhoModel extends Model {
             echo $exc->getTraceAsString();
         }
     }
+    
+    
+    /**
+     * Muda status do testemunho para Liberado
+     * @var Entities\Status
+     * @param Object $id (entidade a ser inativada) 
+     */
+    public function liberar($id) {
+        try {
+            $entity = $this->em->find($this->getEntity(), $id);
+            $status = (new TipoStatus())->retrieveReferencedEntity(TipoStatus::LIBERADO);
+            $entity->setStatus($status);
+            $this->saveOrUpdate($entity);
+        } catch (Exception $exc) {
+            throw $exc;
+        }
+    }
 
     /**
      * 

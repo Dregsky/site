@@ -3,9 +3,12 @@
 </form>
 <script>
 
-    function ativar(numID, metodo) {
+    function ativar(numID, metodo, msg) {
         $("#inputAux").val(numID);
-        bootbox.confirm("Você tem certeza que deseja ativar esse Registro?", function (result) {
+        if(msg === undefined){
+            msg = "Você tem certeza que deseja ativar esse Registro?";
+        }
+        bootbox.confirm(msg, function (result) {
             if (result) {
                 var action = BASE_URL + metodo;
                 $("#formAux").attr("action", action);
