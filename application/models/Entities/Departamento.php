@@ -54,6 +54,14 @@ class Departamento extends AbstractEntity {
      * @Column(type="string", length=900, nullable=true)
      */
     private $agendaGoogle;
+    
+    /**
+     *
+     * @var string
+     * 
+     * @Column(type="string", length=600, nullable=false)
+     */
+    private $logo;
 
     /**
      *
@@ -118,5 +126,15 @@ class Departamento extends AbstractEntity {
     function setSobre(text $sobre) {
         $this->sobre = $sobre;
     }
+    
+    function getLogo() {
+        return $this->logo;
+    }
+
+    function setLogo($logo) {
+        $this->logo = $logo;
+    }
+
+
 
 }

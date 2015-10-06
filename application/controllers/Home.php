@@ -136,11 +136,20 @@ class Home extends Principal_Controller {
      * @return string contendo o html do panel
      */
     private function includePanel2() {
-        $col1 = $this->noticiaCol(DepartamentoEnum::ANG);
-        $col2 = $this->noticiaCol(DepartamentoEnum::EBD);
-        $col3 = $this->noticiaCol(DepartamentoEnum::JTV);
-        $indexCol = new IndexColsPanel($col1, $col2, $col3);
-        $rowPanel = new RowPanel($indexCol->getComponent());
+        $dados['noticias'] = array(
+            $this->noticiaCol(DepartamentoEnum::ANG),
+            $this->noticiaCol(DepartamentoEnum::EBD),
+            $this->noticiaCol(DepartamentoEnum::JTV),
+            $this->noticiaCol(DepartamentoEnum::CIBE),
+            $this->noticiaCol(DepartamentoEnum::CVKIDS),
+            $this->noticiaCol(DepartamentoEnum::FAMILIA),
+            $this->noticiaCol(DepartamentoEnum::LIV),
+            $this->noticiaCol(DepartamentoEnum::MGD),
+            $this->noticiaCol(DepartamentoEnum::MISSOES),
+            $this->noticiaCol(DepartamentoEnum::ORQUESTRA)
+        );
+        $slide = $this->load->view('home/noticiasScroll_comp', $dados, true);
+        $rowPanel = new RowPanel($slide);
         return $rowPanel->getComponent();
     }
 
@@ -150,8 +159,7 @@ class Home extends Principal_Controller {
         $noticias = $noticiaModel->retrieveUltimasAtivasByDepartamento($idDepartamento, 2);
         $departamento = $departamentoModel->retrieve($idDepartamento);
         $col = new ColNoticiaPanel($departamento, $noticias);
-        $aux = new AuxComponet($col->getComponent());
-        return $aux;
+        return $col->getComponent();
     }
 
     /**
@@ -189,8 +197,8 @@ class Home extends Principal_Controller {
 
     private function agenda() {
         $agenda1 = (new DepartamentoEnum())
-        ->retrieveReferencedEntity(DepartamentoEnum::IGREJA
-        )->getAgendaGoogle();
+                        ->retrieveReferencedEntity(DepartamentoEnum::IGREJA
+                        )->getAgendaGoogle();
         $agenda = json_decode($agenda1);
         $dados['agenda'] = isset($agenda->agenda) ? $agenda->agenda : $agenda1;
         $dados['tipo'] = isset($agenda->tipo) ? $agenda->tipo : 'WEEK';

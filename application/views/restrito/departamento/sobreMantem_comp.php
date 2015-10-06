@@ -10,7 +10,7 @@
                     <div class="form-group">
                         <label>Sobre o Departamento*</label>
                         <textarea class="textarea" id="sobre" name="sobre" class="form-control" rows="3" required
-                                  ><?= isset($sobre) ? $sobre : '' ?></textarea>
+                                  ><?= $departamento->getSobre() ?></textarea>
                     </div><!-- form group -->
                 </div>
             </div><!-- /.box-body -->

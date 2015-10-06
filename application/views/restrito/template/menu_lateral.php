@@ -89,6 +89,9 @@ $perfil = $this->session->userdata('perfil');
                                     <li class="sobre 
                                          <?= ($menuAtivoFilho == $d && $menuAtivoNeto == 'sobre') ? 'active' : '' ?>">
                                         <a href="<?= base_url('restrito/departamento/' . $d . '/sobre') ?>"><i class="glyphicon glyphicon-comment"></i>Sobre</a></li>
+                                    <li class="logo 
+                                         <?= ($menuAtivoFilho == $d && $menuAtivoNeto == 'logo') ? 'active' : '' ?>">
+                                        <a href="<?= base_url('restrito/departamento/' . $d . '/logo') ?>"><i class="fa fa-star"></i>Logo</a></li>
                                 </ul>
                             </li>
                         <?php endif; ?>
@@ -157,6 +160,21 @@ $perfil = $this->session->userdata('perfil');
                         <li id="mantemUsuario"
                             class="<?= ($menuAtivo == 'usuarios' && $menuAtivoFilho == 'mantemUsuario') ? 'active' : '' ?>">
                             <a href="<?= base_url('restrito/usuarios/mantemUsuario') ?>"><i class="fa fa-user-secret"></i>Criar</a></li>
+                    </ul>
+                </li>
+            <?php endif; ?>
+            <?php if (menuPermissao('Diversos', $perfil)) : ?>
+                <li id="diversos" class="treeview <?= $menuAtivo == 'diversos' ? 'active' : '' ?>">
+                    <a href="#">
+                        <i class="glyphicon glyphicon-globe"></i>
+                        <span>Diversos</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li id="listaDirigentes"
+                            class="<?= ($menuAtivo == 'diversos' && $menuAtivoFilho == 'listaDirigentes') ? 'active' : '' ?>">
+                            <a href="<?= base_url('restrito/diversos/dirigentes/lista') ?>"><i class="fa fa-user-secret"></i>Dirigentes</a>
+                        </li>
                     </ul>
                 </li>
             <?php endif; ?>

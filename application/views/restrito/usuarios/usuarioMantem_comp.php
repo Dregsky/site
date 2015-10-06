@@ -29,6 +29,22 @@ use enums\TipoUsuario;
                     </select>
                 </div><!-- ./form-group -->
                 <div class="form-group">
+                    <label>Perfil*</label>
+                    <select id="perfil" name="perfil" class="form-control select2" required>
+                        <option value=""></option>  
+                        <?php $perfil = isset($perfil) ? $perfil : '' ?>
+                        <?php
+                        foreach ($perfis as $pe):
+                            ?>
+                            <option 
+                                value="<?= $pe->getId() ?>"
+                                <?= $perfil == $pe->getId() ? 'selected' : '' ?>>
+                                    <?= $pe->getDescricao(); ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </div><!-- ./form-group -->
+                <div class="form-group">
                     <label>Login*</label>
                     <input type="text" id="login" name="login" class="form-control" 
                            max-length="45" placeholder="Login" 
@@ -83,7 +99,7 @@ use enums\TipoUsuario;
             $('#senha').attr('disabled', false);
             $('#confSenha').attr('disabled', false);
         });
-        
+
         $('#submit').on('click', function () {
             $('#id').prop('disabled', false);
         });

@@ -23,10 +23,12 @@ abstract class Site_Controller extends CI_Controller {
         parent::__construct();
         date_default_timezone_set('America/Sao_Paulo');
         enumLoad();
-        $dados['menu'] = $this->getMenu();
-        $dados['customPage'] = $this->getCustomPage();
-        $dados['fotos'] = $this->getFooterFotos();
-        $dados['menuSelecionado'] = $this->getMenuSelecionado();
+        $body['menu'] = $this->getMenu();
+        $body['customPage'] = $this->getCustomPage();
+        $dados['body'] = $this->load->view('_inc/body_page', $body, true);
+        $footer['fotos'] = $this->getFooterFotos();
+        $footer['menuSelecionado'] = $this->getMenuSelecionado();
+        $dados['footer'] = $this->load->view('_inc/footer', $footer, true);
         $this->load->view('template_site', $dados);
     }
 

@@ -25,6 +25,7 @@ class ColNoticiaPanel extends WebComponent {
             $dados['noticias'] = $noticias;
             $dados['apelido'] = $departamento->getApelido();
             $dados['nomeCompleto'] = $departamento->getNomeCompleto();
+            $dados['foto'] = $departamento->getLogo();
             $html = $this->load->view('home/colNoticia_panel', $dados, true);
             $this->setComponent($html);
         }

@@ -65,86 +65,16 @@
         <h2 style="padding: 0 0 0 37%"><?php echo htmlentities("Galeria dos Dirigentes") ?></h2>
     </div>
     <ul id="scroller">
+        <?php foreach ($dirigentes as $d) : ?>
         <li>
             <div class="col-galeria">
-                <img src="<?= base_url('public/images/pastores/pastorargileu.jpg') ?>" alt="image">
-                <h4><?= "Pastor Argileu Martins da Silva" ?></h4>
-                <p class="underh4"><?= "(29/03/2009 a Data Atual)" ?></p>
+                <img src="<?= processaImagem($d->getFoto(),'') ?>" alt="image">
+                <h4><?= $d->getNomeDirigente()?></h4>
+                <p class="underh4"><?= $d->getPeriodoDirigido() ?></p>
                 <p></p>
             </div>
         </li>
-        <li>
-            <div class="col-galeria">
-                <img src="<?= base_url('public/images/pastores/pastorjales.jpg') ?>" alt="image">
-                <h4><?= "Pastor Jales Divino Barbosa" ?></h4>
-                <p class="underh4"><?= "(16/05/2007 a 29/03/2009)" ?></p>
-                <p></p>
-            </div>
-        </li>
-        <li>
-            <div class="col-galeria">
-                <img src="<?= base_url('public/images/pastores/pastoreduardoramos.jpg') ?>" alt="image">
-                <h4><?= "Pastor Eduardo Eristônio Ramos de Sousa" ?></h4>
-                <p class="underh4"><?= "(2002 a 16/05/2007)" ?></p>
-                <p></p>
-            </div>
-        </li>
-        <li>
-            <div class="col-galeria">
-                <img src="<?= base_url('public/images/pastores/pastorpedromartins.jpg') ?>" alt="image">
-                <h4><?= "Pastor Pedro Martins de Sousa" ?></h4>
-                <p class="underh4"><?= "(1999 a 2002)" ?></p>
-                <p></p>
-            </div>
-        </li>
-        <li>
-            <div class="col-galeria">
-                <img src="<?= base_url('public/images/membros/profile-man.jpg') ?>" alt="image">
-                <h4><?= "Pastor José Dornizete Oliveira" ?></h4>
-                <p class="underh4"><?= "(1998)" ?></p>
-                <p></p>
-            </div>
-        </li>
-        <li>
-            <div class="col-galeria">
-                <img src="<?= base_url('public/images/pastores/pastorpauloribeiro.jpg') ?>" alt="image">
-                <h4><?= "Pastor Paulo Ribeiro" ?></h4>
-                <p class="underh4"><?= "(1996 a 1998)" ?></p>
-                <p></p>
-            </div>
-        </li>
-        <li>
-            <div class="col-galeria">
-                <img src="<?= base_url('public/images/pastores/pastorrobertosantos.jpg') ?>" alt="image">
-                <h4><?= "Pastor Roberto Santos" ?></h4>
-                <p class="underh4"><?= "(1994 a 1995)" ?></p>
-                <p></p>
-            </div>
-        </li>
-        <li>
-            <div class="col-galeria">
-                <img src="<?= base_url('public/images/pastores/pastordanielmalafaia.jpg') ?>" alt="image">
-                <h4><?= "Pastor Daniel Fonseca Malafaia" ?></h4>
-                <p class="underh4"><?= "(1987 a 1993)" ?></p>
-                <p></p>
-            </div>
-        </li>
-        <li>
-            <div class="col-galeria">
-                <img src="<?= base_url('public/images/membros/profile-man.jpg') ?>" alt="image">
-                <h4><?= "Pastor Israel Fiuza dos Santos" ?></h4>
-                <p class="underh4"><?= "-" ?></p>
-                <p></p>
-            </div>
-        </li>
-        <li>
-            <div class="col-galeria">
-                <img src="<?= base_url('public/images/membros/profile-man.jpg') ?>" alt="image">
-                <h4><?= "Pastor Dernival Lopes Penha" ?></h4>
-                <p class="underh4"><?= "-" ?></p>
-                <p></p>
-            </div>
-        </li>
+        <?php endforeach; ?>
     </ul>
 </div>
 

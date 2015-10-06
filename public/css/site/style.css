@@ -1611,3 +1611,67 @@ button.png {
     margin-top: 50px;
 }
 
+.scrollNoticia li{
+    width: 309px !important;
+}
+
+.col-noticia{
+    width: 280px;
+    margin: 12px;
+    padding-left: 7px;
+    text-align: center;
+}
+
+.col-noticia h2{
+    margin-bottom: 0px;
+}
+
+.col-noticia p{
+    margin: 0 0 0 0 !important;
+    padding: 10px 0 0 0 !important;
+}
+
+.col-noticia .underh2 {
+    color: green;
+    font-weight: bold;
+}
+.col-noticia .resumo {
+    text-align: left;
+}
+
+.col-noticia img {
+    border: solid 5px #95AE74 !important;
+    height: 50px !important;
+    width: 220px !important;
+    border-radius: 10px;
+    display: inline-table !important;
+}
+.home{
+    text-align: inherit;
+    width: 938px;
+}
+.home .simply-scroll{
+    width: 960px !important;
+}
+.home .simply-scroll-clip{
+    width: 955px !important;
+}
+
+.simply-scroll-btn-right:hover{
+    color: black;
+    opacity: 0.5;
+}
+.simply-scroll-btn-left:hover{
+    color: black;
+    opacity: 0.5;
+}
+
+.swiper-container {
+    width: 950px !important;
+}
+.swiper-slide {
+    background-position: center !important;
+    background-size: cover !important;
+    width: 300px !important;
+    height: 275px !important;
+}

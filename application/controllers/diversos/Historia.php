@@ -3,7 +3,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * @author Rafael Rocha <rafaeltbt@gmail.com>
+ * @authr Rafael Rocha <rafaeltbt@gmail.com>
  */
 class Historia extends Diversos_Controller {
 
@@ -22,6 +22,7 @@ class Historia extends Diversos_Controller {
         /**
          * Includes de models
          */
+        $this->load->model('EntitiesModels/DirigenteModel', 'd');
         /**
          * Includes de components
          */
@@ -39,7 +40,8 @@ class Historia extends Diversos_Controller {
      * @return string contendo o html do panel
      */
     public function historiaPage() {
-        $content = $this->load->view('historia/historia_comp', '', true);
+        $dados['dirigentes'] = $this->d->retrieveAllByPosicao();
+        $content = $this->load->view('historia/historia_comp', $dados, true);
         $page = new SimplePage('História', $content);
         return $page->getComponent();
     }

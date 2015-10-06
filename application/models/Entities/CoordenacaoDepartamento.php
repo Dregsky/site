@@ -24,7 +24,7 @@ class CoordenacaoDepartamento extends AbstractEntity {
 
     /**
      *
-     * @var Status
+     * @var Pessoa
      * 
      * @ManyToOne(targetEntity="Pessoa", fetch="LAZY")
      * @JoinColumn(name="cod_pessoa", referencedColumnName="cod_pessoa", nullable=true)

@@ -118,8 +118,8 @@ class PessoaModel extends Model {
      */
     public function retrieveAllMembrosUsuarios() {
         try {
-            $dql = " SELECT p.id, p.nome, p.login"
-                    . " FROM " . $this->getEntity() . " p "
+            $dql = " SELECT p.id, p.nome, p.login, pe.id as perfil, pe.descricao as perfilDescricao"
+                    . " FROM " . $this->getEntity() . " p join p.perfil pe "
                     . " WHERE p.login is not null and p.login != '' ";
             $query = $this->em->createQuery($dql);
             $query->execute();

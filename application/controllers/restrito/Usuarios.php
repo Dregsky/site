@@ -25,6 +25,7 @@ class Usuarios extends Restrito_Controller {
     protected function getContent() {
         /* Carregando Models */
         $this->load->model('EntitiesModels/PessoaModel', 'p');
+        $this->load->model('EntitiesModels/PerfilModel', 'pe');
         /* Carregando Components */
         $this->load->component('page/SimpleRestritoPage');
         $metodo = $this->router->method;
@@ -85,8 +86,10 @@ class Usuarios extends Restrito_Controller {
             }
             $dados = $p;
             $pessoas = $model->retrieveAllMembrosUsuarios();
+            $dados['perfil'] = $this->p->retrieve($id)->getPerfil()->getId();
         }
         $dados['pessoas'] = $pessoas;
+        $dados['perfis'] = $this->pe->retrieveAll();
         $dados['id'] = $id == 0 ? '' : $id;
         $dados['title'] = $title;
         $content = $this->load->view('restrito/usuarios/usuarioMantem_comp', $dados, true);
@@ -101,6 +104,7 @@ class Usuarios extends Restrito_Controller {
             $pessoa = $this->p->retrieve($dados['id']);
             $pessoa->setLogin($dados['login']);
             $pessoa->setSenha(md5($dados['senha']));
+            $pessoa->setPerfil($this->pe->retrieve($dados['perfil']));
             $pessoaModel = new PessoaModel();
             $id = $pessoaModel->saveOrUpdate($pessoa);
             success('Sucesso', 'Usuario salvo com sucesso. Obrigado!');

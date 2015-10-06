@@ -1,6 +1,6 @@
-<h2><a href="ang"><?= $apelido ?></a></h2>
-<p class="underh2">&bull;&nbsp; <?= $nomeCompleto ?>.</p>
-<a href="ang"><img src="<?=base_url('public/images/home/'.$apelido.'.png') ?>" width="283" height="102" alt="<?= $nomeCompleto ?>" title="<?= $nomeCompleto ?>" /></a>
+<h2><a target="_blank" href="<?=  base_url('departamento/'.$apelido)?>"><?= $apelido ?></a></h2>
+<p class="underh2"><?= $nomeCompleto ?>.</p>
+<a href="ang"><img src="<?=base_url($foto) ?>" alt="<?= $nomeCompleto ?>" title="<?= $nomeCompleto ?>" /></a>
 <?php
 $contAng = 0;
 $id = 0;
@@ -8,8 +8,8 @@ if (sizeof($noticias)) {
     $id = $noticias[0]->getDepartamento()->getId();
     foreach ($noticias as $noticia):
     ?>
-    <p>&bull;&nbsp;<?= $noticia->getDataCadastro()->format('d/m/Y'); ?> - 
-        <a style="color:#BD1B1B;" href="<?=base_url('noticia/'. $noticia->getId()) ?>">
+    <p class="resumo">&bull;&nbsp;<?= $noticia->getDataCadastro()->format('d/m/Y'); ?> - 
+        <a target="_blank" style="color:#BD1B1B;" href="<?=base_url('noticia/'. $noticia->getId()) ?>">
         <?= htmlentities(limitaTexto($noticia->getTitulo(), 22)) ?></a>
     </p>
     <?php

@@ -2,6 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+Use enums\DepartamentoEnum;
 /**
  * @author Rafael Rocha <rafaeltbt@gmail.com>
  */
@@ -22,6 +23,7 @@ class Agenda extends Diversos_Controller {
         /**
          * Includes de models
          */
+        $this->load->model('EntitiesModels/DepartamentoModel');
         /**
          * Includes de components
          */
@@ -34,7 +36,11 @@ class Agenda extends Diversos_Controller {
     }
 
     public function agendaPage() {
-        $dados['agenda'] = '<iframe src="https://www.google.com/calendar/embed?showTitle=0&amp;showCalendars=0&amp;height=600&amp;wkst=1&amp;bgcolor=%23cccccc&amp;src=f7aiqgsnsoupq1l21su6smueks%40group.calendar.google.com&amp;color=%23125A12&amp;ctz=America%2FSao_Paulo" style=" border-width:0 " width="940" height="600" frameborder="0" scrolling="no"></iframe>';
+         $agenda1 = (new DepartamentoEnum())
+                        ->retrieveReferencedEntity(DepartamentoEnum::IGREJA
+                        )->getAgendaGoogle();
+        $agenda = json_decode($agenda1);
+        $dados['agenda'] = isset($agenda->agenda) ? $agenda->agenda : $agenda1;
         $agendaPage = $this->load->view('components/agenda_comp', $dados, true);
         $panel = new RowWrapper1Panel($agendaPage);
         $page = new SimplePage('Agenda ADCRUZ', $panel->getComponent());

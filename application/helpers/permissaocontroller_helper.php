@@ -66,6 +66,9 @@ function permissoes($controller) {
         case 'membros':
             array_push($permitidos, TipoPerfil::PASTOR, TipoPerfil::SECRETARIO);
             break;
+        case 'diversos':
+            array_push($permitidos, TipoPerfil::PASTOR);
+            break;
         default:
             return 0;
     }

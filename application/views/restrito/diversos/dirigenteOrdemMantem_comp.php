@@ -4,11 +4,11 @@
             <div class="box-header">
                 <h3 class="box-title"><?= $title ?></h3>
             </div>
-            <?= form_open('restrito/departamento/' . $departamento->getApelido() . '/salvarOrdem') ?>
+            <?= form_open('restrito/diversos/dirigentes/salvarOrdem') ?>
             <div class="box-body">
                 <!-- select -->
-                <?php $size = count($pessoas); ?>
-                <?php foreach ($pessoas as $j => $p) : ?>
+                <?php $size = count($dirigentes); ?>
+                <?php foreach ($dirigentes as $j => $d) : ?>
                     <div class="form-group row row-ord">
                         <?php if ($j > 0) : ?>
                             <a class="col-sm-12 ord fa fa-sort-asc" onclick="sobe(this)">
@@ -22,11 +22,11 @@
                                         <span ><?= ($j + 1) ?></span>
                                     </div>
                                     <div class="ord-name">
-                                        <label><?= $p->getNomePessoa() . ' - ' ?></label>
-                                        <?= $p->getNomeCargo() ?> 
+                                        <label><?= $d->getNomeDirigente() . ' - ' ?></label>
+                                        <?= $d->getPeriodoDirigido() ?> 
                                     </div>
                                 </div>
-                                <input type="hidden" name="<?= $p->getId() ?>" value ="<?= ($j + 1) ?>" 
+                                <input type="hidden" name="<?= $d->getId() ?>" value ="<?= ($j + 1) ?>" 
                                        class="form-control ord" required>
                             </div>
                         </div>

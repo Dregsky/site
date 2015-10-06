@@ -70,6 +70,10 @@ abstract class RestritoDepartamento_Controller extends Restrito_Controller {
                 $this->setMenuAtivoFilho($this->departamentoNome);
                 $this->setMenuAtivoNeto('sobre');
                 return $this->sobre();
+            case 'logo':
+                $this->setMenuAtivoFilho($this->departamentoNome);
+                $this->setMenuAtivoNeto('logo');
+                return $this->logo();
         }
     }
 
@@ -108,9 +112,8 @@ abstract class RestritoDepartamento_Controller extends Restrito_Controller {
             /* Não deixa que pessoa sem permissão edite páginas e nem que seja acessado páginas de
              * edição com id inexistente;
              */
-            $dados['departamento']= $coordenador['cod_departamento'];
-            verificarPermissaoDepartamento($dados, $this->departamento, 
-                    'restrito/departamento/'.$this->departamentoNome.'/coordenacao');
+            $dados['departamento'] = $coordenador['cod_departamento'];
+            verificarPermissaoDepartamento($dados, $this->departamento, 'restrito/departamento/' . $this->departamentoNome . '/coordenacao');
             return $this->processaDadosMantem($coordenador, $id);
         }
         return $this->processaDadosMantem(array(), $id);
@@ -285,7 +288,7 @@ abstract class RestritoDepartamento_Controller extends Restrito_Controller {
         success("Sucesso", "Ordem redefinida com sucesso!");
         redirect('restrito/departamento/' . $this->departamentoNome . '/coordenacaoOrdem');
     }
-    
+
     /**
      * SOBRE
      */
@@ -296,7 +299,6 @@ abstract class RestritoDepartamento_Controller extends Restrito_Controller {
      */
     public function sobre() {
         $dados['departamento'] = $this->getDepartamentoOfPage();
-        $dados['sobre'] = $this->getDepartamentoOfPage()->getSobre();
         $dados['title'] = 'Sobre';
         $content = $this->load->view('restrito/departamento/sobreMantem_comp', $dados, true);
         $breadcrumbs = array(array('fa fa-cubes', 'Departamento'), $this->departamentoNome, 'Sobre');
@@ -312,6 +314,55 @@ abstract class RestritoDepartamento_Controller extends Restrito_Controller {
         $model->saveOrUpdate($departamento);
         success("Sucesso", "Sobre Salvo Com Sucesso");
         redirect('restrito/departamento/' . $this->departamentoNome . '/sobre');
+    }
+
+    public function logo() {
+        $dados['departamento'] = $this->getDepartamentoOfPage();
+        $dados['sobre'] = $this->getDepartamentoOfPage()->getSobre();
+        $dados['title'] = 'Logo';
+        $content = $this->load->view('restrito/departamento/logoMantem_comp', $dados, true);
+        $breadcrumbs = array(array('fa fa-cubes', 'Departamento'), $this->departamentoNome, 'Logo');
+        $page = new SimpleRestritoPage('Logo ' . $this->departamentoNome, $content, $breadcrumbs);
+        return $page->getComponent();
+    }
+
+    /**
+     * 
+     * @param 
+     * @return path imagem salva
+     */
+    public function salvarLogo() {
+        if ($_FILES['logo']['name'] != '') {
+            $path = '/public/images/departamentos/' . $this->departamentoNome;
+            $caminho = pathRaiz() . $path;
+            $nomeImagem = 'logo' . $this->departamentoNome. date(YmdHis);
+
+            $config['upload_path'] = $caminho;
+            $config['allowed_types'] = 'gif|jpg|jpeg|png';
+            $config['file_name'] = $nomeImagem;
+
+            $this->load->library('upload', $config);
+            if (!$this->upload->do_upload('logo')) {
+                $error = $this->upload->display_errors();
+                error('Erro no Upload da Imagem', $error);
+                redirect('restrito/departamento/' . $this->departamentoNome . '/logo');
+            } else {
+                $config1['source_image'] = $this->upload->data('full_path');
+                $config1['maintain_ratio'] = FALSE;
+                $config1['width'] = 660;
+                $config1['height'] = 150;
+                $this->load->library('image_lib', $config1);
+                $this->image_lib->resize();
+                excluirImagem($this->input->post('fotoAtual'));
+                $logo = $path . '/' . $nomeImagem . $this->upload->data('file_ext');
+                $departamento = $this->getDepartamentoOfPage();
+                $departamento->setLogo($logo);
+                $model = new DepartamentoModel();
+                $model->saveOrUpdate($departamento);
+                success("Sucesso", "Sobre Salvo Com Sucesso");
+                redirect('restrito/departamento/' . $this->departamentoNome . '/logo');
+            }
+        }
     }
 
     /**
