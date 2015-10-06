@@ -179,6 +179,10 @@ $perfil = $this->session->userdata('perfil');
                             class="<?= ($menuAtivo == 'diversos' && $menuAtivoFilho == 'listaTestemunhos') ? 'active' : '' ?>">
                             <a href="<?= base_url('restrito/diversos/testemunhos/lista') ?>"><i class="fa fa-commenting"></i>Testemunhos</a>
                         </li>
+                        <li id="listaAceitaJesus"
+                            class="<?= ($menuAtivo == 'diversos' && $menuAtivoFilho == 'listaAceitaJesus') ? 'active' : '' ?>">
+                            <a href="<?= base_url('restrito/diversos/aceitajesus/lista') ?>"><i class="fa fa-hand-stop-o"></i>Aceita Jesus</a>
+                        </li>
                     </ul>
                 </li>
             <?php endif; ?>
