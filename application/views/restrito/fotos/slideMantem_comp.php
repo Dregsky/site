@@ -38,6 +38,11 @@ use enums\TipoSlide;
                         ?>
                     </select>
                 </div>
+                 <div class="form-group">
+                    <label>Data de Expiração</label>
+                    <input type="date" name="dataSai" class="form-control" 
+                           value="<?= isset($dataSai) ? $dataSai->format('Y-m-d') : '' ?>">
+                </div><!-- form group -->
                 <div class="form-group">
                     <?php $info = " O Slide deve aparecer na pagina principal do site e do departamento?
 Selecione : SIM

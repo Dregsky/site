@@ -85,8 +85,10 @@ class Usuarios extends Restrito_Controller {
                 redirect('restrito/usuarios/lista');
             }
             $dados = $p;
-            $pessoas = $model->retrieveAllMembrosUsuarios();
             $dados['perfil'] = $this->p->retrieve($id)->getPerfil()->getId();
+        }
+        if($id !=0){
+            $pessoas = $model->retrieveAllMembrosUsuarios();
         }
         $dados['pessoas'] = $pessoas;
         $dados['perfis'] = $this->pe->retrieveAll();
@@ -102,6 +104,7 @@ class Usuarios extends Restrito_Controller {
         try {
 //var_dump($dados);
             $pessoa = $this->p->retrieve($dados['id']);
+            $this->verificaExistenciaLogin($dados);
             $pessoa->setLogin($dados['login']);
             $pessoa->setSenha(md5($dados['senha']));
             $pessoa->setPerfil($this->pe->retrieve($dados['perfil']));
@@ -113,6 +116,17 @@ class Usuarios extends Restrito_Controller {
             error('ERRO', 'Erro ao tentar salvar! Tente Novamente mais tarde ou Contate o Administrador!');
             $this->session->set_flashdata('usuario', $dados);
             $id = $dados['id'] != '' ? $dados['id'] : 0;
+            redirect('restrito/usuarios/mantemUsuario/' . $id);
+        }
+    }
+    
+    protected function verificaExistenciaLogin($dados){
+        $indicador = $this->p->verificaExistenciaLogin($dados['login'], $dados['id']);
+        if($indicador>0){
+            error('ERRO', 'O Login '."'".$dados['login']."'".' já esta atribuído a um usuário, escolha outro.');
+            $this->session->set_flashdata('usuario', $dados);
+            $p = $this->p->retrieveLoginById($dados['id']);
+            $id = $p == null ? '' : $dados['id'];
             redirect('restrito/usuarios/mantemUsuario/' . $id);
         }
     }

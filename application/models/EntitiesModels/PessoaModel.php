@@ -70,6 +70,25 @@ class PessoaModel extends Model {
             echo $exc->getTraceAsString();
         }
     }
+    
+    /**
+     * Conta a quantidade de registro com o mesmo nome de login
+     * @param string $cpf
+     * @return int quantidade de registros
+     */
+    public function verificaExistenciaLogin($login, $id) {
+        try {
+            $dql = "SELECT count(p.id) FROM " . $this->getEntity() . " p WHERE p.login = :login"
+                    . " and p.id != :id";
+            $query = $this->em->createQuery($dql);
+            $query->setParameter("login", $login);
+            $query->setParameter("id", $id);
+            $query->execute();
+            return $query->getSingleScalarResult();
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
 
     /**
      * 

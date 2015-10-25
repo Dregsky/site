@@ -157,6 +157,14 @@ class Noticia extends AbstractEntity {
     private $path;
 
     /**
+     *
+     * @var \Datetime
+     * 
+     * @Column(type="date", nullable=true)
+     */
+    private $dataEvento;
+
+    /**
      * 
      * Getters and Setters
      */
@@ -311,6 +319,14 @@ class Noticia extends AbstractEntity {
     public function setPath($path) {
         $this->path = $path;
         return $this;
+    }
+
+    function getDataEvento() {
+        return $this->dataEvento;
+    }
+
+    function setDataEvento(\Datetime $dataEvento) {
+        $this->dataEvento = $dataEvento;
     }
 
 }

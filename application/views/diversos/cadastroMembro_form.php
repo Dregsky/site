@@ -3,10 +3,10 @@
         $('.multiple_select').multiSelect();
     });
     window.onload = function () {
-    id('telefone').onkeyup = function () {
-        mascara(this, mtel);
+        id('telefone').onkeyup = function () {
+            mascara(this, mtel);
+        };
     };
-};
 </script>
 <center>
     <?php
@@ -22,14 +22,14 @@
         </tr>
         <tr>
             <td class="espacoEsquerda">Nome Completo*</td>
-            <td>CPF*</td>
+            <td>CPF</td>
             <td>Data Nascimento*</td>
         </tr>
         <tr height="50" valign="top">
             <td><input type="text" name="nome" value="<?= $nome ?>" size="50" required></td>
             <td>
                 <input type="text" name="cpf" size="20" maxlength="14" 
-                       onkeyup="formataCpf(this)" onblur="valida_cpf(this)" value="<?= $cpf ?>" required>
+                       onkeyup="formataCpf(this)" onblur="valida_cpf(this)" value="<?= $cpf ?>">
             </td>
             <td><input type="date" name="dataNascimento" size="15" maxlength="10" value="<?= $dataNascimento ?>" required>&nbsp;</td>
         </tr>
@@ -59,18 +59,18 @@
             <td>
                 <select name="genero" required>
                     <option value=""></option>
-                    <option value="M" <?= $genero == 'M' ? ' selected' : ''?>>Masculino</option>
-                    <option value="F" <?= $genero == 'F' ? ' selected' : ''?>>Feminino</option>
+                    <option value="M" <?= $genero == 'M' ? ' selected' : '' ?>>Masculino</option>
+                    <option value="F" <?= $genero == 'F' ? ' selected' : '' ?>>Feminino</option>
                 </select>
             </td>
         </tr>
         <tr>
-            <td>E-mail*</td>
+            <td>E-mail</td>
             <td>Escolaridade*</td>
             <td></td>
         </tr>
         <tr height="50" valign="top">
-            <td><input type="email" name="email" size="50" value="<?= $email ?>" required></td>
+            <td><input type="email" name="email" size="50" value="<?= $email ?>"></td>
             <td>
                 <select name="escolaridade" required>
                     <option value=""></option>
@@ -84,13 +84,15 @@
             <td></td>
         </tr>
         <tr>
-            <td><?php echo htmlentities("Profissão*") ?></td>
+            <td><?php echo htmlentities("Profissão*") ?><br>
+                (Saiba que existem as opções : Outra, Nenhuma e Estudante).
+            </td>
             <td></td>
             <td></td>
         </tr>
         <tr height="50" valign="top">
             <td>
-                <select name="profissao" style="width:200px" required="">
+                <select name="profissao" style="width:200px" required="" class="select2">
                     <option value=""></option>
                     <?php foreach ($profissoes as $p): ?>
                         <option value=<?= $p->getId() ?> <?= ($profissao == $p->getId()) ? 'selected' : '' ?>>
@@ -219,3 +221,10 @@
     </table>
     <?= form_close() ?>
 </center>
+
+<script>
+    $(function () {
+        $(".select2").select2();
+    });
+</script>
+

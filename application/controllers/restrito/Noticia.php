@@ -105,6 +105,14 @@ class Noticia extends Restrito_Controller {
             } else {
                 $dados['pessoaCadastro'] = $this->pessoa;
                 $dados['dataCadastro'] = new DateTime();
+                $interval = new DateInterval('P7D');
+                $dados['dataSaiNovo'] = (new DateTime())->add($interval);
+            }
+            
+            if(!empty($dados['dataEvento'])){
+                $dados['dataEvento'] = new DateTime($dados['dataEvento']);
+            }else{
+                unset($dados['dataEvento']);
             }
             $noticia->setAll($dados);
             $id = $model->saveOrUpdate($noticia);

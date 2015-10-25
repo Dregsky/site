@@ -241,7 +241,8 @@ class Membros extends Restrito_Controller {
         $model = new PessoaModel();
         $indicador = $membro['id'] != '' ? $model->cpfsCadastrados($membro['cpf'], $membro['id']) :
                 $model->countCpf($membro['cpf']);
-        if ($indicador > 0) {
+        if ($membro['cpf'] != null && $membro['cpf'] != ''  
+                && $indicador > 0) {
             error('ERRO', 'CPF já cadastrado');
             $this->session->set_flashdata('membros', $membro);
             $id = $membro['id'] != '' ? $membro['id'] : 0;

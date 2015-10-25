@@ -79,6 +79,15 @@ class Slide extends AbstractEntity {
      * @JoinColumn(name="cod_status", referencedColumnName="cod_status")
      */
     private $status;
+    
+    /**
+     *
+     * @var \DateTime
+     * 
+     * @Column(type="date", nullable=true)
+     */
+    private $dataSai;
+
 
     /**
      * 
@@ -154,6 +163,14 @@ class Slide extends AbstractEntity {
     public function setNome($nome) {
         $this->nome = $nome;
         return $this;
+    }
+    
+    function getDataSai() {
+        return $this->dataSai;
+    }
+
+    function setDataSai(\DateTime $dataSai) {
+        $this->dataSai = $dataSai;
     }
 
 }

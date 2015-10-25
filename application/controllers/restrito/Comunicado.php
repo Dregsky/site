@@ -104,6 +104,12 @@ class Comunicado extends Restrito_Controller {
                 $dados['dataSaiNovo'] = (new DateTime())->add($interval);
                 $dados['perfil'] = $this->pessoa->getPerfil();
             }
+            
+            if(!empty($dados['dataEvento'])){
+                $dados['dataEvento'] = new DateTime($dados['dataEvento']);
+            }else{
+                unset($dados['dataEvento']);
+            }
             $comunicado->setAll($dados);
             $id = $model->saveOrUpdate($comunicado);
             success('Sucesso', 'Comunicado Salvo Com Sucesso');

@@ -30,7 +30,7 @@ class ComunicadoModel extends Model {
                 'status' => TipoStatus::ATIVO
             );
             $qtd = $qtd == 0 ? NULL : $qtd;
-            return $repository->findBy($where, array('id' => 'desc'), $qtd);
+            return $repository->findBy($where, array('dataEvento' => 'desc', 'dataCadastro' => 'desc'), $qtd);
         } catch (Exception $exc) {
             echo $exc->getTraceAsString();
         }
@@ -43,7 +43,7 @@ class ComunicadoModel extends Model {
      */
     public function retrieveArrayById($id) {
         try {
-            $dql = "SELECT c.id, c.assunto, c.descricao, c.dataCadastro, c.dataSaiNovo,"
+            $dql = "SELECT c.id, c.assunto, c.descricao, c.dataCadastro, c.dataSaiNovo, c.dataEvento, "
                     . " st.id as status"
                     . " FROM " . $this->getEntity() . " c join c.status st "
                     . " WHERE c.id = :id";

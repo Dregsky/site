@@ -3,10 +3,10 @@
         $('.multiple_select').multiSelect();
     });
     window.onload = function () {
-    id('telefone').onkeyup = function () {
-        mascara(this, mtel);
+        id('telefone').onkeyup = function () {
+            mascara(this, mtel);
+        };
     };
-};
 </script>
 <link rel="stylesheet" type="text/css" href="<?= base_url('public/js/multiple-select/css/multi-select.css') ?>" media="screen" />
 <script type="text/javascript" src="<?= base_url('public/js/multiple-select/js/jquery.multi-select.js') ?>"><!-- multiple select scripts --></script>
@@ -32,7 +32,7 @@
                        class="form-control" required>
             </div><!-- /.form group -->
             <div class="form-group col-sm-4">
-                <label>CPF*</label>
+                <label>CPF</label>
                 <input name="cpf" size="20" maxlength="14" type="text" 
                        class="form-control" value="<?= isset($cpf) ? $cpf : '' ?>"  
                        onkeyup="formataCpf(this)" onblur="valida_cpf(this)"
@@ -94,7 +94,7 @@
                 <label>Email*</label>
                 <input type="email"  name="email" 
                        value="<?= isset($email) ? $email : '' ?>"
-                       class="form-control" required>
+                       class="form-control">
             </div><!-- /.form group -->  
             <div class="form-group col-sm-4">
                 <label>Escolaridade*</label>
@@ -161,7 +161,7 @@
                 <?php
                 $foto = isset($fotoPessoa) ? $fotoPessoa : '';
                 ?>
-                <div><img id="foto" src="<?= base_url($foto) ?>" class="img-thumbnail" alt="Foto coordenador" 
+                <div><img id="foto" src="<?= base_url($foto) ?>" class="img-thumbnail" alt="Foto Membro" 
                           width="160" height="240"></div>
                 <span class="btn btn-danger btn-file">
                     <i class="fa fa-plus-circle"></i>Adicionar
@@ -281,14 +281,18 @@
         if (input.files && input.files[0]) {
             var reader = new FileReader();
             reader.onload = function (e) {
-        $('#foto').attr('src', e.target.result);
+                $('#foto').attr('src', e.target.result);
             };
 
             reader.readAsDataURL(input.files[0]);
         }
     }
-            $("#fotoInput").change(function () {
-                readURL(this);
+    $("#fotoInput").change(function () {
+        readURL(this);
+    });
+
+    $(function () {
+        $(".select2").select2();
     });
 
 </script>

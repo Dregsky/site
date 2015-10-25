@@ -130,7 +130,7 @@ class NoticiaModel extends Model {
     public function retrieveArrayById($id) {
         try {
             $dql = "SELECT n.id, n.titulo, n.fotoNoticia, n.fonte, n.descricao, n.subTitulo,  st.id as status,"
-                    . " d.id as departamento"
+                    . " d.id as departamento, n.dataEvento, n.dataCadastro, n.dataSaiNovo "
                     . " FROM " . $this->getEntity() . " n join n.status st join n.departamento d"
                     . " WHERE n.id = :id";
             $query = $this->em->createQuery($dql);

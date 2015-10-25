@@ -6,7 +6,7 @@
 
     <head>
 
-        <title>Assembleia de Deus do Cruzeiro</title>
+        <title>ADCRUZ</title>
 
         <meta content="835074536612924" property="fb:app_id" />
         <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
@@ -21,6 +21,8 @@
         <script type="text/javascript" src="<?= base_url('public/js/ajaxScripts.js') ?>"><!-- ajax custom scripts --></script>
         <script type="text/javascript" src="<?= base_url('public/js/jquery.mCustomScrollbar.concat.min.js') ?>"><!-- ajax custom scripts --></script>
         <script type="text/javascript" src="<?= base_url('public/js/multiple-select/js/jquery.multi-select.js') ?>"><!-- multiple select scripts --></script>
+        <!-- Select 2 -->
+        <script type="text/javascript" src="<?= base_url('public/plugins/select2/select2.full.min.js') ?>"></script>
         <script type="text/javascript">
 var BASE_URL = "<?php echo base_url(); ?>";
         </script>
@@ -38,7 +40,8 @@ var BASE_URL = "<?php echo base_url(); ?>";
         <link rel="stylesheet" type="text/css" href="<?= base_url('public/css/animate-custom.css') ?>" media="screen" />
         <link rel="stylesheet" type="text/css" href="<?= base_url('public/css/jquery.mCustomScrollbar.css') ?>" media="screen" />
         <link rel="stylesheet" type="text/css" href="<?= base_url('public/js/multiple-select/css/multi-select.css') ?>" media="screen" />
-
+        <!-- Select 2 -->
+        <link rel="stylesheet" href="<?= base_url('public/plugins/select2/select2.min.css') ?>">
     </head>
 
 

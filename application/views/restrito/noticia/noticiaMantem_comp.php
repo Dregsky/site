@@ -33,19 +33,36 @@
                         ?>
                     </select>
                 </div>
+
+                <div class="form-group">
+                    <label>Data Cadastro*</label>
+                    <?php
+                    $dataCadastro = isset($dataCadastro) ? $dataCadastro : new DateTime();
+                    $interval = new DateInterval('P7D');
+                    $dataSaiNovo = isset($dataSaiNovo) ? $dataSaiNovo : (new DateTime())->add($interval);
+                    ?>
+                    <input type="date" class="form-control" disabled
+                           value="<?= $dataCadastro->format('Y-m-d') ?>">
+                    <label>Data Sai Novo*</label>
+                    <input type="date" class="form-control" disabled
+                           value="<?= $dataSaiNovo->format('Y-m-d') ?>">
+                    <label>Data Evento</label>
+                    <input type="date" name="dataEvento" class="form-control" 
+                           value="<?= isset($dataEvento) ? $dataEvento->format('Y-m-d') : '' ?>">
+                </div><!-- form group -->
                 <div class="form-group">
                     <label>Status*</label>
                     <select name="status" class="form-control" required>
                         <option value=""></option>  
                         <?php
                         $status = isset($status) ? $status : '';
-                        foreach($statusList as $s):
-                        ?>
-                        <option 
-                            value="<?= $s->getId() ?>"
-                            <?= $status == $s->getId() ? 'selected' : '' ?>>
-                            <?= $s->getDescricao()?>
-                        </option>
+                        foreach ($statusList as $s):
+                            ?>
+                            <option 
+                                value="<?= $s->getId() ?>"
+                                <?= $status == $s->getId() ? 'selected' : '' ?>>
+                                    <?= $s->getDescricao() ?>
+                            </option>
                         <?php endforeach; ?>
                     </select>
                 </div>
@@ -76,7 +93,7 @@
                     <?php
                     $foto = isset($fotoNoticia) ? $fotoNoticia : '';
                     ?>
-                    <div><img id="foto" src="<?= base_url('public/images/noticias/'.$foto) ?>" class="img-thumbnail" alt="Imagem Notícia" 
+                    <div><img id="foto" src="<?= base_url('public/images/noticias/' . $foto) ?>" class="img-thumbnail" alt="Imagem Notícia" 
                               style="width:300px; height:206px;"></div>
                     <span class="btn btn-danger btn-file">
                         <i class="fa fa-plus-circle"></i>Adicionar

@@ -21,6 +21,9 @@
                     <label>Data Sai Novo*</label>
                     <input type="date" class="form-control" disabled
                            value="<?= $dataSaiNovo->format('Y-m-d') ?>">
+                    <label>Data Evento</label>
+                    <input type="date" name="dataEvento" class="form-control" 
+                           value="<?= isset($dataEvento) ? $dataEvento->format('Y-m-d') : '' ?>">
                 </div><!-- form group -->
                 <div class="form-group">
                     <label>Status*</label>

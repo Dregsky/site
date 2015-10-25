@@ -91,12 +91,13 @@ class Membro extends Diversos_Controller {
         setDatasToString($dados, $datas);
     }
 
-
     public function cadastrar() {
         try {
             $dados = $this->processaDados($this->input->post());
 //var_dump($dados);
             $this->validaCPF($dados);
+            $dados['status'] = (new TipoStatus())->retrieveReferencedEntity(TipoStatus::ATIVO);
+            $dados['perfil'] = (new TipoPerfil())->retrieveReferencedEntity(TipoPerfil::MEMBRO);
             $pessoa = new Pessoa();
             $pessoa->setAll($dados);
             $pessoaModel = new PessoaModel();
@@ -128,8 +129,6 @@ class Membro extends Diversos_Controller {
         $dados['funcaoMinisterial'] = $this->func->retrieve($dados['funcaoMinisterial']);
         array_push($dados['departamentos'], enums\DepartamentoEnum::IGREJA);
         $dados['departamentos'] = $this->dep->retrieveByIds($dados['departamentos']);
-        $dados['status'] = (new TipoStatus())->retrieveReferencedEntity(TipoStatus::ATIVO);
-        $dados['perfil'] = (new TipoPerfil())->retrieveReferencedEntity(TipoPerfil::MEMBRO);
         return $dados;
     }
 
@@ -184,7 +183,8 @@ class Membro extends Diversos_Controller {
 
     private function validaCPF(&$membro) {
         $model = new PessoaModel();
-        if ($model->countCpf($membro['cpf']) > 0) {
+        if ($membro['cpf'] != null && $membro['cpf'] != '' &&
+                $model->countCpf($membro['cpf']) > 0) {
             error('ERRO', 'CPF já cadastrado');
             $this->session->set_flashdata('membros', $membro);
             redirect('diversos/membro/error');

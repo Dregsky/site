@@ -145,7 +145,7 @@ class Pessoa extends AbstractEntity {
      *
      * @var string
      * 
-     * @Column(type="string", length=11, nullable=false)
+     * @Column(type="string", length=11, nullable=true)
      */
     private $cpf;
 

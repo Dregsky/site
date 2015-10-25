@@ -83,7 +83,7 @@ class SlideModel extends Model {
      */
     public function retrieveArrayById($id) {
         try {
-            $dql = "SELECT s.id, s.tipoSlide, s.foto, s.exibirPrincipal, s.nome,  st.id as status,"
+            $dql = "SELECT s.id, s.tipoSlide, s.foto, s.exibirPrincipal, s.nome,  st.id as status, s.dataSai, "
                     . " d.id as departamento , s.link "
                     . " FROM " . $this->getEntity() . " s join s.status st join s.departamento d"
                     . " WHERE s.id = :id";

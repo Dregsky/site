@@ -1494,6 +1494,16 @@ button.png {
     height: auto;
 }
 
+.select2 .select2-selection{
+    border: 1px solid #CFCFCF !important;
+    height: 38px !important;
+    border-radius: 0px !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    top : 5px !important;
+}
+
 .tabelaMembro input{
     height: 30px;
     width: 300px;

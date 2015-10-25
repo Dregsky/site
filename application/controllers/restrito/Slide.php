@@ -108,6 +108,11 @@ class Slide extends Fotos {
             if (!empty($dados['id'])) {
                 $slide = $model->retrieve($dados['id']);
             }
+            if(!empty($dados['dataSai'])){
+                $dados['dataSai'] = new DateTime($dados['dataSai']);
+            }else{
+                unset($dados['dataSai']);
+            }
             $slide->setAll($dados);
             $id = $model->saveOrUpdate($slide);
             success('Sucesso', 'Slide Salvo Com Sucesso');

@@ -97,6 +97,14 @@ class Comunicado extends AbstractEntity {
      * @JoinColumn(name="cod_status", referencedColumnName="cod_status")
      */
     private $status;
+    
+     /**
+     *
+     * @var \DateTime
+     * 
+     * @Column(type="date", nullable=true)
+     */
+    private $dataEvento;
 
     /**
      * 
@@ -189,6 +197,14 @@ class Comunicado extends AbstractEntity {
 
     function setStatus(Status $status) {
         $this->status = $status;
+    }
+
+    function getDataEvento() {
+        return $this->dataEvento;
+    }
+
+    function setDataEvento(\DateTime $dataEvento) {
+        $this->dataEvento = $dataEvento;
     }
 
 
