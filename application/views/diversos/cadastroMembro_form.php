@@ -84,23 +84,13 @@
             <td></td>
         </tr>
         <tr>
-            <td><?php echo htmlentities("Profissão*") ?><br>
-                (Saiba que existem as opções : Outra, Nenhuma e Estudante).
+            <td><?php echo htmlentities("Profissão") ?><br>
             </td>
             <td></td>
             <td></td>
         </tr>
         <tr height="50" valign="top">
-            <td>
-                <select name="profissao" style="width:200px" required="" class="select2">
-                    <option value=""></option>
-                    <?php foreach ($profissoes as $p): ?>
-                        <option value=<?= $p->getId() ?> <?= ($profissao == $p->getId()) ? 'selected' : '' ?>>
-                            <?= $p->getDescricao(); ?>
-                        </option>
-                    <?php endforeach; ?>
-                </select>
-            </td>
+            <td><input type="text" name="prof" value="<?= $prof ?>" size="100" maxlength="100"/></td>
             <td></td>
             <td></td>
         </tr>
@@ -206,7 +196,7 @@
         <tr height="50" valign="top">
             <td><input type="text" name="nomeConjuge" value="<?= $nomeConjuge ?>" size="50"/></td>
             <td><input type="date" name="dataCasamento" value="<?= $dataCasamento ?>" size="20" maxlength="10"/></td>
-            <td><input type="number" name="qtdFilhos" value="<?= $qtdFilhos ?>" size="20" maxlength="2"/></td>
+            <td><input type="number" name="qtdFilhos" value="<?= $qtdFilhos ?>" size="20" min="1" maxlength="2"/></td>
         </tr>
     </table>
     <br>

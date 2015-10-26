@@ -276,6 +276,14 @@ class Pessoa extends AbstractEntity {
      *
      * @var string
      * 
+     * @Column(type="string", length=100, nullable=true)
+     */
+    private $prof;
+
+    /**
+     *
+     * @var string
+     * 
      * @Column(name="nome_mae", type="string", length=100, nullable=false)
      */
     private $nomeMae;
@@ -623,6 +631,14 @@ class Pessoa extends AbstractEntity {
     public function setQtdFilhos($qtdFilhos) {
         $this->qtdFilhos = $qtdFilhos;
         return $this;
+    }
+
+    function getProf() {
+        return $this->prof;
+    }
+
+    function setProf($prof) {
+        $this->prof = $prof;
     }
 
 }

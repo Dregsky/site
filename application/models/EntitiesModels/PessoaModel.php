@@ -239,7 +239,7 @@ class PessoaModel extends Model {
                     . " p.dataEmissao, f.id as funcaoMinisterial, pr.id as profissao, "
                     . " e.id as escolaridade, ec.id as estadoCivil, p.dataChegada, "
                     . " p.dataBatismoAguas, p.dataBatismoEspirito, p.nomePai,"
-                    . " p.nomeMae, p.nomeConjuge, p.dataCasamento, p.qtdFilhos "
+                    . " p.nomeMae, p.nomeConjuge, p.dataCasamento, p.qtdFilhos, p.prof "
                     . " FROM " . $this->getEntity() . " p "
                     . " left join p.funcaoMinisterial f "
                     . " left join p.profissao pr "

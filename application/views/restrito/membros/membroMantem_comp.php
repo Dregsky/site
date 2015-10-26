@@ -110,17 +110,10 @@
                 </select>
             </div> <!-- /.form group -->
             <div class="form-group col-sm-4">
-                <label>Profissão*</label>
-                <select name="profissao" class="form-control select2 select2-hidden-accessible" 
-                        style="width: 100%;" tabindex="-1" aria-hidden="true">
-                    <option value=""></option>
-                    <?php $profissao = isset($profissao) ? $profissao : '' ?>
-                    <?php foreach ($profissoes as $p): ?>
-                        <option value=<?= $p->getId() ?> <?= ($profissao == $p->getId()) ? 'selected' : '' ?>>
-                            <?= $p->getDescricao(); ?>
-                        </option>
-                    <?php endforeach; ?>
-                </select>
+                <label>Profissão</label>
+                <input type="text"  name="prof"  
+                       value="<?= isset($prof) ? $prof : '' ?>"
+                       class="form-control" maxlength="100">
             </div><!-- /.form group --> 
         </div><!-- ./row -->
         <div class="row">

@@ -64,7 +64,6 @@ class Membro extends Diversos_Controller {
 
     private function retrieveSelectsList(&$dados) {
         $dados['escolaridadeList'] = $this->esc->retrieveAll();
-        $dados['profissoes'] = $this->prof->retrieveAll();
         $dados['estadoCivilList'] = $this->est->retrieveAll();
         $dados['funcaoList'] = $this->func->retrieveAll();
         $dados['departamentosList'] = $this->dep->retrieveAllSemIgreja();
@@ -77,7 +76,7 @@ class Membro extends Diversos_Controller {
             'cidadeNatal', 'telefone', 'escolaridade',
             'profissao', 'rg', 'orgaoEmissor',
             'estadoCivil', 'funcaoMinisterial',
-            'nomePai', 'nomeMae', 'nomeConjuge', 'qtdFilhos'
+            'nomePai', 'nomeMae', 'nomeConjuge', 'qtdFilhos', 'prof'
         );
         $datas = array(
             'dataNascimento', 'dataEmissao', 'dataChegada',
@@ -105,7 +104,10 @@ class Membro extends Diversos_Controller {
             success('Sucesso', 'Membro cadastrado com sucesso. Obrigado!');
             redirect('diversos/membro/success');
         } catch (Exception $e) {
-            error('ERRO', 'Erro ao tentar salvar! Tente Novamente mais tarde ou Contate o Administrador!');
+            $this->session->set_flashdata('erro', $e->getTraceAsString());
+            error('ERRO', 'Erro ao tentar salvar! Tente Novamente MAIS TARDE.<br>'
+                    . '<a href="avisaErro">'
+                    . 'Clique Aqui para o administrador ser informado do erro</a>');
             $this->session->set_flashdata('membros', $dados);
             redirect('diversos/membro/error');
         }
@@ -124,7 +126,6 @@ class Membro extends Diversos_Controller {
         $dados['fotoPessoa'] = $this->processaImagem($dados, 'fotoPessoa');
         $dados['dataCadastro'] = new DateTime();
         $dados['escolaridade'] = $this->esc->retrieve($dados['escolaridade']);
-        $dados['profissao'] = $this->prof->retrieve($dados['profissao']);
         $dados['estadoCivil'] = $this->est->retrieve($dados['estadoCivil']);
         $dados['funcaoMinisterial'] = $this->func->retrieve($dados['funcaoMinisterial']);
         array_push($dados['departamentos'], enums\DepartamentoEnum::IGREJA);
@@ -189,6 +190,32 @@ class Membro extends Diversos_Controller {
             $this->session->set_flashdata('membros', $membro);
             redirect('diversos/membro/error');
         }
+    }
+
+    public function avisaErro() {
+        $pessoaModel = new PessoaModel();
+        $emails = $pessoaModel->retrieveEmailsAdmins();
+
+        foreach ($emails as $i => $a) {
+            $emailDestino[$i] = $a['email'];
+        }
+        $config['mailtype'] = 'html';
+        $this->load->library('email');
+
+        $this->email->initialize($config);
+
+        $this->email->from('adcruz@adcruz.org', 'Site ADCruz');
+        $this->email->to($emailDestino);
+
+        $this->email->subject('Erro Cadastro de Membro');
+        $erro = $this->session->flashdata('erro');
+        $this->email->message('Aconteceu um erro no cadastro de membro:<br>'.$erro);
+
+        $this->email->send();
+        
+        success('Email Enviado', 'O Administrador foi notificado!');
+        
+        redirect('diversos/membro');
     }
 
     public function error() {

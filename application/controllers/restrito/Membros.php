@@ -97,7 +97,6 @@ class Membros extends Restrito_Controller {
 
     private function retrieveSelectsList(&$dados) {
         $dados['escolaridadeList'] = $this->esc->retrieveAll();
-        $dados['profissoes'] = $this->prof->retrieveAll();
         $dados['estadoCivilList'] = $this->est->retrieveAll();
         $dados['funcaoList'] = $this->func->retrieveAll();
         $dados['departamentosList'] = $this->dep->retrieveAllSemIgreja();
@@ -110,7 +109,7 @@ class Membros extends Restrito_Controller {
             'cidadeNatal', 'telefone', 'escolaridade',
             'profissao', 'rg', 'orgaoEmissor',
             'estadoCivil', 'funcaoMinisterial',
-            'nomePai', 'nomeMae', 'nomeConjuge', 'qtdFilhos'
+            'nomePai', 'nomeMae', 'nomeConjuge', 'qtdFilhos', 'prof'
         );
         $datas = array(
             'dataNascimento', 'dataEmissao', 'dataChegada',
@@ -174,7 +173,6 @@ class Membros extends Restrito_Controller {
         $this->processaImagem($dados, 'fotoPessoa');
         $dados['dataCadastro'] = new DateTime();
         $dados['escolaridade'] = $this->esc->retrieve($dados['escolaridade']);
-        $dados['profissao'] = $this->prof->retrieve($dados['profissao']);
         $dados['estadoCivil'] = $this->est->retrieve($dados['estadoCivil']);
         $dados['funcaoMinisterial'] = $this->func->retrieve($dados['funcaoMinisterial']);
         array_push($dados['departamentos'], enums\DepartamentoEnum::IGREJA);
